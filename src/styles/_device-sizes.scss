@@ -1,0 +1,23 @@
+$phone-max: 414;
+$tablet-max: 768;
+
+@mixin respond-to($media) {
+    @if $media == handhelds {
+        @media only screen and (max-width: $phone-max + unquote('px')) {
+            @content;
+        }
+    } @else if $media == medium-screens {
+        @media only screen and (min-width: $phone-max + 1 + unquote('px')) and (max-width: $tablet-max - 1 + unquote('px')) {
+            @content;
+        }
+    } @else if $media == wide-screens {
+        @media only screen and (min-width: $tablet-max + unquote('px')) {
+            @content;
+        }
+    }
+}
+
+:export {
+    phoneMax: $phone-max;
+    tabletMax: $tablet-max;
+}

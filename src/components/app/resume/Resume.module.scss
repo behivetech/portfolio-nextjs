@@ -1,0 +1,39 @@
+.resume {
+    max-width: 800px;
+    position: relative;
+
+    &__button {
+        margin: 0.75rem 0;
+    }
+
+    &__content-right {
+        position: absolute;
+        right: 5%;
+    }
+
+    &__print-only {
+        display: none;
+    }
+
+    &__main-info {
+        margin-bottom: 1rem;
+    }
+
+    &__location {
+        margin-bottom: .5rem;
+    }
+
+    @media print {
+        &__content-right {
+            display: none;
+        }
+
+        &__button {
+            display: none;
+        }
+
+        &__print-only {
+            display: block;
+        }
+    }
+}

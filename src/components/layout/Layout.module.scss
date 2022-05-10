@@ -1,0 +1,26 @@
+@import '_globals';
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    // Fixes an overall page scrolling issue on some devices; however,
+    // even this is a little flakey when changing perspective from vertical to
+    // horizontal on iOS.
+    max-height: -webkit-fill-available;
+    @include print;
+
+    &__main {
+        background-color: $color-surface;
+        flex: 1 1 auto;
+        overflow: auto;
+    }
+
+    &__header {
+        flex: 0 0 auto;
+    }
+
+    &__footer {
+        flex: 0 0 auto;
+    }
+}

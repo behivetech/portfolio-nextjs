@@ -1,0 +1,94 @@
+$font: 'Ubuntu', 'Helvetica', 'Arial', sans-serif;
+$heading-font: 'Iceland', 'Ubuntu', 'Helvetica', 'Arial', sans-serif;
+$title: 1.3rem;
+$hint-txt: 0.7rem;
+$input-txt: 0.9rem;
+$label-txt: 0.8rem;
+$font-weight-regular: 300;
+$font-weight-medium: 400;
+$font-small-nunito: 500 14px 'Nunito';
+
+@mixin body-main {
+    font-size: 16px;
+    font-family: $font;
+    font-weight: $font-weight-medium;
+}
+
+@mixin body-regular {
+    font-size: 0.75rem;
+    font-family: $font;
+    font-weight: $font-weight-medium;
+}
+
+@mixin headline-1 {
+    font-size: 2.5;
+    font-family: $heading-font;
+    font-weight: $font-weight-medium;
+    line-height: 1.25;
+    margin: 0;
+}
+
+@mixin headline-2 {
+    font-size: 2rem;
+    font-family: $heading-font;
+    font-weight: $font-weight-medium;
+    line-height: 1.25;
+    margin: 0;
+}
+
+@mixin headline-3 {
+    font-size: 1.75rem;
+    font-family: $heading-font;
+    font-weight: $font-weight-medium;
+    line-height: 1.25;
+    margin: 0;
+}
+
+@mixin headline-4 {
+    font-size: 1.25rem;
+    font-family: $heading-font;
+    font-weight: $font-weight-medium;
+    line-height: 1.25;
+    margin: 0;
+}
+
+@mixin headline-5 {
+    font-size: 1.25rem;
+    font-family: $heading-font;
+    font-weight: $font-weight-medium;
+    line-height: 1.25;
+    margin: 0;
+}
+
+@mixin headline-6 {
+    font-size: 1.25rem;
+    font-family: $heading-font;
+    font-weight: 500;
+    line-height: 1.25;
+    margin: 0;
+}
+
+@mixin button {
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+@mixin caption {
+    font-size: 0.75rem;
+    font-family: $font;
+    font-weight: $font-weight-medium;
+}
+
+@mixin overline {
+    font-size: 0.75rem;
+    font-family: $font;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+:export {
+    fontFamily: $font;
+    fontWeightNormal: $font-weight-regular;
+    fontWeightMedium: $font-weight-medium;
+}

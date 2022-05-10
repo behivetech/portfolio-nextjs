@@ -1,0 +1,8 @@
+.centered-content {
+    padding: 1rem 5% 2rem;
+
+    @media all and (min-width: 800px) {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+}

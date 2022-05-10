@@ -1,0 +1,84 @@
+@import '../../styles/globals';
+$content-height: 298px;
+
+.projects {
+    &__headline {
+        margin-bottom: 0;
+    }
+
+    &__description {
+        margin-bottom: 0;
+    }
+
+    &__project-container {
+        display: grid;
+        grid-gap: 0.5rem;
+        grid-template-areas:
+            'Rally__Description'
+            'Rally__Image'
+            'PipelineRx__Description'
+            'PipelineRx__Image'
+            'SouthwestAirlines__Description'
+            'SouthwestAirlines__Image';
+        justify-items: center;
+        align-items: center;
+    }
+
+    &__content {
+        min-height: $content-height;
+        position: relative;
+        overflow: hidden;
+    }
+
+    &__image {
+        width: 100%;
+        box-shadow: -10px 9px 10px 0px rgba(0, 0, 0, 0.4);
+        margin-bottom: 2rem;
+
+        &#PipelineRx__Image {
+            grid-area: PipelineRx__Image;
+        }
+
+        &#SouthwestAirlines__Image {
+            grid-area: SouthwestAirlines__Image;
+        }
+
+        &#Rally__Image {
+            grid-area: Rally__Image;
+        }
+    }
+
+    &__detail {
+        color: $color-on-primary;
+
+        &#PipelineRx__Description {
+            grid-area: PipelineRx__Description;
+        }
+
+        &#Rally__Description {
+            grid-area: Rally__Description;
+        }
+
+        &#SouthwestAirlines__Description {
+            grid-area: SouthwestAirlines__Description;
+        }
+    }
+
+    @media all and (min-width: 875px) {
+        &__project-container {
+            grid-gap: 2rem;
+            grid-template-areas:
+                'Rally__Image Rally__Description'
+                'PipelineRx__Description PipelineRx__Image'
+                'SouthwestAirlines__Image SouthwestAirlines__Description';
+        }
+
+        &__headline {
+            margin-bottom: 1rem;
+        }
+
+        &__image {
+            margin-bottom: 0;
+        }
+    }
+}

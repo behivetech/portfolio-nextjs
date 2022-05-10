@@ -1,0 +1,6 @@
+@import '_globals';
+
+.link {
+    color: lighten($color-primary-light, 20%);
+    text-decoration: none;
+}

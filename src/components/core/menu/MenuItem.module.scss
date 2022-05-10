@@ -1,0 +1,9 @@
+@import 'colors';
+
+.menu-item {
+    &--selected {
+        .menu-item {
+            background-color: $color-surface;
+        }
+    }
+}

@@ -1,0 +1,83 @@
+@import '_globals';
+
+.header {
+    background-color: $color-primary;
+    background: $gradient;
+    box-shadow: 0 -3px 4px 4px rgba(0, 0, 0, 0.2);
+    color: $color-on-primary;
+    display: flex;
+    padding: 0.25rem 0.625rem;
+    position: relative;
+    z-index: 1;
+
+    &__logo,
+    &__nav {
+        flex: 0 0 auto;
+    }
+
+    &__logo svg {
+        height: 25px;
+        width: 162px;
+    }
+
+    &__logo,
+    &__svg-link {
+        &:visited,
+        &:hover,
+        &:active {
+            color: $color-on-primary;
+            text-decoration: none;
+            font-weight: normal;
+        }
+    }
+
+    &__svg-link {
+        margin-right: -0.75rem;
+    }
+
+    &__nav {
+        display: none;
+    }
+
+    &__nav-memu {
+        display: block;
+    }
+
+    &__right {
+        display: inline-flex;
+        padding: 0 0.625rem;
+        position: absolute;
+        right: 0;
+        top: -6px;
+        text-align: right;
+    }
+
+    @media all and (min-width: 800px) {
+        &__nav {
+            line-height: 2.25rem;
+            display: block;
+            margin-left: 1.5rem;
+        }
+
+        &__nav-menu {
+            display: none;
+        }
+
+        &__logo svg {
+            width: 232px;
+            height: 36px;
+        }
+
+        &__right {
+            top: 0;
+        }
+
+        &__svg-link {
+            margin-right: -0.5rem;
+        }
+    }
+
+    @media print {
+        display: none;
+    }
+}

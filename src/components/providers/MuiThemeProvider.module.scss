@@ -1,0 +1,12 @@
+@import 'colors';
+
+:export {
+    colorPrimary: $color-primary;
+    colorPrimaryLight: $color-primary-light;
+    colorPrimaryDark: $color-primary-dark;
+    colorSecondary: $color-secondary;
+    colorSecondaryLight: $color-secondary-light;
+    colorSecondaryDark: $color-secondary-dark;
+    colorOnPrimary: $color-on-primary;
+    colorOnSecondary: $color-on-secondary;
+}

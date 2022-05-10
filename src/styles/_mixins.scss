@@ -1,0 +1,52 @@
+@import 'colors';
+
+@mixin radial-gradient(
+    $primary: $color-on-primary,
+    $secondary: lighten($color-primary, 50%)
+) {
+    background: $primary; /* Old browsers */
+    background: -moz-radial-gradient(
+        center,
+        ellipse cover,
+        $primary 28%,
+        $secondary 100%
+    ); /* FF3.6-15 */
+    background: -webkit-radial-gradient(
+        center,
+        ellipse cover,
+        $primary 28%,
+        $secondary 100%
+    ); /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(
+        ellipse at center,
+        $primary 28%,
+        $secondary 100%
+    ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$primary', endColorstr='$secondary',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }
+    @-ms-keyframes #{$animation-name} {
+        @content;
+    }
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+@mixin animation($str) {
+    -webkit-animation: #{$str};
+    -moz-animation: #{$str};
+    -ms-animation: #{$str};
+    -o-animation: #{$str};
+    animation: #{$str};
+}

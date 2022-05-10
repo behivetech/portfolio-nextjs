@@ -1,0 +1,84 @@
+@import '_globals';
+
+html {
+    @include body-main;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    @include print;
+}
+
+body {
+    background-color: $color-surface;
+    @include body-main;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: $color-on-surface;
+    word-wrap: break-word;
+    -moz-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+    -ms-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+    -webkit-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+    font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+    @include print;
+}
+
+a {
+    background-color: transparent;
+    color: lighten($color-primary-light, 20%);
+    text-decoration: none;
+    -webkit-text-decoration-skip: objects;
+
+    &:active,
+    &:hover {
+        color: lighten($color-primary-light, 30%);
+        outline-width: 0;
+        text-decoration: underline;
+    }
+
+    @media print {
+        color: lighten(#000, 10%);
+        text-decoration: underline;
+
+        &:after {
+            content: ' [' attr(href) '] ';
+            font-size: 0.75em !important;
+        }
+    }
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+code,
+kbd,
+pre,
+samp {
+    font-family: monospace, monospace;
+    font-size: 1em;
+    white-space: pre;
+
+    @media print {
+        background-color: #fff;
+        color: #000;
+    }
+}
+
+hr {
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+}
+
+input {
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+}
+
+img {
+    border-style: none;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}

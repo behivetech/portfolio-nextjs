@@ -1,0 +1,13 @@
+@import '_colors';
+
+.experiences {
+    &__sub-detail {
+        color: darken($color-on-surface, 20%);
+        font-size: 0.75rem;
+        margin-bottom: 0.75rem;
+
+        @media print {
+            color: lighten(#000, 20%);
+        }
+    }
+}

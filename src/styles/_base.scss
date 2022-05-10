@@ -1,0 +1,14 @@
+@import './_colors.scss';
+
+$device-width: 500px;
+$drawer-width: 260px;
+$main-container-width: 850px;
+$gutter-small: 0.5rem;
+$gutter: 1rem;
+
+$z-index-popup: 1000;
+$z-index-header: 10000;
+
+$gradient: linear-gradient(to right, $color-primary 30%, $color-secondary 100%);
+$box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 5px 8px 0 rgba(0, 0, 0, 0.14),
+    0 1px 14px 0 rgba(0, 0, 0, 0.12);

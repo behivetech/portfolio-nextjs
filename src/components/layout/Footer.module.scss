@@ -1,0 +1,10 @@
+.footer {
+    box-shadow: 2px 3px 6px 4px rgba(0, 0, 0, 0.2);
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
+    z-index: 1;
+
+    @media print {
+        display: none;
+    }
+}

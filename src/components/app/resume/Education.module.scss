@@ -1,0 +1,18 @@
+@import '_colors';
+
+.education {
+    margin-top: 0.75rem;
+
+    &__school {
+        margin-bottom: 0.5rem;
+    }
+
+    &__description {
+        font-size: 0.75rem;
+    }
+
+    &__years {
+        color: darken($color-on-surface, 20%);
+        font-size: 1rem;
+    }
+}
