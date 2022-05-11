@@ -16,7 +16,7 @@ import styles from './About.module.scss';
 
 type AboutParams = {
     componentRef?: React.RefObject<HTMLElement>,
-    skills: HomeProps.skills
+    skills: HomeProps['skills']
 };
 
 export default function About({ componentRef, skills }: AboutParams) {

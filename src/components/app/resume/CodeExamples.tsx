@@ -33,7 +33,7 @@ export default function CodeExamples({ className, codeExamples }: CodeExamplesPr
                     <ContentfulElementParser content={description} />
                     <section>
                         <Headline level={5}>Skills Used</Headline>
-                        <Skillsets skills={skillsLink} />
+                        {/* <Skillsets skills={skillsLink} /> */}
                     </section>
                 </section>
             ))}

@@ -1,4 +1,5 @@
 import React, {useMemo, useReducer} from 'react';
+import { NextPage } from 'next';
 import Recaptcha from 'components/app/Recaptcha';
 import {useForm} from 'react-hook-form';
 
@@ -56,7 +57,7 @@ function contactReducer(state, {type, payload = {}}) {
     return {...state, ...actions[type]} || state;
 }
 
-export default function contact() {
+export default function ContactPage() {
     const {verified} = useRecaptchaVerified();
     const [{error, loading, submitted}, contactDispatch] = useReducer(
         contactReducer,

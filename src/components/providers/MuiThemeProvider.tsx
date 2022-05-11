@@ -1,16 +1,7 @@
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { ReactNode } from 'react';
 
-import {
-    colorPrimary,
-    colorPrimaryLight,
-    colorPrimaryDark,
-    colorSecondary,
-    colorSecondaryLight,
-    colorSecondaryDark,
-    colorOnPrimary,
-    colorOnSecondary,
-} from './MuiThemeProvider.module.scss';
+import styles from './MuiThemeProvider.module.scss';
 
 type MuiThemeProviderProps = {
     children: ReactNode
@@ -20,16 +11,16 @@ const theme = createTheme({
     palette: {
         mode: 'dark',
         primary: {
-            light: colorPrimary,
-            main: colorPrimaryLight,
-            dark: colorPrimaryDark,
-            contrastText: colorOnPrimary,
+            light: styles.colorPrimary,
+            main: styles.colorPrimaryLight,
+            dark: styles.colorPrimaryDark,
+            contrastText: styles.colorOnPrimary,
         },
         secondary: {
-            light: colorSecondary,
-            main: colorSecondaryLight,
-            dark: colorSecondaryDark,
-            contrastText: colorOnSecondary,
+            light: styles.colorSecondary,
+            main: styles.colorSecondaryLight,
+            dark: styles.colorSecondaryDark,
+            contrastText: styles.colorOnSecondary,
         },
     },
 });

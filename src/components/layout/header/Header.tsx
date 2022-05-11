@@ -5,7 +5,7 @@ import getClassName from 'tools/getClassName';
 
 // core
 import Link from 'components/core/Link';
-import IconButton from 'components/core/IconButton';
+import Button from 'components/core/Button';
 
 // layout
 import HeaderNav from './HeaderNav';
@@ -17,9 +17,9 @@ import Logo from './Logo';
 import styles from './Header.module.scss';
 
 type HeaderParams = {
-    className?: string,
+    className?: string
     /** Indicates whether the header should be fixed or not */
-    fixed?: boolean,
+    fixed?: boolean
 };
 
 /**
@@ -29,7 +29,7 @@ type HeaderParams = {
 export default function Header({ className, fixed = false }: HeaderParams) {
     const [rootClassName, getChildClass] = getClassName({
         className,
-        modifiers: {fixed},
+        modifiers: { fixed },
         rootClass: 'header',
         styles,
     });
@@ -42,22 +42,19 @@ export default function Header({ className, fixed = false }: HeaderParams) {
             </Link>
             <HeaderNav className={getChildClass('nav')} />
             <div className={getChildClass('right')}>
-                <IconButton
+                <Button
                     aria-label="linkedin"
                     className={getChildClass('svg-link')}
                     href="https://www.linkedin.com/in/bruce-smith-67bb05b/"
-                    icon={<LinkedInIcon />}
-                    tag="a"
-                    target="_blank"
-                />
-                <IconButton
+                ><LinkedInIcon />
+                </Button>
+                <Button
                     aria-label="github"
                     className={getChildClass('svg-link')}
                     href="https://github.com/bruqui/"
-                    icon={<GithubIcon />}
-                    tag="a"
-                    target="_blank"
-                />
+                >
+                    <GithubIcon />
+                </Button>
                 <HeaderNavMenu className={getChildClass('nav-menu')} />
             </div>
         </header>

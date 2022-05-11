@@ -10,7 +10,7 @@ import { HomeProps } from '../../../pages/index';
 type ResumeSkillsetsParams = {
     className?: string,
     headlineSize?: 1 | 2 | 3 | 4 | 5 | 6
-    skills: HomeProps.skills
+    skills: HomeProps['skills']
 };
 
 export default function ResumeSkillsets({

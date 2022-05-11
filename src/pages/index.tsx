@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import { NextPage } from 'next';
 import Image from 'next/image';
 
 import client from 'tools/contentfulClient';
@@ -23,14 +22,13 @@ export async function getStaticProps() {
 
     return {
         props: {
-            skills: skillsRes?.items?.map(({ fields }) => fields) || [],
+            skills: skillsRes?.items?.map(({ fields }) => fields) as HomeProps['skills'] || [],
         },
     }
 }
 
-const Home: NextPage = ({ skills }: HomeProps) => {
-    const aboutEl = useRef(null);
-    const projectsEl = useRef(null);
+const Home = ({ skills }: HomeProps) => {
+    const aboutEl = useRef<HTMLDivElement>(null);
     const [rootClassName, getChildClass] = getClassName({
         rootClass: 'index-page',
         styles,
@@ -80,7 +78,7 @@ const Home: NextPage = ({ skills }: HomeProps) => {
                 </div>
             </div>
             <About componentRef={aboutEl} skills={skills} />
-            <Projects componentRef={projectsEl} />
+            <Projects />
         </Layout>
     )
 }

@@ -11,7 +11,7 @@ import getClassName from 'tools/getClassName';
 type ButtonProps = {
     className?: string
     variant?: MuiButtonProps['variant']
-} & ExtendButtonBase<ButtonTypeMap<{}, "button">>
+} & MuiButtonProps
 
 export default function Button({ className, variant = 'contained', ...props }: ButtonProps) {
     const [rootClassName] = getClassName({

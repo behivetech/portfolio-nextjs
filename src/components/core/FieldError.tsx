@@ -10,7 +10,7 @@ export type FieldErrorProps = {
     className?: string
     error?: {
         message?: string
-        type?: string
+        type?: 'required' | 'unknown'
     }
 };
 
@@ -31,7 +31,7 @@ export default function FieldError({ className, error = {type: 'unknown'} }: Fie
     if (message) {
         errorResult = message;
     } else {
-        errorResult = errorMessages[type] || errorMessages.unknown;
+        errorResult = errorMessages[type || 'unknown'] || errorMessages.unknown;
     }
 
     return isEmpty(error) ? null : <div className={rootClassName}>{errorResult}</div>;

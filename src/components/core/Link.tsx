@@ -9,14 +9,15 @@ import styles from  './Link.module.scss';
 export type LinkParams = {
     children: React.ReactNode,
     className?: string,
+    target?: string
 } & LinkProps;
 
-export default function Link({children, className, ...restProps}: LinkParams) {
+export default function Link({ children, className, target, ...restProps}: LinkParams) {
     const [rootClassName] = getClassName({ className, rootClass: 'link', styles});
 
     return (
         <LinkNextJs {...restProps}>
-            <a className={rootClassName}>{children}</a>
+            <a className={rootClassName} target={target}>{children}</a>
         </LinkNextJs>
     );
 }

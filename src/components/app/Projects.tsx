@@ -9,13 +9,6 @@ import SEO from 'components/app/SEO';
 
 import styles from './Projects.module.scss';
 
-
-type ProjectsProps = {
-    componentRef: {
-        current: null | React.ReactNode
-    }
-};
-
 type ProjectParams = {
     heading: string
     dates: string
@@ -51,13 +44,13 @@ function Project({
                 id={styles[`${projectKey}__Image`]}
                 key={`${projectKey}__Image`}
             >
-                <Image src={image} layout="intrinsic" width={800} height={600} />
+                <Image src={image} alt={`${heading} image`} layout="intrinsic" width={800} height={600} />
             </div>
         </>
     );
 }
 
-export default function Projects({ componentRef }: ProjectsProps) {
+export default function Projects() {
     const [rootClassName, getChildClass] = getClassName({
         rootClass: 'projects',
         styles

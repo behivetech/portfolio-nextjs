@@ -11,10 +11,10 @@ type HeadlineParams = {
     level?: 1 | 2 | 3 | 4 | 5 | 6
     /** Desired css size from 1-6 which overides the level prop */
     size?: 1 | 2 | 3 | 4 | 5 | 6
-};
+} ;
 
 export default function Headline({ children, className, level = 2, size }: HeadlineParams) {
-    const Component: Reeact.ReactNode = `h${level}`;
+    const Component: React.ElementType | string = `h${level}` as React.ElementType;
     const [rootClassName] = getClassName({
         className,
         modifiers: { [`h${size || level}`]: true },
