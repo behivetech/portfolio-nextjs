@@ -22,6 +22,7 @@
 
     &__logo,
     &__svg-link {
+
         &:visited,
         &:hover,
         &:active {
@@ -32,24 +33,27 @@
     }
 
     &__svg-link {
-        margin-right: -0.75rem;
+        display: inline-block;
+        margin: 0.125rem 0 0 0.5rem;
+
+        &:hover {
+            text-decoration: none;
+        }
     }
 
     &__nav {
         display: none;
     }
 
-    &__nav-memu {
+    &__nav-menu {
         display: block;
+        margin-left: 0.5rem;
     }
 
     &__right {
-        display: inline-flex;
-        padding: 0 0.625rem;
+        display: flex;
         position: absolute;
-        right: 0;
-        top: -6px;
-        text-align: right;
+        right: .5rem;
     }
 
     @media all and (min-width: 800px) {
@@ -69,11 +73,7 @@
         }
 
         &__right {
-            top: 0;
-        }
-
-        &__svg-link {
-            margin-right: -0.5rem;
+            top: 0.5rem
         }
     }
 

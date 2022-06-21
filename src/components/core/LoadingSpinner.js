@@ -19,7 +19,7 @@ export default function LoadingSpinner({className, medium, onDark, small}) {
         styles,
     });
 
-    return <Icon className={rootClassName} icon="synch" />;
+    return <Icon className={rootClassName}>synch</Icon>;
 }
 
 LoadingSpinner.propTypes = {

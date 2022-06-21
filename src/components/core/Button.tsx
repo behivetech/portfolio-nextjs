@@ -2,8 +2,6 @@ import React from 'react';
 import {
     Button as MuiButton,
     ButtonProps as MuiButtonProps,
-    ExtendButtonBase,
-    ButtonTypeMap,
 } from '@mui/material';
 
 import getClassName from 'tools/getClassName';

@@ -21,7 +21,7 @@ export default function AboutCard({ children, className, icon }: AboutCardParams
 
     return (
         <div className={rootClassName}>
-            {icon && <Icon icon={icon} className={getChildClass('icon')} />}
+            {icon && <Icon className={getChildClass('icon')}>{icon}</Icon>}
             <div className={getChildClass('content')}>{children}</div>
         </div>
     );

@@ -3,7 +3,6 @@ import React from 'react';
 import getClassName from 'tools/getClassName';
 
 import Link from 'components/core/Link';
-import {MenuLink} from 'components/core/menu';
 
 import styles from './NavLink.module.scss';
 

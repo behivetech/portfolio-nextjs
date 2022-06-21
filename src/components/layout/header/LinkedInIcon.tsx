@@ -1,4 +1,5 @@
 import React from 'react';
+import SvgIcon from '@mui/material/SvgIcon';
 
 /**
     Component that shows an svg of a github icon.
@@ -11,24 +12,10 @@ type LinkedInIconParams = {
 /* eslint-disable max-len */
 export default function LinkedInIcon({ className }: LinkedInIconParams) {
     return (
-        <svg
-            version="1.1"
-            id="Layer_2"
-            xmlns="http://www.w3.org/2000/svg"
-            x="0px"
-            y="0px"
-            viewBox="0 0 2500 2500"
-            enableBackground="new 0 0 2500 2500"
-            xmlSpace="preserve"
-        >
-            <path
-                fill="#FFFFFF"
-                d="M1250,0C559.6,0,0,559.6,0,1250s559.6,1250,1250,1250s1250-559.6,1250-1250C2500,559.6,1940.3,0,1250,0z
-     M916.5,1854.3H642V967.6h274.4V1854.3z M778,851.5c-89.6,0-162.3-73.3-162.3-163.6c0-90.4,72.7-163.6,162.3-163.6
-    s162.3,73.2,162.3,163.6C940.3,778.3,867.6,851.5,778,851.5z M1945,1854.3h-273.1v-465.4c0-127.7-48.5-198.9-149.4-198.9
-    c-109.9,0-167.2,74.2-167.2,198.9v465.4H1092V967.6h263.2v119.4c0,0,79.2-146.5,267.2-146.5c188,0,322.6,114.8,322.6,352.3
-    L1945,1854.3z"
-            />
-        </svg>
+        <SvgIcon>
+            <path fill="#FFFFFF" d="M12,2C6.5,2,2,6.5,2,12s4.5,10,10,10s10-4.5,10-10S17.5,2,12,2z M9.3,16.8H7.1V9.7h2.2L9.3,16.8L9.3,16.8z
+	 M8.2,8.8c-0.7,0-1.3-0.6-1.3-1.3c0-0.7,0.6-1.3,1.3-1.3s1.3,0.6,1.3,1.3C9.5,8.2,8.9,8.8,8.2,8.8z M17.6,16.8h-2.2v-3.7
+	c0-1-0.4-1.6-1.2-1.6c-0.9,0-1.3,0.6-1.3,1.6v3.7h-2.1V9.7h2.1v1c0,0,0.6-1.2,2.1-1.2s2.6,0.9,2.6,2.8V16.8z"/>
+        </SvgIcon>
     );
 }

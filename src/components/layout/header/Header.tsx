@@ -42,19 +42,23 @@ export default function Header({ className, fixed = false }: HeaderParams) {
             </Link>
             <HeaderNav className={getChildClass('nav')} />
             <div className={getChildClass('right')}>
-                <Button
+                <a
                     aria-label="linkedin"
                     className={getChildClass('svg-link')}
-                    href="https://www.linkedin.com/in/bruce-smith-67bb05b/"
+                    href="https://www.linkedin.com/in/bruce-ultra/"
+                    rel="noreferrer"
+                    target="_blank"
                 ><LinkedInIcon />
-                </Button>
-                <Button
+                </a>
+                <a
                     aria-label="github"
                     className={getChildClass('svg-link')}
-                    href="https://github.com/bruqui/"
+                    href="https://github.com/behivetech/"
+                    rel="noreferrer"
+                    target="_blank"
                 >
                     <GithubIcon />
-                </Button>
+                </a>
                 <HeaderNavMenu className={getChildClass('nav-menu')} />
             </div>
         </header>

@@ -55,7 +55,7 @@ export default function Resume({
     return (
         <CenteredContent className={rootClassName}>
             <div className={getChildClass('content-right')}>
-                <Button startIcon={<Icon icon="print" />} onClick={handlePrintClick}>Print Resume</Button>
+                <Button startIcon={<Icon>print</Icon>} onClick={handlePrintClick}>Print Resume</Button>
             </div>
             <Headline level={2}>{resume.name}</Headline>
             <div className={getChildClass('main-info')}>
