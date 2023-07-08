@@ -1,11 +1,10 @@
 import React from 'react';
 
 // tools
-import getClassName from 'tools/getClassName';
+import getClassName from '@tools/getClassName';
 
 // core
-import Link from 'components/core/Link';
-import Button from 'components/core/Button';
+import Link from '@core/Link';
 
 // layout
 import HeaderNav from './HeaderNav';

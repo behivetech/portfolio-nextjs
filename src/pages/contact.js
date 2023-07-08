@@ -1,5 +1,4 @@
 import React, {useMemo, useReducer} from 'react';
-import { NextPage } from 'next';
 import Recaptcha from 'components/app/Recaptcha';
 import {useForm} from 'react-hook-form';
 

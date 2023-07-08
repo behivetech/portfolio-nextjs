@@ -2,11 +2,8 @@
 const path = require('path');
 
 module.exports = {
+    swcMinify: true,
     reactStrictMode: true,
-    experimental: {
-        runtime: 'nodejs',
-        serverComponents: true,
-    },
     sassOptions: {
         includePaths: [
             path.join(__dirname, 'src/styles'),

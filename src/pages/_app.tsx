@@ -1,14 +1,14 @@
 import type { AppProps } from 'next/app';
-// import contentfulClient from 'tools/contentfulClient';
+// import contentfulClient from '@tools/contentfulClient';
 
-import AppProvider from 'components/providers/AppProvider';
+import AppProviders from '@providers/AppProvider';
 
-import 'styles/index.scss';
+import '@styles/index.scss';
 
 function MyApp({ Component, pageProps }: AppProps) {
     const props = {...pageProps};
 
-    return <AppProvider><Component {...props} /></AppProvider>
+    return <AppProviders><Component {...props} /></AppProviders>
 }
 
 export default MyApp

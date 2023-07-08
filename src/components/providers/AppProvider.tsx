@@ -10,7 +10,7 @@ type AppProviderProps = {
 export default function AppProvider({children}: AppProviderProps) {
     return (
         <MuiThemeProvider>
-            <RecaptchaProvider>{children}</RecaptchaProvider>
+            <RecaptchaProvider><>{children}</></RecaptchaProvider>
         </MuiThemeProvider>
     )
 }
