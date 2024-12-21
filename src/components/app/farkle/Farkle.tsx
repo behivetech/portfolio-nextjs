@@ -21,8 +21,9 @@ const LOCAL_STORAGE_KEY = 'farkle__users';
 
 const getLocalStorage = (): FarkleState => {
     const data = localStorage.getItem(LOCAL_STORAGE_KEY);
+    const parsedData = JSON.parse(data ?? '[]');
 
-    return data ? JSON.parse(data) : [];
+    return Array.isArray(parsedData) ? parsedData : [];
 }
 
 const setLocalStorage = (data: FarkleState) => {
