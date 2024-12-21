@@ -1,26 +1,38 @@
 .users {
-  align-items: top;
+  height: 95vh;
+  width: 100%;
+  align-items: start;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   gap: 2rem 1rem;
   justify-content: center;
   padding: 1rem;
+  position: relative;
+  overflow-y: auto;
 
   &__user {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 3rem;
+    display: grid;
+    align-items: start;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
     max-width: 60rem;
     margin: 0 auto;
   }
 
-  &__form {
-    display: grid;
-    border-bottom: 1px solid #3f3f3f;
-    grid-template-columns: 1fr auto auto auto;
+  &__actions {
+    padding-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
+    justify-content: end;
+  }
+
+  &__form {
+    position: absolute;
+    border-top: 1px solid #3f3f3f;
+    padding: 1rem;
+    bottom: 1rem;
     padding: 1rem;
   }
 }

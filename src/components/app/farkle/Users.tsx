@@ -93,18 +93,6 @@ export const Users = () => {
 
     return (
         <section className={rootClass}>
-            <form onSubmit={handleSubmit} className={getChildClass('form')}>
-                <TextField
-                    label="Add User"
-                    name="name"
-                    placeholder='Enter a name'
-                    inputRef={nameFieldRef}
-                    required
-                />
-                <Button type="submit">Add</Button>
-                <Button onClick={resetScores}>Reset Scores</Button>
-                <Button onClick={resetUsers}>Reset Users</Button>
-            </form>
             <div className={getChildClass('user')}>
                 {Object.keys(users).map((name) => (
                     <UserScore
@@ -117,6 +105,20 @@ export const Users = () => {
                     />
                 ))}
             </div>
+            <form onSubmit={handleSubmit} className={getChildClass('form')}>
+                <TextField
+                    label="Add User"
+                    name="name"
+                    placeholder='Enter a name'
+                    inputRef={nameFieldRef}
+                    required
+                />
+                <div className={getChildClass('actions')}>
+                    <Button type="submit">Add</Button>
+                    <Button onClick={resetScores}>Reset Scores</Button>
+                    <Button onClick={resetUsers}>Reset Users</Button>
+                </div>
+            </form>
         </section>
     );
 }
