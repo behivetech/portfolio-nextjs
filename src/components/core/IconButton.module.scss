@@ -1,0 +1,12 @@
+.iconButton {
+    color: white;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+
+    &--flip {
+        transform: rotate(180deg);
+    }
+}

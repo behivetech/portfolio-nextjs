@@ -1,9 +1,8 @@
-'use client'
 import React from 'react';
-import { Users } from '@app/farkle/Users';
+import { Farkle } from '@app/farkle/Farkle';
 
 export default function FarklePage() {
     return (
-        <Users />
+        <Farkle />
     );
 }
