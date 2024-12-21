@@ -27,7 +27,7 @@
 
   &__headerActions {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 1rem;
     justify-self: flex-end;
   }
