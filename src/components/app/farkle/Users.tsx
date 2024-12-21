@@ -109,14 +109,15 @@ export const Users = () => {
                 <TextField
                     label="Add User"
                     name="name"
+                    size="small"
                     placeholder='Enter a name'
                     inputRef={nameFieldRef}
                     required
                 />
                 <div className={getChildClass('actions')}>
-                    <Button type="submit">Add</Button>
-                    <Button onClick={resetScores}>Reset Scores</Button>
-                    <Button onClick={resetUsers}>Reset Users</Button>
+                    <Button size="small" type="submit">Add</Button>
+                    <Button size="small" onClick={resetScores}>Reset Scores</Button>
+                    <Button size="small" onClick={resetUsers}>Reset Users</Button>
                 </div>
             </form>
         </section>

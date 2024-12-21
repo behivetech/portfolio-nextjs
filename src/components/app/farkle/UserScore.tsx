@@ -59,10 +59,11 @@ export const UserScore: React.FC<UserScoreProps> = ({
                         label="Edit Score"
                         type="number"
                         name="editScore"
+                        size="small"
                         placeholder="Enter a score"
                         defaultValue={score}
                     />
-                    <Button type="submit">Update</Button>
+                    <Button size="small" type="submit">Update</Button>
                 </form>
             </li>
         );
@@ -74,16 +75,17 @@ export const UserScore: React.FC<UserScoreProps> = ({
             <form onSubmit={handleSubmit} className={getChildClass('form')}>
                 <TextField
                     label="Add Score"
+                    size="small"
                     inputRef={scoreRef}
                     type="number"
                     name="score"
                     placeholder="Enter a score"
                 />
-                <Button type="submit">Add</Button>
+                <Button size="small" type="submit">Add</Button>
             </form>
             <div className={getChildClass('scores')}>
                 <Headline level={3}>
-                    Total Score:{' '}
+                    Score:{' '}
                     {scores.reduce((total, score) => total + score, 0)}
                 </Headline>
                 <ol className={getChildClass('list')}>
