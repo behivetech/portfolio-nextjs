@@ -1,0 +1,52 @@
+.userScore {
+  gap: 1rem;
+  display: grid;
+  max-width: 31vw;
+
+  &__form {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  &__scores {
+    display: grid;
+    grid-template-rows: auto 21vh;
+    justify-content: center;
+  }
+
+  &__score {
+    font-size: 1rem;
+    text-align: right;
+    padding-right: 2rem;
+  }
+
+  &__list {
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    list-style-type: none;
+  }
+
+  &__headline {
+    line-height: 0.65 !important;
+  }
+
+  &__buttonIcon {
+    color: white;
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+    background-color: transparent;
+  }
+
+  &__listItem {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: auto 2fr auto auto;
+    justify-content: end;
+    align-items: center;
+  }
+}

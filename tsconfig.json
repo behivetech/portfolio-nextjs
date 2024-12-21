@@ -20,6 +20,9 @@
         "jsx": "preserve",
         "incremental": true,
         "paths": {
+            "@app/*": [
+                "components/app/*"
+            ],
             "@core/*": [
                 "components/core/*"
             ],

@@ -1,23 +1,30 @@
 import React, { createContext, useState } from 'react';
 import axios from 'axios';
 
-import PropTypes from 'prop-types';
+interface RecaptchaProviderProps {
+    children: React.ReactNode;
+}
 
-const DEFAULT_CONTEXT = {
+interface Context {
+    verifyToken: (token: string) => void;
+    verified: boolean;
+}
+
+const DEFAULT_CONTEXT: Context = {
     verifyToken: () => null,
     verified: false,
 };
 
 export const RecaptchaContext = createContext(DEFAULT_CONTEXT);
 
-export default function RecaptchaProvider({ children }) {
+export default function RecaptchaProvider({ children }: RecaptchaProviderProps) {
     const [verified, setVerified] = useState(false);
 
-    function fetcher(url, token) {
+    function fetcher(url: string, token: string) {
         return axios.post(url, { token })
     }
 
-    async function verifyToken(token) {
+    async function verifyToken(token: string) {
         const { data } = await fetcher('/api/recaptcha', token)
 
         console.log({ data })
@@ -35,6 +42,3 @@ export default function RecaptchaProvider({ children }) {
     );
 }
 
-RecaptchaProvider.propTypes = {
-    children: PropTypes.node,
-};
