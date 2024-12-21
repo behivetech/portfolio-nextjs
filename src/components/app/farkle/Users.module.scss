@@ -12,6 +12,8 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 3rem;
+    max-width: 60rem;
+    margin: 0 auto;
   }
 
   &__form {
