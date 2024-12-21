@@ -35,6 +35,10 @@
   &__user {
     display: grid;
     gap: 2rem;
+    max-height: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   &__userInfo {

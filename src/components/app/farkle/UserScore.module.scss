@@ -1,21 +1,25 @@
 .userScore {
+  display: block;
+  overflow: auto;
+
+  &__button {
     display: block;
+  }
 
-    &__button {
-        display: block;
-    }
+  &__headline {
+    font-size: 1.25rem;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    overflow: hidden;
+  }
 
-    &__headline {
-        font-size: 1.5rem;
-    }
+  &__score {
+    font-size: 1.75rem;
+  }
 
-    &__score {
-        font-size: 1.75rem;
+  &--selected {
+    &.userScore {
+      color: #29fe03;
     }
-
-    &--selected {
-        &.userScore {
-            color: #29fe03
-        }
-    }
+  }
 }
