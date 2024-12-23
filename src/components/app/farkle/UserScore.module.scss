@@ -1,15 +1,14 @@
 .userScore {
   display: block;
-  overflow: auto;
 
   &__button {
     display: block;
   }
 
   &__headline {
-    font-size: 1.25rem;
+    font-size: 1.25rem !important;
     text-overflow: ellipsis;
-    max-width: 100%;
+    width: 100%;
     overflow: hidden;
   }
 

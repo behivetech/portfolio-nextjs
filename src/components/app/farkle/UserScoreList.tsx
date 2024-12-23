@@ -8,6 +8,7 @@ import { IconButton } from '@core/IconButton';
 import styles from './UserScoreList.module.scss';
 
 interface UserScoreListProps {
+    className?: string;
     currentUserIndex: number;
     deleteScore: (scoreIndex: number) => void;
     editScore: (scoreIndex: number, score: number) => void;
@@ -15,14 +16,16 @@ interface UserScoreListProps {
 }
 
 export const UserScoreList: React.FC<UserScoreListProps> = ({
+    className,
+    currentUserIndex,
     deleteScore,
     editScore,
-    currentUserIndex,
     scores,
 }) => {
     const [formIndex, setFormIndex] = useState<number>(-1);
 
     const [rootClass, getChildClass] = getClassName({
+        className,
         rootClass: 'userScoreList',
         styles,
     });

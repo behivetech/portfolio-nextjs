@@ -1,50 +1,86 @@
+@import '_colors';
+
 .farkle {
+  box-sizing: border-box;
   height: 100vh;
   width: 100vh;
   max-height: -webkit-fill-available;
   max-width: -webkit-fill-available;
+  padding-bottom: 2rem;
   position: relative;
+  display: grid;
+  grid-template-rows: 80px auto 61px;
 
-    &__headerHeadline {
-        font-size: 3rem;
-        line-height: 1;
-    }
+  &__headerHeadline {
+    font-size: 3rem;
+    line-height: 1;
+  }
 
   &__content {
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 3rem;
+    grid-template-columns: 8rem auto;
+    gap: 1rem;
     align-items: start;
-    padding: 1rem;
+    padding: 0 1rem;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  &__difference {
+    color: $color-primary-light;
+    text-align: center;
   }
 
   &__header {
-    display: grid;
-    grid-template-columns: auto auto;
     align-items: center;
-    padding: 0.5rem;
+    padding: 1rem 1rem 0;
   }
 
-  &__headerActions {
+  &__footer {
     display: flex;
     flex-wrap: nowrap;
     gap: 1rem;
     justify-self: flex-end;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
   }
 
-  &__user {
+  &__users {
     display: grid;
-    gap: 2rem;
-    max-height: 100%;
-    max-width: 100%;
+    grid-template-rows: auto 5.5rem;
+    gap: 1rem;
+    height: 95%;
+    width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
+  &__usersList {
+    display: grid;
+    gap: 0.5rem;
+    grid-auto-rows: 3.5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-overflow: ellipsis;
+    padding: 1rem 0;
+    width: 100%;
+  }
+
   &__userInfo {
     display: grid;
+    grid-template-rows: 3rem  2rem 2.5rem auto;
     gap: 1rem;
+    height: 100%;
+    overflow-y: hidden;
     width: 100%;
+  }
+
+  &__userScoreList {
+    height: 100%;
+    overflow: auto;
   }
 
   &__userHeadline {
@@ -53,5 +89,12 @@
     grid-template-columns: 1fr 5fr 1fr;
     justify-items: center;
     gap: 1rem;
+  }
+}
+
+@media  (min-width: 33rem) {
+  .farkle {
+    max-width: 33rem;
+    margin: 0 auto;
   }
 }
