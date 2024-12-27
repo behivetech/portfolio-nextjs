@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { forwardRef, useEffect } from 'react';
 import AddBIcon from '@mui/icons-material/AddSharp';
 import Button from '@core/Button';
 import TextField from '@core/TextField';
@@ -11,20 +11,11 @@ interface AddScoreProps {
     setFocus?: (focus: boolean) => void;
 }
 
-export const AddScore: React.FC<AddScoreProps> = ({
+export const AddScore = forwardRef<HTMLInputElement, AddScoreProps>(({
     addScore,
     shouldFocus = false,
     setFocus = () => null,
-}) => {
-    const scoreRef = React.useRef<HTMLInputElement>(null);
-
-    useEffect(() => {
-        if (shouldFocus && scoreRef.current) {
-            scoreRef.current.focus();
-            setFocus(false);
-        }
-    }, [setFocus, shouldFocus]);
-
+}, scoreRef) => {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
@@ -32,8 +23,8 @@ export const AddScore: React.FC<AddScoreProps> = ({
 
         addScore(score);
 
-        if (scoreRef.current) {
-            scoreRef.current.value = '';
+        if (scoreRef) {
+            // scoreRef.value = '';
         }
     }
 
@@ -55,4 +46,6 @@ export const AddScore: React.FC<AddScoreProps> = ({
             <Button variant="outlined" size="small" type="submit"><AddBIcon  /></Button>
         </form>
     );
-}
+})
+
+AddScore.displayName = 'AddScore';

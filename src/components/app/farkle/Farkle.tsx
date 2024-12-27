@@ -9,6 +9,7 @@ import { AddScore } from './AddScore';
 import { AddUser } from './AddUser';
 import ForwardSharpIcon from '@mui/icons-material/ForwardSharp';
 import { IconButton } from '@core/IconButton';
+import { Keyboard } from './Keyboard';
 
 interface Users {
     name: string;
@@ -36,6 +37,7 @@ export const Farkle = () => {
     const [scoreFocus, setScoreFocus] = useState<boolean>(false);
     const userScoreListRef = useRef<HTMLDivElement>(null);
     const userRefs = useRef<(HTMLDivElement | null)[]>([]);
+    const scoreRef = useRef<HTMLInputElement>(null);
 
     const differenceFromHighestScore = useMemo(() => {
         const scores = users.map(({ scores }) => scores.reduce((total, score) => total + score, 0));
@@ -109,8 +111,15 @@ export const Farkle = () => {
         }
     }
 
+    const onNumberClick = (value: string) => {
+        if (scoreRef.current) {
+            const refValue = Number(scoreRef.current?.value) ?? 0;
+            const newScore = Number(`${refValue}${value}`);
 
-    const addScore = (currentUserIndex: number, score: number) => {
+            scoreRef.current.value = newScore.toString();
+        }
+    }
+    const addScore = (score: number) => {
         const newFarkle = [...users];
         newFarkle[currentUserIndex].scores.unshift(score);
 
@@ -159,14 +168,10 @@ export const Farkle = () => {
                             </IconButton>
                         </Headline>
                         <div className={getChildClass('difference')}>
-                            <div>Difference From Highest:</div>
-                            <div>{differenceFromHighestScore[currentUserIndex]}</div>
+                            {differenceFromHighestScore[currentUserIndex]} {' '}
+                            Behind
                         </div>
-                        <AddScore
-                            addScore={(score: number) => addScore(currentUserIndex, score)}
-                            shouldFocus={scoreFocus}
-                            setFocus={(focus) => setScoreFocus(focus)}
-                        />
+                        <Keyboard onSubmit={addScore} />
                         <UserScoreList
                             className={getChildClass('userScoreList')}
                             deleteScore={(scoreIndex: number) => deleteScore(currentUserIndex, scoreIndex)}
