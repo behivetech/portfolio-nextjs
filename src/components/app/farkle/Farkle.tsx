@@ -79,7 +79,8 @@ export const Farkle = () => {
     }
 
     const resetUsers = () => {
-        updateFarkle([]);
+        confirm(('Are you sure you want to reset all users?')) &&
+            updateFarkle([]);
     }
 
     const resetScores = () => {
@@ -88,8 +89,8 @@ export const Farkle = () => {
         newFarkle.forEach((_, userIndex) => {
             newFarkle[userIndex].scores = [];
         });
-
-        updateFarkle(newFarkle);
+        confirm(('Are you sure you want to reset all scores?')) &&
+            updateFarkle(newFarkle);
     }
 
     const handleNextClick = (newIndex: number) => {
@@ -111,14 +112,6 @@ export const Farkle = () => {
         }
     }
 
-    const onNumberClick = (value: string) => {
-        if (scoreRef.current) {
-            const refValue = Number(scoreRef.current?.value) ?? 0;
-            const newScore = Number(`${refValue}${value}`);
-
-            scoreRef.current.value = newScore.toString();
-        }
-    }
     const addScore = (score: number) => {
         const newFarkle = [...users];
         newFarkle[currentUserIndex].scores.unshift(score);
