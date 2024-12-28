@@ -61,7 +61,6 @@ export const Farkle = () => {
         }
 
         updateFarkle([...users, user]);
-
     }
 
     const editScore = (currentUserIndex: number, scoreIndex: number, score: number) => {
@@ -139,6 +138,7 @@ export const Farkle = () => {
                                     <UserScore
                                         key={name}
                                         name={name}
+                                        onClick={() => handleNextClick(index)}
                                         scores={scores}
                                         ref={el => userRefs.current[index] = el}
                                         selected={index === currentUserIndex}
