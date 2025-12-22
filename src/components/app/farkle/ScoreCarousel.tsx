@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import classnames from 'classnames';
 import getClassName from '@tools/getClassName';
 import styles from './ScoreCarousel.module.scss';
@@ -13,7 +13,7 @@ interface ScoreMetric {
     label: string;
     value: number;
     suffix?: string;
-    isAboveTarget?: boolean;
+    isAhead?: boolean; // true if ahead (green), false if behind (red)
 }
 
 export const ScoreCarousel: React.FC<ScoreCarouselProps> = ({
@@ -22,8 +22,10 @@ export const ScoreCarousel: React.FC<ScoreCarouselProps> = ({
     className
 }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [previousIndex, setPreviousIndex] = useState<number | null>(null);
+    const [isTransitioning, setIsTransitioning] = useState(false);
 
-    const scoreMetrics: ScoreMetric[] = React.useMemo(() => {
+    const scoreMetrics: ScoreMetric[] = useMemo(() => {
         const sortedScores = [...allUserScores].sort((a, b) => b - a);
         const highestScore = sortedScores[0] || 0;
         const secondHighestScore = sortedScores[1] || 0;
@@ -33,31 +35,33 @@ export const ScoreCarousel: React.FC<ScoreCarouselProps> = ({
         const metrics: ScoreMetric[] = [];
 
         if (isCurrentUserHighest && allUserScores.length > 1) {
-            // If user is in the lead, show how far ahead they are
+            // If user is in the lead, show how far ahead they are (green)
             const leadAmount = currentUserScore - secondHighestScore;
             metrics.push({
                 label: 'Ahead',
                 value: leadAmount,
-                suffix: 'pts'
+                suffix: 'pts',
+                isAhead: true // Ahead is green
             });
         } else {
-            // If user is not in the lead, show how far behind they are
+            // If user is not in the lead, show how far behind they are (red)
             const behindAmount = highestScore - currentUserScore;
             metrics.push({
                 label: 'Behind',
                 value: behindAmount,
-                suffix: 'pts'
+                suffix: 'pts',
+                isAhead: false // Behind is red
             });
         }
 
-        // Always show distance to target score (negative if above target)
+        // Always show distance to target score
         const toTarget = targetScore - currentUserScore;
         const isAboveTarget = currentUserScore >= targetScore;
         metrics.push({
             label: `To ${targetScore.toLocaleString()}`,
             value: toTarget,
             suffix: 'pts',
-            isAboveTarget
+            isAhead: isAboveTarget // Above 25000 is green, below is red
         });
 
         return metrics;
@@ -68,54 +72,79 @@ export const ScoreCarousel: React.FC<ScoreCarouselProps> = ({
         if (scoreMetrics.length <= 1) return;
 
         const interval = setInterval(() => {
+            setIsTransitioning(true);
+            setPreviousIndex(currentIndex);
             setCurrentIndex((prevIndex) => (prevIndex + 1) % scoreMetrics.length);
+
+            // Clear the exiting element after animation completes
+            setTimeout(() => {
+                setIsTransitioning(false);
+                setPreviousIndex(null);
+            }, 500);
         }, 3000); // Change every 3 seconds
 
         return () => clearInterval(interval);
-    }, [scoreMetrics.length]);
+    }, [scoreMetrics.length, currentIndex]);
 
+    // Early return
     if (scoreMetrics.length === 0) {
         return null;
     }
 
+    // Non-hook logic
     const currentMetric = scoreMetrics[currentIndex];
+    const previousMetric = previousIndex !== null ? scoreMetrics[previousIndex] : null;
 
     const [rootClass, getChildClass] = getClassName({
         className,
         rootClass: 'scoreCarousel',
+        styles,
+    });
+
+    const [currentContentClass] = getClassName({
+        rootClass: 'scoreCarousel__content',
         modifiers: {
-            aboveTarget: Boolean(currentMetric.isAboveTarget),
-            belowTarget: Boolean(!currentMetric.isAboveTarget && currentMetric.label.includes('To 25'))
+            ahead: !!currentMetric?.isAhead,
+            behind: !currentMetric?.isAhead,
+            entering: isTransitioning
         },
         styles,
     });
 
+    const [previousContentClass] = previousMetric ? getClassName({
+        rootClass: 'scoreCarousel__content',
+        modifiers: {
+            ahead: !!previousMetric?.isAhead,
+            behind: !previousMetric?.isAhead,
+            exiting: true
+        },
+        styles,
+    }) : ['', () => ''];
+
     return (
         <div className={rootClass}>
-            <div className={getChildClass('content')}>
-                <div className={getChildClass('value')}>
-                    {currentMetric.value.toLocaleString()}
-                    {currentMetric.suffix && (
-                        <span className={getChildClass('suffix')}> {currentMetric.suffix}</span>
-                    )}
-                </div>
-                <div className={getChildClass('label')}>{currentMetric.label}</div>
-            </div>
-            {scoreMetrics.length > 1 && (
-                <div className={getChildClass('indicators')}>
-                    {scoreMetrics.map((_, index) => (
-                        <button
-                            key={index}
-                            className={classnames(
-                                getChildClass('indicator'),
-                                { [getChildClass('indicator--active')]: index === currentIndex }
+            <div className={getChildClass('contentWrapper')}>
+                {isTransitioning && previousMetric && (
+                    <div className={previousContentClass}>
+                        <div className={getChildClass('value')}>
+                            {previousMetric.value.toLocaleString()}
+                            {previousMetric.suffix && (
+                                <span className={getChildClass('suffix')}> {previousMetric.suffix}</span>
                             )}
-                            onClick={() => setCurrentIndex(index)}
-                            aria-label={`View ${scoreMetrics[index].label} metric`}
-                        />
-                    ))}
+                        </div>
+                        <div className={getChildClass('label')}>{previousMetric.label}</div>
+                    </div>
+                )}
+                <div className={currentContentClass}>
+                    <div className={getChildClass('value')}>
+                        {currentMetric.value.toLocaleString()}
+                        {currentMetric.suffix && (
+                            <span className={getChildClass('suffix')}> {currentMetric.suffix}</span>
+                        )}
+                    </div>
+                    <div className={getChildClass('label')}>{currentMetric.label}</div>
                 </div>
-            )}
+            </div>
         </div>
     );
 };

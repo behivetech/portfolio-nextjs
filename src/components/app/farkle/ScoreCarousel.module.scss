@@ -1,11 +1,41 @@
 @import '_colors';
 
+@keyframes sweepIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes sweepOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
 .scoreCarousel {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.25rem;
   text-align: center;
+  overflow: hidden;
+  position: relative;
+
+  &__contentWrapper {
+    position: relative;
+    width: 100%;
+    min-height: 3rem;
+  }
 
   &__content {
     display: flex;
@@ -14,6 +44,35 @@
     gap: 0.25rem;
     min-height: 3rem;
     justify-content: center;
+    width: 100%;
+
+    &--entering {
+      animation: sweepIn 0.5s ease-in-out;
+    }
+
+    &--exiting {
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation: sweepOut 0.5s ease-in-out;
+    }
+
+    // Color modifiers for content
+    &--ahead {
+      .scoreCarousel__value,
+      .scoreCarousel__suffix,
+      .scoreCarousel__label {
+        color: #4ade80; // Green for ahead
+      }
+    }
+
+    &--behind {
+      .scoreCarousel__value,
+      .scoreCarousel__suffix,
+      .scoreCarousel__label {
+        color: $color-secondary-light; // Red for behind (same as indicator dots)
+      }
+    }
   }
 
   &__value {
@@ -22,13 +81,15 @@
     color: $color-secondary-light;
     display: flex;
     align-items: baseline;
-    gap: 0.25rem;
+    gap: 0.125rem;
+    transition: color 0.3s ease-in-out;
   }
 
   &__suffix {
     font-size: 0.875rem;
     font-weight: normal;
     opacity: 0.8;
+    transition: color 0.3s ease-in-out;
   }
 
   &__label {
@@ -36,44 +97,6 @@
     color: $color-secondary-light;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-  }
-
-  &__indicators {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-  }
-
-  &__indicator {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    border: none;
-    background-color: rgba(255, 255, 255, 0.3);
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.5);
-    }
-
-    &--active {
-      background-color: $color-secondary-light;
-    }
-  }
-
-  // Modifier classes for the root element
-  &--aboveTarget {
-    .scoreCarousel__value,
-    .scoreCarousel__suffix {
-      color: $color-secondary-light; // Use original color for above 25000
-    }
-  }
-
-  &--belowTarget {
-    .scoreCarousel__value,
-    .scoreCarousel__suffix {
-      color: $color-secondary-light; // Use original color for below 25000
-    }
+    transition: color 0.3s ease-in-out;
   }
 }
