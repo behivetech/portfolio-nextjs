@@ -3,6 +3,7 @@
 .farkleKeyboard {
   margin: 0 auto;
   padding: 0;
+  overflow: hidden;
 
   &__buttons {
     display: flex;
@@ -11,6 +12,7 @@
     justify-content: flex-start;
     padding: 1rem 1% 0;
     width: 100%;
+    overflow: hidden;
     user-select: none; /* Standard syntax */
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Firefox */
@@ -26,7 +28,7 @@
     border-radius: 0.5rem;
     color: $color-on-primary;
     font-size: 1.5rem;
-    height: 2.5rem;
+    height: 4rem;
     width: 32%;
   }
 

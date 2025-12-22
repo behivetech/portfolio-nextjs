@@ -9,10 +9,10 @@
   padding-bottom: 2rem;
   position: relative;
   display: grid;
-  grid-template-rows: 80px auto 61px;
+  grid-template-rows: 1.5rem auto 3.8rem;
 
   &__headerHeadline {
-    font-size: 3rem;
+    font-size: 1rem;
     line-height: 1;
   }
 
@@ -71,8 +71,8 @@
 
   &__userInfo {
     display: grid;
-    grid-template-rows: 3rem  2rem auto auto;
-    gap: 1rem;
+    grid-template-rows: 2.5rem 4.5rem 23rem auto;
+    gap: 0.25rem;
     height: 100%;
     overflow-y: hidden;
     width: 100%;

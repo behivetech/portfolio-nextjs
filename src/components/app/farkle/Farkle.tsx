@@ -10,6 +10,7 @@ import { AddUser } from './AddUser';
 import ForwardSharpIcon from '@mui/icons-material/ForwardSharp';
 import { IconButton } from '@core/IconButton';
 import { Keyboard } from './Keyboard';
+import { ScoreCarousel } from './ScoreCarousel';
 
 interface Users {
     name: string;
@@ -39,11 +40,8 @@ export const Farkle = () => {
     const userRefs = useRef<(HTMLDivElement | null)[]>([]);
     const scoreRef = useRef<HTMLInputElement>(null);
 
-    const differenceFromHighestScore = useMemo(() => {
-        const scores = users.map(({ scores }) => scores.reduce((total, score) => total + score, 0));
-        const highestScore = Math.max(...scores);
-
-        return scores.map(score => highestScore - score);
+    const userScores = useMemo(() => {
+        return users.map(({ scores }) => scores.reduce((total, score) => total + score, 0));
     }, [users]);
 
     useEffect(() => {
@@ -105,7 +103,7 @@ export const Farkle = () => {
         setScoreFocus(true);
         setCurrentUserIndex(nextIndex);
 
-        // Scroll to the selected user
+        // Scroll to the selected userKeyboard_farkleKeyboard__1iZTMkey
         if (userRefs.current[nextIndex]) {
             userRefs.current[nextIndex]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
@@ -160,10 +158,11 @@ export const Farkle = () => {
                                 <ForwardSharpIcon />
                             </IconButton>
                         </Headline>
-                        <div className={getChildClass('difference')}>
-                            {differenceFromHighestScore[currentUserIndex]} {' '}
-                            Behind
-                        </div>
+                        <ScoreCarousel
+                            currentUserScore={userScores[currentUserIndex] || 0}
+                            allUserScores={userScores}
+                            className={getChildClass('difference')}
+                        />
                         <Keyboard onSubmit={addScore} />
                         <UserScoreList
                             className={getChildClass('userScoreList')}
