@@ -111,7 +111,38 @@ export const Farkle = () => {
 
     const addScore = (score: number) => {
         const newFarkle = [...users];
+        const oldTotal = newFarkle[currentUserIndex].scores.reduce((sum, s) => sum + s, 0);
         newFarkle[currentUserIndex].scores.unshift(score);
+        const newTotal = oldTotal + score;
+
+        // Check if crossed 25,000 threshold
+        if (oldTotal < 25000 && newTotal >= 25000) {
+            // Vibrate pattern: short-pause-short
+            if (navigator.vibrate) {
+                navigator.vibrate([200, 100, 200]);
+            }
+            
+            // Play celebratory tone using Web Audio API
+            try {
+                const audioContext = new AudioContext();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                // Victory tone
+                oscillator.frequency.value = 800;
+                oscillator.type = 'sine';
+                gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+                
+                oscillator.start();
+                oscillator.stop(audioContext.currentTime + 0.5);
+            } catch (err) {
+                console.log('Audio playback not available:', err);
+            }
+        }
 
         updateFarkle(newFarkle);
         handleNextClick(currentUserIndex + 1);
