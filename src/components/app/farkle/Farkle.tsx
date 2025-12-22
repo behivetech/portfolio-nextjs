@@ -121,22 +121,22 @@ export const Farkle = () => {
             if (navigator.vibrate) {
                 navigator.vibrate([200, 100, 200]);
             }
-            
+
             // Play celebratory tone using Web Audio API
             try {
                 const audioContext = new AudioContext();
                 const oscillator = audioContext.createOscillator();
                 const gainNode = audioContext.createGain();
-                
+
                 oscillator.connect(gainNode);
                 gainNode.connect(audioContext.destination);
-                
+
                 // Victory tone
                 oscillator.frequency.value = 800;
                 oscillator.type = 'sine';
                 gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
                 gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
-                
+
                 oscillator.start();
                 oscillator.stop(audioContext.currentTime + 0.5);
             } catch (err) {
