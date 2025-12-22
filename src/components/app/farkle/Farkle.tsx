@@ -180,15 +180,6 @@ export const Farkle = () => {
                 </aside>
                 {!!users.length &&
                     <section className={getChildClass('userInfo')}>
-                        <Headline level={2} className={getChildClass('userHeadline')}>
-                            <IconButton onClick={() => handleNextClick(currentUserIndex - 1)} flip>
-                                <ForwardSharpIcon />
-                            </IconButton>
-                            {users[currentUserIndex]?.name ?? ''}
-                            <IconButton onClick={() => handleNextClick(currentUserIndex + 1)}>
-                                <ForwardSharpIcon />
-                            </IconButton>
-                        </Headline>
                         <ScoreCarousel
                             currentUserScore={userScores[currentUserIndex] || 0}
                             allUserScores={userScores}
