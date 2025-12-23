@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import Button from '@core/Button';
 import getClassName from '@tools/getClassName';
 import { UserScore } from './UserScore';
@@ -11,30 +11,22 @@ import ForwardSharpIcon from '@mui/icons-material/ForwardSharp';
 import { IconButton } from '@core/IconButton';
 import { Keyboard } from './Keyboard';
 import { ScoreCarousel } from './ScoreCarousel';
-
-interface Users {
-    name: string;
-    scores: number[];
-}
-
-type FarkleState = Users[];
-
-const LOCAL_STORAGE_KEY = 'farkle__users';
-
-const getLocalStorage = (): FarkleState => {
-    const data = localStorage.getItem(LOCAL_STORAGE_KEY);
-    const parsedData = JSON.parse(data ?? '[]');
-
-    return Array.isArray(parsedData) ? parsedData : [];
-}
-
-const setLocalStorage = (data: FarkleState) => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
-}
+import { FarkleSettings } from './FarkleSettings';
+import { useFarkle } from './FarkleProvider';
 
 export const Farkle = () => {
-    const [users, setUsers] = useState<FarkleState>([]);
-    const [currentUserIndex, setCurrentUserIndex] = useState<number>(0);
+    const {
+        users,
+        currentUserIndex,
+        setCurrentUserIndex,
+        addUser: addUserToProvider,
+        addScore: addScoreToProvider,
+        editScore: editScoreInProvider,
+        deleteScore: deleteScoreInProvider,
+        targetScore,
+        resetUsers: resetUsersInProvider,
+        resetScores: resetScoresInProvider
+    } = useFarkle();
     const [scoreFocus, setScoreFocus] = useState<boolean>(false);
     const userScoreListRef = useRef<HTMLDivElement>(null);
     const userRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -44,50 +36,24 @@ export const Farkle = () => {
         return users.map(({ scores }) => scores.reduce((total, score) => total + score, 0));
     }, [users]);
 
-    useEffect(() => {
-        setUsers(getLocalStorage());
-    }, []);
-
-    const updateFarkle = (newFarkle: FarkleState) => {
-        setUsers(newFarkle);
-        setLocalStorage(newFarkle);
+    const addUser = (user: { name: string; scores: number[] }) => {
+        addUserToProvider(user);
     }
 
-    const addUser = (user: Users) => {
-        if (!users.length) {
-            setCurrentUserIndex(0);
-        }
-
-        updateFarkle([...users, user]);
+    const editScore = (userIndex: number, scoreIndex: number, score: number) => {
+        editScoreInProvider(userIndex, scoreIndex, score);
     }
 
-    const editScore = (currentUserIndex: number, scoreIndex: number, score: number) => {
-        const newFarkle = [...users];
-        newFarkle[currentUserIndex].scores[scoreIndex] = score;
-
-        updateFarkle(newFarkle);
-    }
-
-    const deleteScore = (currentUserIndex: number, scoreIndex: number) => {
-        const newFarkle = [...users];
-        newFarkle[currentUserIndex].scores.splice(scoreIndex, 1);
-
-        updateFarkle(newFarkle);
+    const deleteScore = (userIndex: number, scoreIndex: number) => {
+        deleteScoreInProvider(userIndex, scoreIndex);
     }
 
     const resetUsers = () => {
-        confirm(('Are you sure you want to reset all users?')) &&
-            updateFarkle([]);
+        resetUsersInProvider();
     }
 
     const resetScores = () => {
-        const newFarkle = [...users];
-
-        newFarkle.forEach((_, userIndex) => {
-            newFarkle[userIndex].scores = [];
-        });
-        confirm(('Are you sure you want to reset all scores?')) &&
-            updateFarkle(newFarkle);
+        resetScoresInProvider();
     }
 
     const handleNextClick = (newIndex: number) => {
@@ -110,13 +76,11 @@ export const Farkle = () => {
     }
 
     const addScore = (score: number) => {
-        const newFarkle = [...users];
-        const oldTotal = newFarkle[currentUserIndex].scores.reduce((sum, s) => sum + s, 0);
-        newFarkle[currentUserIndex].scores.unshift(score);
+        const oldTotal = users[currentUserIndex].scores.reduce((sum, s) => sum + s, 0);
         const newTotal = oldTotal + score;
 
-        // Check if crossed 25,000 threshold
-        if (oldTotal < 25000 && newTotal >= 25000) {
+        // Check if crossed target score threshold
+        if (oldTotal < targetScore && newTotal >= targetScore) {
             // Vibrate pattern: short-pause-short
             // iOS Safari doesn't support navigator.vibrate, so we try multiple methods
             if ('vibrate' in navigator) {
@@ -180,7 +144,7 @@ export const Farkle = () => {
             }, 150); // Flash every 150ms
         }
 
-        updateFarkle(newFarkle);
+        addScoreToProvider(currentUserIndex, score);
         handleNextClick(currentUserIndex + 1);
     }
 
@@ -193,6 +157,7 @@ export const Farkle = () => {
         <div className={rootClass}>
             <header className={getChildClass('header')}>
                 <Headline level={1} className={getChildClass('headerHeadline')}>Farkle Scores</Headline>
+                <FarkleSettings />
             </header>
             <section className={getChildClass('content')}>
                 <aside className={getChildClass('users')}>

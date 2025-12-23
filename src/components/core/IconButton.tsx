@@ -8,7 +8,7 @@ export interface IconButtonProps extends React.HTMLAttributes<HTMLButtonElement>
     className?: string;
     children: React.ReactNode;
     flip?: boolean;
-    onClick?: () => void;
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(({

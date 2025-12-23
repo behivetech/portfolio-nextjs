@@ -1,8 +1,8 @@
 import React from 'react';
-import { Farkle } from '@app/farkle/Farkle';
+import { FarkleWithProvider } from '@app/farkle/FarkleWithProvider';
 
 export default function FarklePage() {
     return (
-        <Farkle />
+        <FarkleWithProvider />
     );
 }
