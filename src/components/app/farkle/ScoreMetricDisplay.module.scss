@@ -1,0 +1,82 @@
+@import '_colors';
+
+@keyframes sweepIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes sweepOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+.scoreMetricDisplay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  min-height: 3rem;
+  justify-content: center;
+  width: 100%;
+
+  &--entering {
+    animation: sweepIn 0.5s ease-in-out;
+  }
+
+  &--exiting {
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: sweepOut 0.5s ease-in-out;
+  }
+
+  &--ahead {
+    .scoreMetricDisplay__value,
+    .scoreMetricDisplay__suffix,
+    .scoreMetricDisplay__label {
+      color: #4ade80; // Green for ahead
+    }
+  }
+
+  &--behind {
+    .scoreMetricDisplay__value,
+    .scoreMetricDisplay__suffix,
+    .scoreMetricDisplay__label {
+      color: $color-secondary-light; // Red for behind
+    }
+  }
+
+  &__value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: $color-secondary-light;
+    display: flex;
+    align-items: baseline;
+    gap: 0.125rem;
+  }
+
+  &__suffix {
+    font-size: 0.875rem;
+    font-weight: normal;
+    opacity: 0.8;
+  }
+
+  &__label {
+    font-size: 0.875rem;
+    color: $color-secondary-light;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}

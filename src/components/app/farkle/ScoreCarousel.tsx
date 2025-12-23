@@ -1,12 +1,11 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import classnames from 'classnames';
+"use client";
+import React, { useMemo, useState, useEffect } from 'react';
 import getClassName from '@tools/getClassName';
 import styles from './ScoreCarousel.module.scss';
 import { useFarkle } from './FarkleProvider';
+import { ScoreMetricDisplay } from './ScoreMetricDisplay';
 
 interface ScoreCarouselProps {
-    currentUserScore: number;
-    allUserScores: number[];
     className?: string;
 }
 
@@ -14,20 +13,19 @@ interface ScoreMetric {
     label: string;
     value: number;
     suffix?: string;
-    isAhead?: boolean; // true if ahead (green), false if behind (red)
+    isAhead: boolean;
 }
 
 export const ScoreCarousel: React.FC<ScoreCarouselProps> = ({
-    currentUserScore,
-    allUserScores,
     className
 }) => {
-    const { targetScore } = useFarkle();
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const { targetScore, currentUserScore, userScores, currentUserIndex } = useFarkle();
+    const allUserScores = userScores;
+    const [currentMetricIndex, setCurrentMetricIndex] = useState(0);
     const [previousIndex, setPreviousIndex] = useState<number | null>(null);
     const [isTransitioning, setIsTransitioning] = useState(false);
 
-    const scoreMetrics: ScoreMetric[] = useMemo(() => {
+    const scoreMetrics = useMemo(() => {
         const sortedScores = [...allUserScores].sort((a, b) => b - a);
         const highestScore = sortedScores[0] || 0;
         const secondHighestScore = sortedScores[1] || 0;
@@ -62,50 +60,46 @@ export const ScoreCarousel: React.FC<ScoreCarouselProps> = ({
         // Only show distance to target score if no one has reached it yet
         if (!anyoneMetTarget) {
             const toTarget = targetScore - currentUserScore;
-            const isAboveTarget = currentUserScore >= targetScore;
             metrics.push({
                 label: `To ${targetScore.toLocaleString()}`,
                 value: toTarget,
                 suffix: 'pts',
-                isAhead: isAboveTarget // Above target is green, below is red
+                isAhead: false // Below target is red
+            });
+        } else if (allUserScores.length === 1) {
+            // If single player and they've reached the target, show "Winner!"
+            metrics.push({
+                label: 'Winner!',
+                value: currentUserScore,
+                suffix: 'pts',
+                isAhead: true // Green for winner
             });
         }
 
         return metrics;
     }, [currentUserScore, allUserScores, targetScore]);
 
-    // Auto-rotate through the metrics
+    // Auto-rotate through metrics if there's more than one
     useEffect(() => {
-        if (scoreMetrics.length <= 1) return;
-
-        const interval = setInterval(() => {
+        const interval = scoreMetrics.length > 1 ? setInterval(() => {
             setIsTransitioning(true);
-            setPreviousIndex(currentIndex);
-            setCurrentIndex((prevIndex) => (prevIndex + 1) % scoreMetrics.length);
+            setPreviousIndex(currentMetricIndex);
+            setCurrentMetricIndex((prevIndex) => (prevIndex + 1) % scoreMetrics.length);
 
-            // Clear the exiting element after animation completes
             setTimeout(() => {
                 setIsTransitioning(false);
                 setPreviousIndex(null);
             }, 500);
-        }, 3000); // Change every 3 seconds
+        }, 3000) : undefined;
 
-        return () => clearInterval(interval);
-    }, [scoreMetrics.length, currentIndex]);
+        return () => {
+            if (interval) clearInterval(interval);
+        };
+    }, [scoreMetrics.length, currentMetricIndex]);
 
-    // Early return
-    if (scoreMetrics.length === 0) {
-        return null;
-    }
-
-    // Non-hook logic
-    const currentMetric = scoreMetrics[currentIndex];
-    const previousMetric = previousIndex !== null ? scoreMetrics[previousIndex] : null;
-
-    // If no metrics available, don't render anything
-    if (!currentMetric) {
-        return null;
-    }
+    const safeCurrentIndex = Math.min(currentMetricIndex, scoreMetrics.length - 1);
+    const currentMetric = scoreMetrics[safeCurrentIndex];
+    const previousMetric = previousIndex !== null && previousIndex < scoreMetrics.length ? scoreMetrics[previousIndex] : null;
 
     const [rootClass, getChildClass] = getClassName({
         className,
@@ -113,49 +107,25 @@ export const ScoreCarousel: React.FC<ScoreCarouselProps> = ({
         styles,
     });
 
-    const [currentContentClass] = getClassName({
-        rootClass: 'scoreCarousel__content',
-        modifiers: {
-            ahead: !!currentMetric?.isAhead,
-            behind: !currentMetric?.isAhead,
-            entering: isTransitioning
-        },
-        styles,
-    });
-
-    const [previousContentClass] = previousMetric ? getClassName({
-        rootClass: 'scoreCarousel__content',
-        modifiers: {
-            ahead: !!previousMetric?.isAhead,
-            behind: !previousMetric?.isAhead,
-            exiting: true
-        },
-        styles,
-    }) : ['', () => ''];
-
     return (
         <div className={rootClass}>
             <div className={getChildClass('contentWrapper')}>
                 {isTransitioning && previousMetric && (
-                    <div className={previousContentClass}>
-                        <div className={getChildClass('value')}>
-                            {previousMetric.value.toLocaleString()}
-                            {previousMetric.suffix && (
-                                <span className={getChildClass('suffix')}> {previousMetric.suffix}</span>
-                            )}
-                        </div>
-                        <div className={getChildClass('label')}>{previousMetric.label}</div>
-                    </div>
+                    <ScoreMetricDisplay
+                        value={previousMetric.value}
+                        suffix={previousMetric.suffix}
+                        label={previousMetric.label}
+                        isAhead={previousMetric.isAhead}
+                        isExiting={true}
+                    />
                 )}
-                <div className={currentContentClass}>
-                    <div className={getChildClass('value')}>
-                        {currentMetric.value.toLocaleString()}
-                        {currentMetric.suffix && (
-                            <span className={getChildClass('suffix')}> {currentMetric.suffix}</span>
-                        )}
-                    </div>
-                    <div className={getChildClass('label')}>{currentMetric.label}</div>
-                </div>
+                <ScoreMetricDisplay
+                    value={currentMetric.value}
+                    suffix={currentMetric.suffix}
+                    label={currentMetric.label}
+                    isAhead={currentMetric.isAhead}
+                    isEntering={isTransitioning}
+                />
             </div>
         </div>
     );
