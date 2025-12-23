@@ -118,13 +118,33 @@ export const Farkle = () => {
         // Check if crossed 25,000 threshold
         if (oldTotal < 25000 && newTotal >= 25000) {
             // Vibrate pattern: short-pause-short
-            if (navigator.vibrate) {
-                navigator.vibrate([200, 100, 200]);
+            // iOS Safari doesn't support navigator.vibrate, so we try multiple methods
+            if ('vibrate' in navigator) {
+                try {
+                    navigator.vibrate([200, 100, 200]);
+                } catch (err) {
+                    console.log('Vibration not supported:', err);
+                }
+            }
+
+            // Additional haptic feedback for iOS (via audio context)
+            // iOS requires user interaction to play audio, but button clicks count
+            try {
+                const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+
+                // Create a very short silent audio to trigger haptic feedback on iOS
+                const buffer = audioContext.createBuffer(1, 1, 22050);
+                const source = audioContext.createBufferSource();
+                source.buffer = buffer;
+                source.connect(audioContext.destination);
+                source.start(0);
+            } catch (err) {
+                console.log('Haptic feedback not available:', err);
             }
 
             // Play celebratory tone using Web Audio API
             try {
-                const audioContext = new AudioContext();
+                const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
                 const oscillator = audioContext.createOscillator();
                 const gainNode = audioContext.createGain();
 
@@ -142,6 +162,22 @@ export const Farkle = () => {
             } catch (err) {
                 console.log('Audio playback not available:', err);
             }
+
+            // Flash background red/green 4 times
+            const body = document.body;
+            const originalBg = body.style.backgroundColor;
+            let flashCount = 0;
+            const flashInterval = setInterval(() => {
+                if (flashCount >= 8) { // 4 full cycles (red + green = 2 flashes per cycle)
+                    clearInterval(flashInterval);
+                    body.style.backgroundColor = originalBg;
+                    return;
+                }
+
+                // Alternate between red and green (same colors as carousel)
+                body.style.backgroundColor = flashCount % 2 === 0 ? '#ff5983' : '#4ade80';
+                flashCount++;
+            }, 150); // Flash every 150ms
         }
 
         updateFarkle(newFarkle);
