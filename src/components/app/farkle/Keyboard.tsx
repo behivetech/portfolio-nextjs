@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import getClassName from '@tools/getClassName';
 import BackspaceIcon from '@mui/icons-material/BackspaceSharp';
 import SaveIcon from '@mui/icons-material/SaveSharp';

@@ -1,5 +1,5 @@
 "use client";
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 export interface User {
     name: string;
@@ -60,18 +60,11 @@ const saveTargetScore = (score: number) => {
 };
 
 export const FarkleProvider: React.FC<FarkleProviderProps> = ({ children }) => {
-    const [users, setUsers] = useState<User[]>([]);
-    const [targetScore, setTargetScoreState] = useState<number>(DEFAULT_TARGET_SCORE);
+    // Farkle is rendered client-only (see pages/farkle.tsx), so localStorage is
+    // available for lazy initial state.
+    const [users, setUsers] = useState<User[]>(loadUsers);
+    const [targetScore, setTargetScoreState] = useState<number>(loadTargetScore);
     const [currentUserIndex, setCurrentUserIndex] = useState<number>(0);
-    const [isHydrated, setIsHydrated] = useState(false);
-
-    // Load from localStorage after hydration
-    useEffect(() => {
-        setUsers(loadUsers());
-        setTargetScoreState(loadTargetScore());
-        setIsHydrated(true);
-    }, []);
-
     const userScores = users.map(({ scores }) => scores.reduce((total, score) => total + score, 0));
     const currentUser = users[currentUserIndex] || null;
     const currentUserScore = userScores[currentUserIndex] || 0;
@@ -80,7 +73,7 @@ export const FarkleProvider: React.FC<FarkleProviderProps> = ({ children }) => {
         if (oldTotal < targetScore && newTotal >= targetScore) {
             // Play celebratory tone
             try {
-                const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+                const audioContext = new (window.AudioContext || (window as Window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext!)();
                 const oscillator = audioContext.createOscillator();
                 const gainNode = audioContext.createGain();
 
