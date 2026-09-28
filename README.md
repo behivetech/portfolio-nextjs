@@ -1,34 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# behivetech.com
 
-## Getting Started
+Personal site and resume for Bruce Ultra. Next.js 16 (App Router), React 19,
+SCSS modules, and `@behivetech/*` components from
+[bht-galaxy](https://github.com/behivetech/bht-galaxy) themed with the
+Material Design 3 tokens in `@behivetech/cms.base-styles`.
 
-First, run the development server:
+## Editing content
+
+All copy (summary, experience, skills, education) lives in
+[`src/content/profile.ts`](src/content/profile.ts). The home page, `/resume`,
+SEO metadata, JSON-LD, and share image all read from it.
+
+The email address is intentionally **not** in `profile.ts`; it lives in
+[`src/components/site/ProtectedEmail.tsx`](src/components/site/ProtectedEmail.tsx)
+and is only assembled in the browser to keep it out of scraped HTML.
+
+## Development
 
 ```bash
+npm install     # needs a GitHub token with read:packages for @behivetech (see below)
 npm run dev
-# or
-yarn dev
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`@behivetech/*` packages come from GitHub Packages (`.npmrc`). Locally your
+`~/.npmrc` needs `//npm.pkg.github.com/:_authToken=<token>`. On Vercel, add an
+`NPM_RC` environment variable containing both lines:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```
+@behivetech:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=<token with read:packages>
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Routes
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- `/` home, `/resume` printable resume (Print / Save as PDF)
+- `/opengraph-image`, `/twitter-image` generated 1200×630 share cards
+- `/sitemap.xml`, `/robots.txt`, `/manifest.webmanifest`
+- `/farkle` Farkle scorer (Pages Router + MUI; left as-is)

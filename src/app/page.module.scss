@@ -1,0 +1,296 @@
+@use 'brand' as *;
+@use '@behivetech/cms.base-styles/breakpoints.scss' as bp;
+
+.home {
+    min-height: auto;
+
+    // ---- Hero -------------------------------------------------------------
+    & &__hero {
+        background:
+            radial-gradient(56rem 32rem at 90% -20%, color-mix(in srgb, var(--md-sys-color-primary-container) 70%, transparent), transparent 70%),
+            var(--md-sys-color-surface);
+        min-height: auto;
+        padding: var(--spacing-20) 0 var(--spacing-24);
+
+        @include bp.md {
+            padding: var(--spacing-24) 0 calc(var(--spacing-24) + var(--spacing-8));
+        }
+
+        // No photo behind this hero, so drop the image scrim.
+        &::before {
+            display: none;
+        }
+
+        :global(.BHT__hero-banner__content) {
+            @include container;
+        }
+
+        :global(.BHT__hero-banner__headline) {
+            @include type(display-medium);
+            color: var(--md-sys-color-on-surface);
+            font-weight: var(--font-weight-semibold);
+            letter-spacing: -0.02em;
+            margin-bottom: var(--spacing-3);
+
+            @include bp.md {
+                @include type(display-large);
+                font-size: 4.5rem;
+                font-weight: var(--font-weight-semibold);
+                letter-spacing: -0.025em;
+                line-height: 1.05;
+            }
+        }
+
+        :global(.BHT__hero-banner__subtext) {
+            @include type(headline-small);
+            color: var(--md-sys-color-primary);
+            margin-bottom: var(--spacing-8);
+
+            @include bp.md {
+                @include type(headline-medium);
+            }
+        }
+    }
+
+    & &__hero-meta {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-3) var(--spacing-6);
+        margin-top: var(--spacing-8);
+    }
+
+    // M3 assist chip treatment for the availability status
+    & &__status {
+        @include type(label-large);
+        align-items: center;
+        background: var(--md-sys-color-surface-container-high);
+        border-radius: var(--md-sys-shape-corner-small);
+        color: var(--md-sys-color-on-surface);
+        display: inline-flex;
+        gap: var(--spacing-2);
+        height: 2rem;
+        padding: 0 var(--spacing-4) 0 var(--spacing-3);
+    }
+
+    & &__status-dot {
+        background: var(--color-success);
+        border-radius: 50%;
+        box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-success) 25%, transparent);
+        height: 0.5rem;
+        width: 0.5rem;
+    }
+
+    & &__location {
+        @include type(label-large);
+        align-items: center;
+        color: var(--md-sys-color-on-surface-variant);
+        display: inline-flex;
+        gap: var(--spacing-1);
+    }
+
+    // ---- Stats --------------------------------------------------------------
+    & &__stats {
+        @include container;
+        display: grid;
+        gap: var(--spacing-3);
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: calc(-1 * var(--spacing-16));
+        position: relative;
+
+        @include bp.lg {
+            gap: var(--spacing-4);
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    & &__stat {
+        background: var(--md-sys-color-surface-container-high);
+        border-radius: var(--md-sys-shape-corner-large);
+        box-shadow: var(--md-sys-elevation-1);
+        display: flex;
+        flex-direction: column-reverse;
+        gap: var(--spacing-1);
+        justify-content: flex-end;
+        padding: var(--spacing-5);
+
+        @include bp.md {
+            padding: var(--spacing-6);
+        }
+
+        :global(.BHT__Stat__label) {
+            @include type(body-medium);
+            color: var(--md-sys-color-on-surface-variant);
+            text-transform: none;
+        }
+
+        :global(.BHT__Stat__value) {
+            @include type(headline-large);
+            color: var(--md-sys-color-primary);
+            font-weight: var(--font-weight-semibold);
+
+            @include bp.md {
+                @include type(display-small);
+                font-weight: var(--font-weight-semibold);
+            }
+        }
+    }
+
+    // ---- About --------------------------------------------------------------
+    & &__about {
+        @include type(body-large);
+        color: var(--md-sys-color-on-surface-variant);
+        display: grid;
+        gap: var(--spacing-6);
+        max-width: 50rem;
+    }
+
+    & &__lead {
+        @include type(headline-small);
+        color: var(--md-sys-color-on-surface);
+    }
+
+    & &__seeking {
+        background: var(--md-sys-color-secondary-container);
+        border-radius: var(--md-sys-shape-corner-large);
+        color: var(--md-sys-color-on-secondary-container);
+        padding: var(--spacing-5) var(--spacing-6);
+    }
+
+    // ---- Cards (M3 filled card) --------------------------------------------
+    & &__grid {
+        display: grid;
+        gap: var(--spacing-4);
+
+        @include bp.md {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include bp.lg {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    & &__card {
+        --card-background: var(--md-sys-color-surface-container-low);
+        --card-border: 0;
+        --card-radius: var(--md-sys-shape-corner-large);
+        @include type(body-medium);
+        color: var(--md-sys-color-on-surface-variant);
+        height: 100%;
+
+        :global(.BHT__Card__header) {
+            border: 0;
+            padding: var(--spacing-6) var(--spacing-6) 0;
+        }
+
+        :global(.BHT__Card__title) {
+            @include type(title-large);
+            overflow: visible;
+            text-overflow: clip;
+            white-space: normal;
+            color: var(--md-sys-color-on-surface);
+        }
+
+        :global(.BHT__Card__body-padding) {
+            padding: var(--spacing-3) var(--spacing-6) var(--spacing-6);
+        }
+    }
+
+    & &__earlier {
+        @include type(body-large);
+        color: var(--md-sys-color-on-surface-variant);
+        margin-top: var(--spacing-8);
+        max-width: 50rem;
+
+        strong {
+            color: var(--md-sys-color-on-surface);
+        }
+    }
+
+    // ---- Skills (M3 chips) --------------------------------------------------
+    & &__skills {
+        display: grid;
+        gap: var(--spacing-10) var(--spacing-12);
+
+        @include bp.md {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    & &__skill-group {
+        @include type(title-medium);
+        margin-bottom: var(--spacing-4);
+    }
+
+    & &__badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-2);
+        list-style: none;
+        padding: 0;
+    }
+
+    & &__badges &__chip {
+        @include type(label-large);
+        background: transparent;
+        border: 1px solid var(--md-sys-color-outline-variant);
+        border-radius: var(--md-sys-shape-corner-small);
+        color: var(--md-sys-color-on-surface-variant);
+        height: 2rem;
+        padding: 0 var(--spacing-4);
+    }
+
+    & &__list {
+        display: grid;
+        gap: var(--spacing-4);
+        list-style: none;
+        padding: 0;
+
+        li {
+            display: grid;
+        }
+
+        strong {
+            @include type(title-medium);
+            color: var(--md-sys-color-on-surface);
+        }
+
+        span {
+            @include type(body-medium);
+            color: var(--md-sys-color-on-surface-variant);
+        }
+    }
+
+    // ---- Contact ------------------------------------------------------------
+    & &__contact {
+        @include type(body-large);
+        background: var(--md-sys-color-surface-container);
+        border-radius: var(--md-sys-shape-corner-extra-large);
+        color: var(--md-sys-color-on-surface-variant);
+        display: grid;
+        gap: var(--spacing-8);
+        padding: var(--spacing-8);
+
+        @include bp.md {
+            padding: var(--spacing-12);
+        }
+
+        > p {
+            max-width: 46rem;
+        }
+    }
+
+    & &__contact-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-3);
+
+        a {
+            align-items: center;
+            display: inline-flex;
+            gap: var(--spacing-2);
+            text-decoration: none;
+        }
+    }
+}

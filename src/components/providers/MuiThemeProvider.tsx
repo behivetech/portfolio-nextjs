@@ -1,26 +1,26 @@
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { ReactNode } from 'react';
 
-import styles from './MuiThemeProvider.module.scss';
-
 type MuiThemeProviderProps = {
     children: ReactNode
 }
 
+// Mirrors src/styles/_colors.scss. These used to come from an SCSS `:export`
+// block, which Turbopack (the Next 16 default bundler) does not support.
 const theme = createTheme({
     palette: {
         mode: 'dark',
         primary: {
-            light: styles.colorPrimary,
-            main: styles.colorPrimaryLight,
-            dark: styles.colorPrimaryDark,
-            contrastText: styles.colorOnPrimary,
+            light: '#2c1760',
+            main: '#9c4dcc',
+            dark: '#38006b',
+            contrastText: '#fff',
         },
         secondary: {
-            light: styles.colorSecondary,
-            main: styles.colorSecondaryLight,
-            dark: styles.colorSecondaryDark,
-            contrastText: styles.colorOnSecondary,
+            light: '#f50057',
+            main: '#ff5983',
+            dark: '#bb002f',
+            contrastText: '#fff',
         },
     },
 });

@@ -58,7 +58,7 @@ export const Farkle = () => {
                                         name={name}
                                         onClick={() => handleUserClick(index)}
                                         scores={scores}
-                                        ref={el => userRefs.current[index] = el}
+                                        ref={el => { userRefs.current[index] = el; }}
                                         selected={index === currentUserIndex}
                                     />
                                 );

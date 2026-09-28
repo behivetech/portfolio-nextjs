@@ -1,0 +1,123 @@
+@use 'brand' as *;
+@use '@behivetech/cms.base-styles/breakpoints.scss' as bp;
+
+// The resume renders as a light "sheet of paper" in both themes so what you
+// see on screen is what prints.
+.resume {
+    @include container;
+    padding-bottom: var(--spacing-16);
+    padding-top: var(--spacing-8);
+
+    &__toolbar {
+        display: flex;
+        justify-content: flex-end;
+        margin: 0 auto var(--spacing-4);
+        max-width: 52rem;
+    }
+
+    &__paper {
+        background: #fff;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
+        color: #2a2a2a;
+        font-size: 0.95rem;
+        line-height: 1.55;
+        margin: 0 auto;
+        max-width: 52rem;
+        padding: var(--spacing-8) var(--spacing-5);
+
+        @include bp.md {
+            padding: var(--spacing-12) var(--spacing-12);
+        }
+
+        a {
+            color: #3d2f7a;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #1a1640;
+        }
+
+        h2 {
+            border-bottom: 2px solid #64558f;
+            font-size: 1.05rem;
+            letter-spacing: 0.08em;
+            margin: var(--spacing-6) 0 var(--spacing-3);
+            padding-bottom: var(--spacing-1);
+            text-transform: uppercase;
+        }
+
+        ul {
+            display: grid;
+            gap: var(--spacing-1);
+            padding-left: var(--spacing-5);
+        }
+    }
+
+    &__header {
+        h1 {
+            font-size: 2rem;
+        }
+    }
+
+    &__title {
+        color: #3d2f7a;
+        font-weight: var(--font-weight-semibold);
+        margin-top: var(--spacing-1);
+    }
+
+    &__contact {
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 0.85rem;
+        gap: var(--spacing-1) var(--spacing-4);
+        margin-top: var(--spacing-2);
+    }
+
+    &__job {
+        margin-bottom: var(--spacing-4);
+
+        h3 {
+            display: flex;
+            flex-wrap: wrap;
+            font-size: 1rem;
+            gap: var(--spacing-2);
+            justify-content: space-between;
+            margin-bottom: var(--spacing-1);
+        }
+    }
+
+    &__dates {
+        color: #666;
+        font-family: var(--font-body);
+        font-size: 0.85rem;
+        font-weight: var(--font-weight-normal);
+    }
+
+    @media print {
+        max-width: none;
+        padding: 0;
+
+        &__toolbar {
+            display: none;
+        }
+
+        &__paper {
+            border-radius: 0;
+            box-shadow: none;
+            font-size: 10pt;
+            max-width: none;
+            padding: 0;
+        }
+
+        &__job {
+            break-inside: avoid;
+        }
+
+        h2 {
+            break-after: avoid;
+        }
+    }
+}

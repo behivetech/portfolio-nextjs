@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { isEmpty } from 'lodash';
 
 import getClassName from 'tools/getClassName';
 
@@ -34,5 +33,5 @@ export default function FieldError({ className, error = {type: 'unknown'} }: Fie
         errorResult = errorMessages[type || 'unknown'] || errorMessages.unknown;
     }
 
-    return isEmpty(error) ? null : <div className={rootClassName}>{errorResult}</div>;
+    return !error || Object.keys(error).length === 0 ? null : <div className={rootClassName}>{errorResult}</div>;
 }

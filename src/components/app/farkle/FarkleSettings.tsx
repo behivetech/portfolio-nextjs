@@ -65,7 +65,7 @@ export const FarkleSettings: React.FC = () => {
                     vertical: 'top',
                     horizontal: 'right',
                 }}
-                TransitionProps={{
+                slotProps={{ transition: {
                     onEntered: () => {
                         setTimeout(() => {
                             if (inputRef.current) {
@@ -74,7 +74,7 @@ export const FarkleSettings: React.FC = () => {
                             }
                         }, 0);
                     }
-                }}
+                } }}
             >
                 <div className={getChildClass('dropdown')}>
                     <TextField
@@ -84,7 +84,7 @@ export const FarkleSettings: React.FC = () => {
                         onChange={handleChange}
                         onKeyDown={handleKeyDown}
                         className={getChildClass('input')}
-                        inputProps={{ min: 1 }}
+                        slotProps={{ htmlInput: { min: 1 } }}
                         inputRef={inputRef}
                     />
                 </div>

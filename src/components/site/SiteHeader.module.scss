@@ -1,0 +1,57 @@
+@use 'brand' as *;
+@use '@behivetech/cms.base-styles/breakpoints.scss' as bp;
+
+// M3 small top app bar
+.site-header {
+    backdrop-filter: saturate(160%) blur(12px);
+    background: color-mix(in srgb, var(--md-sys-color-surface-container) 85%, transparent);
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+
+    &__inner {
+        @include container;
+        align-items: center;
+        display: flex;
+        gap: var(--spacing-4);
+        height: 4rem;
+        justify-content: space-between;
+    }
+
+    &__logo {
+        display: flex;
+
+        img {
+            height: 1.5rem;
+            width: auto;
+        }
+    }
+
+    &__nav {
+        display: none;
+        gap: var(--spacing-1);
+        margin-left: auto;
+
+        @include bp.md {
+            display: flex;
+        }
+    }
+
+    &__link {
+        @include type(label-large);
+        @include state-layer;
+        border-radius: var(--md-sys-shape-corner-full);
+        color: var(--md-sys-color-on-surface-variant);
+        padding: var(--spacing-2) var(--spacing-3);
+        text-decoration: none;
+
+        &:hover {
+            color: var(--md-sys-color-on-surface);
+        }
+    }
+
+    @media print {
+        display: none;
+    }
+}

@@ -86,9 +86,3 @@ $font-small-nunito: 500 14px 'Nunito';
     font-weight: 500;
     text-transform: uppercase;
 }
-
-:export {
-    fontFamily: $font;
-    fontWeightNormal: $font-weight-regular;
-    fontWeightMedium: $font-weight-medium;
-}

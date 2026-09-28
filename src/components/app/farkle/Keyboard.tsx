@@ -88,7 +88,7 @@ export const Keyboard: React.FC<KeyboardProps> = ({
                 defaultValue={0}
                 aria-readonly
                 inputRef={inputRef}
-                inputProps={{ readOnly: true }}
+                slotProps={{ htmlInput: { readOnly: true } }}
             />
             <div className={getChildClass('buttons')}>
                 {[...Array(10)].map((_, i) => {
