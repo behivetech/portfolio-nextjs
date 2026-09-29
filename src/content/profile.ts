@@ -110,9 +110,9 @@ export const profile = {
             highlights: [
                 'Architected modular, micro-frontend-based applications in which independently deployable modules share common foundations and component libraries.',
                 'Designed and delivered multi-tenant SaaS applications end to end, from data modeling and organization-level access control through production launch.',
-                'Built full-stack Next.js App Router applications for multi-location inventory management: React Server Components, server actions, and route handlers over Prisma and Postgres, with Auth.js (NextAuth) OAuth sign-in and organization- and role-based access enforced in middleware.',
+                'Built a Next.js App Router inventory management application for a small-business client: a multi-tenant Prisma and Postgres data model for organizations, roles, and inventory across store locations, Auth.js (NextAuth) sign-in with GitHub, Google, and Auth0, and middleware-protected routes.',
                 'Rebuilt behivetech.com on Next.js 16, migrating from the Pages Router to the App Router with statically generated pages, the Metadata API, generated Open Graph images, JSON-LD structured data, and sitemaps, built from a private, versioned component library published to GitHub Packages and deployed on Vercel.',
-                'Shipped Next.js work across versions 12 through 16 on both the Pages Router and the App Router, including incremental migrations that keep legacy routes running alongside new App Router pages.',
+                'Built with Next.js across versions 12 through 16 on both the Pages Router and the App Router, including incremental migrations that keep legacy routes running alongside new App Router pages.',
                 'Built interactive mapping and location-based experiences used in live, real-world settings.',
                 'Prototyped a custom Shopify app in React with inventory barcode and labeling features.',
                 'Delivered architecture and frontend consulting for Outside Magazine and Hotel Engine, and mentored developers through Codementor.',
