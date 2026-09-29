@@ -72,7 +72,7 @@ export const profile = {
         },
         {
             group: 'Frontend',
-            items: ['React', 'Next.js (App Router)', 'TypeScript', 'JavaScript', 'Electron', 'HTML', 'CSS/Sass', 'React Query', 'i18n (react-intl, Lingui)', 'Highcharts', 'Accessibility', 'Performance optimization'],
+            items: ['React', 'Next.js (App & Pages Router)', 'Server & client components', 'TypeScript', 'JavaScript', 'Electron', 'HTML', 'CSS/Sass', 'React Query', 'i18n (react-intl, Lingui)', 'Highcharts', 'Accessibility', 'Performance optimization'],
         },
         {
             group: 'Backend & data',
@@ -95,11 +95,10 @@ export const profile = {
             start: 'Aug 2022',
             end: 'Sep 2026',
             highlights: [
-                'Architected enterprise web applications for critical-event notification and geofenced alert targeting on a platform that sends billions of alerts a year for thousands of organizations, where reliability is a life-safety requirement.',
+                'Architected enterprise React web applications for critical-event notification and geofenced alert targeting on a platform that sends billions of alerts a year for thousands of organizations, where reliability is a life-safety requirement.',
                 'Built a cross-platform Electron desktop alerting client for Crisis24 and CodeRED customers: a background system-tray app that receives alerts in real time over WebSockets, surfaces them as foreground notifications, and captures recipient responses, all driven by settings managed on the web platform and local config files.',
                 "Built most of the desktop client's CI/CD pipeline and installer packaging, shipping signed, platform-certified releases for Windows and macOS in partnership with DevOps.",
-                'Defined component design and application architecture standards across frontend teams, raising consistency and maintainability across the product surface.',
-                'Mentored engineers and introduced best practices that improved delivery speed and consistency through the OnSolve-to-Crisis24 acquisition and integration.',
+                'Defined component design and application architecture standards across frontend teams, and mentored engineers through the OnSolve-to-Crisis24 acquisition and integration.',
             ],
         },
         {
@@ -108,11 +107,10 @@ export const profile = {
             start: 'Sep 2020',
             end: 'Present',
             highlights: [
-                'Architected modular, micro-frontend-based applications in which independently deployable modules share common foundations and component libraries.',
                 'Designed and delivered multi-tenant SaaS applications end to end, from data modeling and organization-level access control through production launch.',
                 'Built a Next.js App Router inventory management application for a small-business client: a multi-tenant Prisma and Postgres data model for organizations, roles, and inventory across store locations, Auth.js (NextAuth) sign-in with GitHub, Google, and Auth0, and middleware-protected routes.',
-                'Rebuilt behivetech.com on Next.js 16, migrating from the Pages Router to the App Router with statically generated pages, the Metadata API, generated Open Graph images, JSON-LD structured data, and sitemaps, built from a private, versioned component library published to GitHub Packages and deployed on Vercel.',
-                'Built with Next.js across versions 12 through 16 on both the Pages Router and the App Router, including incremental migrations that keep legacy routes running alongside new App Router pages.',
+                'Rebuilt behivetech.com on Next.js 16, moving it from the Pages Router to the App Router with static generation, the Metadata API, generated Open Graph images, and JSON-LD structured data, on a private, versioned component library published to GitHub Packages.',
+                'Architected modular, micro-frontend-based applications in which independently deployable modules share common foundations and component libraries.',
                 'Built interactive mapping and location-based experiences used in live, real-world settings.',
                 'Prototyped a custom Shopify app in React with inventory barcode and labeling features.',
                 'Delivered architecture and frontend consulting for Outside Magazine and Hotel Engine, and mentored developers through Codementor.',
@@ -155,8 +153,7 @@ export const profile = {
             start: 'Dec 2014',
             end: 'Jun 2016',
             highlights: [
-                'Engineered features for southwest.com at 12M+ daily page views and 2.2M+ unique visitors.',
-                'Helped migrate the site to a Java-based API architecture and optimized frontend performance for sustained high traffic.',
+                'Engineered features for southwest.com at 12M+ daily page views and 2.2M+ unique visitors, and optimized frontend performance for sustained high traffic during a migration to a Java-based API architecture.',
             ],
         },
         {
