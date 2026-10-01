@@ -28,7 +28,7 @@ export default function HomePage() {
                 size="large"
                 eyebrow={site.company}
                 headline={site.tagline}
-                subtext="Expert frontend architecture, full-stack delivery in TypeScript and Node.js, and AI-assisted development workflows with human review built in. Senior hands on a fixed scope, without a permanent hire."
+                subtext="Expert frontend architecture, full-stack delivery in TypeScript and Node.js, and AI-assisted development workflows with human review built in. Principal-level architecture and delivery on a fixed scope, without a permanent hire."
                 ctas={[
                     { label: site.cta.primary, href: '/contact', variant: 'primary' },
                     { label: site.cta.secondary, href: '/services', variant: 'secondary' },
@@ -43,7 +43,7 @@ export default function HomePage() {
                 </div>
             </Section>
 
-            <Section id="services" eyebrow="Services" title="Fixed-scope engagements, senior hands">
+            <Section id="services" eyebrow="Services" title="Fixed-scope engagements, principal-level work">
                 <div className={getChildClass('grid')}>
                     {site.services.map(({ slug, icon, name, summary }) => (
                         <Card

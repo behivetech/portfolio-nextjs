@@ -50,7 +50,7 @@ export const site = {
         heading: 'I help teams modernize how they build.',
         body: [
             'That means two things. First, a modular, scalable architecture across the whole stack: independently deployable modules on shared foundations, with typed contracts between the UI and the Node.js services behind it, so people can work in parallel without stepping on each other. Second, an AI-assisted development workflow with human review built in, so the speed you gain does not come back later as bugs.',
-            'I have done this work as a principal engineer and architect inside companies for 25+ years. The frontend is my deepest expertise: React, design systems, and the architecture that keeps large UIs maintainable. The Node.js side of the stack is right behind it, so I can own a feature from the database to the pixel. Through BEhive Tech I do it for teams that need senior hands without a permanent hire.',
+            'I have done this work as a principal engineer and architect inside companies for 25+ years. The frontend is my deepest expertise: React, design systems, and the architecture that keeps large UIs maintainable. The Node.js side of the stack is right behind it, so I can own a feature from the database to the pixel. Through BEhive Tech I do it for teams that need a principal engineer or architect without making a permanent hire.',
         ],
     },
 
@@ -59,14 +59,14 @@ export const site = {
             slug: 'ai-native-workflow',
             icon: 'auto-awesome',
             name: 'AI-Native Workflow Setup',
-            summary: 'An agentic development pipeline installed in your repo, with your team trained to run it.',
+            summary: 'An AI-assisted development workflow designed around your team, your repo, and the tools you already use.',
             description:
-                'I install an agentic development pipeline in your repository and train your team to run it. Claude Code agents pick up GitHub issues, implement the change, and run your test suite. GitHub Copilot reviews every pull request as an independent second opinion. Your engineers review design and correctness instead of nitpicks, and nothing merges without a person signing off.',
+                'I design and install an AI-assisted development workflow that fits how your team already works, then train the team to run it. The shape depends on your needs: which models and tools you have access to, how strict your review process is, and where the mechanical work is piling up. One configuration I have built: Claude Code agents pick up GitHub issues, implement the change, and run the test suite, while GitHub Copilot reviews every pull request as an independent second opinion. Whatever the tools, the principle holds: agents do the mechanical work, a second model challenges it, and nothing merges without a person signing off.',
             deliverables: [
-                'Agent configuration, MCP servers, and subagent setup in your repository',
-                'Cross-model review: Claude Code writes, Copilot reviews, humans decide',
-                'Model routing so mechanical work runs on lightweight models and judgment calls on frontier ones',
-                'Cost reporting that keeps AI spend proportional to value',
+                'Workflow design matched to your repository, review process, and tooling',
+                'Agent configuration, MCP servers, and subagents using Claude Code, Copilot, or the tools you have',
+                "Cross-model review so one model's blind spots are caught by another, with people making the call",
+                'Model routing and cost reporting so AI spend stays proportional to value',
                 'Team training sessions and a written playbook',
             ],
         },

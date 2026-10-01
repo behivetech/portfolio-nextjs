@@ -48,15 +48,22 @@
         display: flex;
         gap: var(--spacing-1);
 
-        a {
+        // The email control is a <button> until clicked; style both the same.
+        a,
+        button {
             @include state-layer;
             align-items: center;
+            background: none;
+            border: 0;
             border-radius: var(--md-sys-shape-corner-full);
             color: var(--md-sys-color-on-surface-variant);
+            cursor: pointer;
             display: inline-flex;
+            font: inherit;
             justify-content: center;
             min-height: 2.5rem;
             min-width: 2.5rem;
+            padding: 0;
             text-decoration: none;
 
             &:hover {

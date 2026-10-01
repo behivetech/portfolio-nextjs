@@ -50,7 +50,7 @@ export default function ApproachPage() {
             <Section id="pipeline" eyebrow="The AI pipeline" title="From GitHub issue to reviewed pull request">
                 <div className={getChildClass('prose')}>
                     <p>
-                        The pipeline I install is not autocomplete. An agent claims an issue, reads the codebase, implements the change, runs the test suite, and opens a pull request. A second, independent AI reviewer reads that PR and pushes back. The agent resolves the feedback. Only then does a person look at it.
+                        Here is one pipeline I have built, as an example of the principle. It is not autocomplete. An agent claims an issue, reads the codebase, implements the change, runs the test suite, and opens a pull request. A second, independent AI reviewer reads that PR and pushes back. The agent resolves the feedback. Only then does a person look at it.
                     </p>
                     <p>
                         By the time a human reviews, the change is already built, tested, and challenged by a reviewer with different blind spots than the author. Human review goes where it matters: is this the right design, and is it correct?

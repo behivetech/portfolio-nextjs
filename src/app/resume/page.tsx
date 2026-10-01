@@ -51,7 +51,7 @@ export default function ResumePage() {
                     </p>
                     <p className={getChildClass('contact')}>
                         <span>{profile.location}</span>
-                        <ProtectedEmail />
+                        <ProtectedEmail reveal="mount" />
                         <a href={profile.links.linkedin}>{stripProtocol(profile.links.linkedin)}</a>
                         <a href={profile.siteUrl}>{stripProtocol(profile.siteUrl)}</a>
                         <a href={profile.links.github}>{stripProtocol(profile.links.github)}</a>

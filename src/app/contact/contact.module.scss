@@ -47,8 +47,15 @@
             margin-top: 0.25em;
         }
 
-        a {
+        // The email control is a <button> until clicked; style both the same.
+        a,
+        button {
+            background: none;
+            border: 0;
             color: var(--md-sys-color-primary);
+            cursor: pointer;
+            font: inherit;
+            padding: 0;
             text-decoration: none;
 
             &:hover {
