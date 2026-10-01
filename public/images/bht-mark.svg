@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img">
+  <title>BHT</title>
+  <polygon points="16.24,1.65 30.7,10 30.7,26.7 16.24,35.05 1.78,26.7 1.78,10" fill="none" stroke="#6453A3" stroke-width="3" stroke-linejoin="miter"/>
+  <path d="M11.19,10.75 V25.95 M11.19,12.1 H15.56 L18.71,13.92 V16.53 L15.56,18.35 H11.19 M11.19,18.35 H15.56 L19.94,20.88 V22.07 L15.56,24.6 H11.19" fill="none" stroke="#F5CA4F" stroke-width="2.7" stroke-linejoin="miter"/>
+  <polygon points="47.76,1.65 62.22,10 62.22,26.7 47.76,35.05 33.3,26.7 33.3,10" fill="none" stroke="#6453A3" stroke-width="3" stroke-linejoin="miter"/>
+  <path d="M42.96,10.75 V25.95 M51.21,10.75 V25.95 M42.96,18.35 H51.21" fill="none" stroke="#F5CA4F" stroke-width="2.7" stroke-linejoin="miter"/>
+  <polygon points="32,28.95 46.46,37.3 46.46,54 32,62.35 17.54,54 17.54,37.3" fill="none" stroke="#6453A3" stroke-width="3" stroke-linejoin="miter"/>
+  <path d="M25.6,39.4 H37.05 M31.33,39.4 V53.25" fill="none" stroke="#F5CA4F" stroke-width="2.7" stroke-linejoin="miter"/>
+</svg>
