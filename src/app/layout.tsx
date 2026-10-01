@@ -1,9 +1,14 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
+import Script from 'next/script';
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { profile } from '@/content/profile';
+import { site } from '@/content/site';
 import SiteFooter from '@/components/site/SiteFooter';
 import SiteHeader from '@/components/site/SiteHeader';
+import { THEME_STORAGE_KEY } from '@/components/site/themeKey';
 
 import '@behivetech/cms.base-styles/tokens.scss';
 import '@behivetech/atoms.badge/styles.css';
@@ -17,52 +22,50 @@ import './globals.scss';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 
-const title = `${profile.name} | ${profile.title}`;
-const description = `${profile.title} with ${profile.years} years designing modular, scalable platforms: micro frontends, design systems, and AI-native engineering workflows with Claude Code and agentic pipelines. ${profile.location}.`;
+const title = `${site.shortName} | ${site.tagline}`;
 
 export const metadata: Metadata = {
     metadataBase: new URL(profile.siteUrl),
     title: {
         default: title,
-        template: `%s | ${profile.name}`,
+        template: `%s | ${site.shortName}`,
     },
-    description,
-    applicationName: 'BEhive Tech',
-    authors: [{ name: profile.name, url: profile.siteUrl }],
+    description: site.description,
+    applicationName: site.shortName,
+    authors: [{ name: profile.name, url: `${profile.siteUrl}/about` }],
     creator: profile.name,
-    publisher: 'BEhive Tech LLC',
+    publisher: site.company,
     keywords: [
-        profile.name,
-        'Software Architect',
-        'Principal Engineer',
-        'Staff Engineer',
-        'Frontend Architect',
+        site.company,
+        'Frontend architecture consulting',
         'AI-native engineering',
-        'Agentic coding',
+        'Agentic development workflow',
         'Claude Code',
+        'GitHub Copilot',
         'Micro frontends',
         'Design systems',
-        'React',
+        'React consultant',
+        'Next.js consultant',
         'TypeScript',
-        'Next.js',
+        'Electron',
+        'Software architect',
+        'Principal engineer',
         'Denver',
-        'BEhive Tech',
+        profile.name,
     ],
     alternates: { canonical: '/' },
     openGraph: {
-        type: 'profile',
-        firstName: 'Bruce',
-        lastName: 'Ultra',
+        type: 'website',
         url: '/',
-        siteName: 'BEhive Tech',
+        siteName: site.shortName,
         title,
-        description,
+        description: site.description,
         locale: 'en_US',
     },
     twitter: {
         card: 'summary_large_image',
         title,
-        description,
+        description: site.description,
     },
     robots: {
         index: true,
@@ -70,30 +73,43 @@ export const metadata: Metadata = {
         googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
     },
     icons: {
-        icon: [{ url: '/favicon.ico' }, { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' }],
+        icon: [
+            { url: '/favicon.ico', sizes: '16x16 32x32 48x48' },
+            { url: '/icon.svg', type: 'image/svg+xml' },
+            { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+        ],
+        apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
     },
     category: 'technology',
 };
 
 export const viewport: Viewport = {
-    themeColor: '#131313',
-    colorScheme: 'dark',
+    themeColor: [
+        { media: '(prefers-color-scheme: light)', color: '#f9f9f9' },
+        { media: '(prefers-color-scheme: dark)', color: '#131313' },
+    ],
+    colorScheme: 'light dark',
 };
+
+// Applies a saved theme before first paint so there is no flash. The galaxy
+// tokens follow the OS when no data-theme is set.
+const themeScript = `try{var t=localStorage.getItem('${THEME_STORAGE_KEY}');if(t==='light'||t==='dark'){document.documentElement.dataset.theme=t}}catch(e){}`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html
-            lang="en"
-            data-theme="dark"
-            className={inter.variable}
-        >
+        <html lang="en" className={inter.variable} suppressHydrationWarning>
             <body>
+                <Script id="theme-init" strategy="beforeInteractive">
+                    {themeScript}
+                </Script>
                 <a className="skip-link" href="#main">
                     Skip to content
                 </a>
                 <SiteHeader />
                 <main id="main">{children}</main>
                 <SiteFooter />
+                <Analytics />
+                <SpeedInsights />
             </body>
         </html>
     );
