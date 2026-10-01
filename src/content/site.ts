@@ -166,6 +166,24 @@ export const site = {
         },
     ],
 
+    terms: [
+        {
+            icon: 'schedule' as MaterialIconName,
+            title: 'Short or long',
+            body: 'A two-week audit, a three-month build, or an ongoing retainer. Length and terms are negotiated around the work, not the other way around.',
+        },
+        {
+            icon: 'person' as MaterialIconName,
+            title: 'Direct, no middle man',
+            body: 'You work with me, not an agency or a recruiter. No markup on the rate, and the person on the call is the person doing the work.',
+        },
+        {
+            icon: 'description' as MaterialIconName,
+            title: '1099 or W-2 contract',
+            body: 'Fixed-scope proposals, hourly, or a contract through your payroll. Whatever your procurement needs, we can make it work.',
+        },
+    ],
+
     engagement: [
         { icon: 'call' as MaterialIconName, step: 'Call', body: 'A short conversation about what you are building and where it hurts.' },
         { icon: 'description' as MaterialIconName, step: 'Proposal', body: 'A fixed-scope proposal with deliverables, timeline, and price.' },

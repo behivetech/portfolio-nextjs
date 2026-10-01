@@ -6,6 +6,7 @@ import CtaBand from '@/components/site/CtaBand';
 import PageHero from '@/components/site/PageHero';
 import MaterialIcon from '@/components/site/MaterialIcon';
 import Section from '@/components/site/Section';
+import TermsStrip from '@/components/site/TermsStrip';
 
 import styles from './approach.module.scss';
 
@@ -77,6 +78,8 @@ export default function ApproachPage() {
                     ))}
                 </ol>
             </Section>
+
+            <TermsStrip />
 
             <CtaBand />
         </div>

@@ -8,6 +8,7 @@ import CtaBand from '@/components/site/CtaBand';
 import { CheckIcon } from '@/components/site/Icons';
 import MaterialIcon from '@/components/site/MaterialIcon';
 import PageHero from '@/components/site/PageHero';
+import TermsStrip from '@/components/site/TermsStrip';
 
 import styles from './services.module.scss';
 
@@ -67,6 +68,8 @@ export default function ServicesPage() {
                     </section>
                 ))}
             </div>
+
+            <TermsStrip />
 
             <CtaBand heading="Not sure which engagement fits?" body="Most work starts with a call and a conversation about where things hurt. I will tell you which of these fits, or whether something smaller would do." />
         </div>
