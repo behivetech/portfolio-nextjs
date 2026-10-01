@@ -74,6 +74,17 @@
         font-size: 0.85rem;
         gap: var(--spacing-1) var(--spacing-4);
         margin-top: var(--spacing-2);
+
+        // The email control is a <button> until clicked or printed.
+        button {
+            background: none;
+            border: 0;
+            color: #3d2f7a;
+            cursor: pointer;
+            font: inherit;
+            padding: 0;
+            text-decoration: underline;
+        }
     }
 
     &__job {

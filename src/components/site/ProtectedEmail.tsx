@@ -1,8 +1,7 @@
 'use client';
 
-import { type ButtonHTMLAttributes, type ReactNode, useState, useSyncExternalStore } from 'react';
-
-const noopSubscribe = () => () => {};
+import { type ButtonHTMLAttributes, type ReactNode, useEffect, useState } from 'react';
+import { flushSync } from 'react-dom';
 
 /**
  * The address never appears in server-rendered HTML, and it is stored here
@@ -34,19 +33,23 @@ type ProtectedEmailProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onClic
     /** Text shown before the address is revealed; empty string for icon-only */
     label?: string;
     /**
-     * 'click' (default): show a button; the address is decoded and shown when
-     * clicked. 'mount': decode as soon as the component is on screen, for the
-     * printable resume.
+     * The address is always click-to-reveal. With `revealOnPrint`, it is also
+     * decoded the moment the browser starts printing, so a printed or
+     * saved-as-PDF resume includes it without it ever sitting in the DOM.
      */
-    reveal?: 'click' | 'mount';
+    revealOnPrint?: boolean;
 };
 
-export default function ProtectedEmail({ icon, label = 'Show email', reveal = 'click', className, ...rest }: ProtectedEmailProps) {
-    const [clicked, setEmail] = useState<string | null>(null);
-    // False during SSR and the first client render, true once hydrated; the
-    // server never sees the address.
-    const mounted = useSyncExternalStore(noopSubscribe, () => true, () => false);
-    const email = clicked ?? (reveal === 'mount' && mounted ? decode(ENCODED) : null);
+export default function ProtectedEmail({ icon, label = 'Show email', revealOnPrint = false, className, ...rest }: ProtectedEmailProps) {
+    const [email, setEmail] = useState<string | null>(null);
+
+    useEffect(() => {
+        if (!revealOnPrint) return;
+        // flushSync so React commits the address before the print snapshot.
+        const onBeforePrint = () => flushSync(() => setEmail(decode(ENCODED)));
+        window.addEventListener('beforeprint', onBeforePrint);
+        return () => window.removeEventListener('beforeprint', onBeforePrint);
+    }, [revealOnPrint]);
 
     if (email) {
         return (

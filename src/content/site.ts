@@ -144,7 +144,7 @@ export const site = {
         },
     ] satisfies readonly Service[],
 
-    pricingNote: 'Contact for pricing',
+    pricingNote: 'Scoped and priced after a short call',
 
     approach: [
         {
