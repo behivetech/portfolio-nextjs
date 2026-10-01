@@ -39,6 +39,7 @@ export const metadata: Metadata = {
         site.company,
         'Full-stack architecture consulting',
         'Node.js consultant',
+        'SQL',
         'Postgres',
         'Prisma',
         'AI-native engineering',

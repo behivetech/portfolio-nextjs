@@ -90,11 +90,11 @@ export const site = {
             name: 'Modernization & Build',
             summary: 'Hands-on React, Next.js, Node.js, and TypeScript implementation inside your team.',
             description:
-                'Hands-on implementation across the stack: React and Next.js on the front, React Native when a mobile app shares the React codebase, and Node.js services, REST APIs, Postgres, and Prisma behind it, all in TypeScript. I work inside your process, ship production code in reviewable pull requests, and leave behind patterns your engineers can keep extending after I am gone.',
+                'Hands-on implementation across the stack: React and Next.js on the front, React Native when a mobile app shares the React codebase, and Node.js services, REST APIs, and the database behind it, all in TypeScript. I work inside your process, ship production code in reviewable pull requests, and leave behind patterns your engineers can keep extending after I am gone.',
             deliverables: [
                 'Production features or migrations delivered in reviewable pull requests',
                 'Legacy-to-modern migrations that keep the old system running until the new one is ready',
-                'API and data-layer work alongside the UI: Node.js services, REST endpoints, Prisma and Postgres models',
+                'API and data-layer work alongside the UI: Node.js services, REST endpoints, and data models in whatever database you run',
                 'Typed contracts, composable data layers, and tests as part of the work',
                 'Documentation and a handoff your team can build on',
             ],
@@ -105,11 +105,11 @@ export const site = {
             name: 'Node.js Backends & APIs',
             summary: 'REST APIs, real-time messaging, and multi-tenant data models in TypeScript on Node.js.',
             description:
-                'Backend services in TypeScript on Node.js, for teams that want one language and one set of patterns across the stack. REST APIs with typed contracts the frontend can rely on, real-time messaging over WebSockets, Postgres data models with Prisma, and multi-tenant authentication with organization-level access control and SSO.',
+                'Backend services in TypeScript on Node.js, for teams that want one language and one set of patterns across the stack. REST APIs with typed contracts the frontend can rely on, real-time messaging over WebSockets, data models in SQL or document databases, and multi-tenant authentication with organization-level access control and SSO. Postgres with Prisma is my default pairing, not a requirement; I work with what you already run.',
             deliverables: [
                 'Node.js services with typed REST contracts shared with the frontend',
                 'WebSocket and real-time messaging with reconnection handling',
-                'Postgres schema design and a Prisma data layer with migrations',
+                'Schema design and a typed data layer with migrations, in Postgres and Prisma by default or your existing database',
                 'Multi-tenant authentication, organization-level access control, and SSO',
                 'CI/CD and environment configuration for Vercel or your own platform',
             ],
@@ -173,7 +173,7 @@ export const site = {
 
     about: {
         bio: [
-            `I'm Bruce Ultra, a software architect and principal engineer in the Denver metro area. I've spent ${profile.years} years building for the web, on teams ranging from startups to large enterprises. The frontend is where I go deepest: React, Next.js, design systems, and the architecture that keeps large UIs maintainable. I work the rest of the stack in TypeScript too, with Node.js, Postgres, and Prisma behind the UI.`,
+            `I'm Bruce Ultra, a software architect and principal engineer in the Denver metro area. I've spent ${profile.years} years building for the web, on teams ranging from startups to large enterprises. The frontend is where I go deepest: React, Next.js, design systems, and the architecture that keeps large UIs maintainable. I work the rest of the stack in TypeScript too: Node.js services and whichever database the project calls for behind the UI.`,
             'BEhive Tech LLC is how I take on consulting work: architecture, AI-native engineering workflows, design systems, and hands-on builds. I have also delivered modular SaaS applications and mapping experiences used at live events as independent work.',
         ],
         proofPoints: [
