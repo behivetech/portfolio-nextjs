@@ -102,14 +102,21 @@
         padding-top: var(--spacing-4);
     }
 
+    // Icon and title on one row, vertically centered.
+    &__step-head {
+        align-items: center;
+        display: flex;
+        gap: var(--spacing-2);
+        margin-bottom: var(--spacing-2);
+    }
+
     &__step-icon {
         color: var(--md-sys-color-primary);
-        margin-bottom: var(--spacing-3);
+        flex: none;
     }
 
     &__step-title {
         @include type(title-medium);
-        margin-bottom: var(--spacing-2);
     }
 
     &__step-body {

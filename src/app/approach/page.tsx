@@ -71,8 +71,10 @@ export default function ApproachPage() {
                 <ol className={getChildClass('steps')}>
                     {site.engagement.map(({ icon, step, body }) => (
                         <li key={step} className={getChildClass('step')}>
-                            <MaterialIcon name={icon} className={getChildClass('step-icon')} />
-                            <h3 className={getChildClass('step-title')}>{step}</h3>
+                            <div className={getChildClass('step-head')}>
+                                <MaterialIcon name={icon} className={getChildClass('step-icon')} />
+                                <h3 className={getChildClass('step-title')}>{step}</h3>
+                            </div>
                             <p className={getChildClass('step-body')}>{body}</p>
                         </li>
                     ))}
