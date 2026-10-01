@@ -1,0 +1,23 @@
+// Logo colors. Cell outlines follow the M3 primary role so they lighten in
+// dark mode; the gold monogram is fixed brand color; the wordmark inherits text color.
+.logo {
+  display: block;
+
+  &__cell {
+    fill: none;
+    stroke: var(--md-sys-color-primary, #6453a3);
+    stroke-linejoin: miter;
+    stroke-width: 3;
+  }
+
+  &__letter {
+    fill: none;
+    stroke: #f5ca4f;
+    stroke-linejoin: miter;
+    stroke-width: 2.7;
+  }
+
+  &__wordmark {
+    fill: currentColor;
+  }
+}

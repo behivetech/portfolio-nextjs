@@ -1,0 +1,87 @@
+@use 'brand' as *;
+@use 'sections' as *;
+@use '@behivetech/cms.base-styles/breakpoints.scss' as bp;
+
+.services {
+    &__list {
+        @include container;
+        display: grid;
+        gap: var(--spacing-6);
+        padding-bottom: var(--spacing-8);
+        padding-top: var(--spacing-16);
+    }
+
+    &__service {
+        background: var(--md-sys-color-surface-container-low);
+        border-radius: var(--md-sys-shape-corner-extra-large);
+        display: grid;
+        gap: var(--spacing-8);
+        padding: var(--spacing-8) var(--spacing-6);
+        scroll-margin-top: 5rem;
+
+        @include bp.md {
+            padding: var(--spacing-10);
+        }
+
+        @include bp.lg {
+            grid-template-columns: 3fr 2fr;
+            gap: var(--spacing-12);
+        }
+    }
+
+    &__service-head {
+        align-items: center;
+        display: flex;
+        gap: var(--spacing-4);
+        margin-bottom: var(--spacing-4);
+    }
+
+    &__icon {
+        @include icon-tile(3.5rem);
+    }
+
+    &__service-title {
+        @include type(headline-medium);
+        font-weight: var(--font-weight-medium);
+        letter-spacing: -0.01em;
+    }
+
+    &__service-body {
+        @include type(body-large);
+        color: var(--md-sys-color-on-surface-variant);
+    }
+
+    &__service-actions {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-4);
+        margin-top: var(--spacing-6);
+
+        a {
+            text-decoration: none;
+        }
+    }
+
+    &__pricing {
+        @include type(label-large);
+        color: var(--md-sys-color-on-surface-variant);
+    }
+
+    &__deliverables {
+        background: var(--md-sys-color-surface-container);
+        border-radius: var(--md-sys-shape-corner-large);
+        padding: var(--spacing-6);
+    }
+
+    &__deliverables-title {
+        @include type(title-medium);
+        margin-bottom: var(--spacing-4);
+    }
+
+    &__check-list {
+        @include check-list;
+        @include type(body-medium);
+        color: var(--md-sys-color-on-surface);
+    }
+}

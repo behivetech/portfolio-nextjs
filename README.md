@@ -1,34 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# behivetech.com
 
-## Getting Started
+Consulting site for BEhive Tech LLC (Bruce Ultra). Next.js 16 (App Router),
+React 19, SCSS modules, and `@behivetech/*` components from
+[bht-galaxy](https://github.com/behivetech/bht-galaxy) themed with the
+Material Design 3 tokens in `@behivetech/cms.base-styles`. Light and dark
+themes follow the OS, with a toggle in the header.
 
-First, run the development server:
+## Editing content
+
+- [`src/content/site.ts`](src/content/site.ts): everything on the marketing
+  pages (tagline, services, approach, about, Calendly events). Search for
+  `TODO(bruce)` for items still waiting on input.
+- [`src/content/profile.ts`](src/content/profile.ts): the resume, used by
+  `/resume`, the About page proof points, and the JSON-LD.
+- [`src/content/nav.ts`](src/content/nav.ts): header and footer navigation.
+
+The email address is intentionally **not** in either content file; it lives in
+[`src/components/site/ProtectedEmail.tsx`](src/components/site/ProtectedEmail.tsx)
+and is only assembled in the browser to keep it out of scraped HTML.
+
+## Routes
+
+- `/` home, `/services`, `/approach`, `/about`, `/contact` (embedded Calendly)
+- `/resume` printable resume (Print / Save as PDF)
+- `/opengraph-image`, `/twitter-image` generated 1200×630 share cards
+- `/sitemap.xml`, `/robots.txt`, `/manifest.webmanifest`
+- `/farkle` Farkle scorer (Pages Router + MUI; left as-is)
+
+## Development
 
 ```bash
+npm install     # needs a GitHub token with read:packages for @behivetech (see below)
 npm run dev
-# or
-yarn dev
+npm run build
+npm run lint && npm run typecheck
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`@behivetech/*` packages come from GitHub Packages (`.npmrc`). Locally your
+`~/.npmrc` needs `//npm.pkg.github.com/:_authToken=<token>`. On Vercel, add a
+`GH_PACKAGES_TOKEN` environment variable (all environments) whose value is just a
+GitHub personal access token (classic) with the `read:packages` scope. The
+`installCommand` in `vercel.json` appends the auth line to `.npmrc` before
+`npm install` runs, so no multi-line variable is needed.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Analytics: `@vercel/analytics` and `@vercel/speed-insights` are wired in the
+root layout and only report when deployed on Vercel. Calendly bookings are
+tracked as a `booking` event.

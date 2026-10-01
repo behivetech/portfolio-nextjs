@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect } from 'react';
+import React, { forwardRef } from 'react';
 import AddBIcon from '@mui/icons-material/AddSharp';
 import Button from '@core/Button';
 import TextField from '@core/TextField';
@@ -7,14 +7,10 @@ import styles from './AddScore.module.scss';
 
 interface AddScoreProps {
     addScore: (score: number) => void;
-    shouldFocus?: boolean;
-    setFocus?: (focus: boolean) => void;
 }
 
 export const AddScore = forwardRef<HTMLInputElement, AddScoreProps>(({
     addScore,
-    shouldFocus = false,
-    setFocus = () => null,
 }, scoreRef) => {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -28,7 +24,7 @@ export const AddScore = forwardRef<HTMLInputElement, AddScoreProps>(({
         }
     }
 
-    const [rootClass, getChildClass] = getClassName({
+    const [rootClass] = getClassName({
         rootClass: 'addScore',
         styles,
     });

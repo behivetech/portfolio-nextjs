@@ -1,0 +1,126 @@
+@use 'brand' as *;
+@use 'sections' as *;
+@use '@behivetech/cms.base-styles/breakpoints.scss' as bp;
+
+.approach {
+    &__principles {
+        display: grid;
+        gap: var(--spacing-4);
+        list-style: none;
+        padding: 0;
+    }
+
+    &__principle {
+        background: var(--md-sys-color-surface-container-low);
+        border-radius: var(--md-sys-shape-corner-large);
+        display: grid;
+        gap: var(--spacing-4);
+        padding: var(--spacing-6);
+
+        @include bp.md {
+            padding: var(--spacing-8);
+        }
+    }
+
+    // Icon and title on one row, vertically centered.
+    &__principle-head {
+        align-items: center;
+        display: flex;
+        gap: var(--spacing-4);
+    }
+
+    &__icon {
+        @include icon-tile(3.5rem);
+    }
+
+    &__principle-title {
+        @include type(title-large);
+        font-weight: var(--font-weight-medium);
+    }
+
+    &__principle-body {
+        @include type(body-large);
+        color: var(--md-sys-color-on-surface-variant);
+    }
+
+    &__prose {
+        @include prose;
+    }
+
+    &__flow {
+        counter-reset: step;
+        display: grid;
+        gap: var(--spacing-2);
+        list-style: none;
+        margin-top: var(--spacing-10);
+        padding: 0;
+
+        @include bp.md {
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        li {
+            @include type(label-large);
+            background: var(--md-sys-color-secondary-container);
+            border-radius: var(--md-sys-shape-corner-medium);
+            color: var(--md-sys-color-on-secondary-container);
+            counter-increment: step;
+            padding: var(--spacing-4);
+
+            &::before {
+                @include type(label-medium);
+                content: counter(step);
+                display: block;
+                margin-bottom: var(--spacing-1);
+                opacity: 0.7;
+            }
+
+            &:last-child {
+                background: var(--md-sys-color-primary);
+                color: var(--md-sys-color-on-primary);
+            }
+        }
+    }
+
+    &__steps {
+        display: grid;
+        gap: var(--spacing-4);
+        list-style: none;
+        padding: 0;
+
+        @include bp.md {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include bp.lg {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    &__step {
+        border-top: 2px solid var(--md-sys-color-primary);
+        padding-top: var(--spacing-4);
+    }
+
+    // Icon and title on one row, vertically centered.
+    &__step-head {
+        align-items: center;
+        display: flex;
+        gap: var(--spacing-2);
+        margin-bottom: var(--spacing-2);
+    }
+
+    &__step-icon {
+        color: var(--md-sys-color-primary);
+        flex: none;
+    }
+
+    &__step-title {
+        @include type(title-medium);
+    }
+
+    &__step-body {
+        @include type(body-medium);
+        color: var(--md-sys-color-on-surface-variant);
+    }
+}

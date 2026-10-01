@@ -1,0 +1,35 @@
+@use 'brand' as *;
+
+// M3 small top app bar
+.site-header {
+    backdrop-filter: saturate(160%) blur(12px);
+    background: color-mix(in srgb, var(--md-sys-color-surface-container) 85%, transparent);
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+
+    &__inner {
+        @include container;
+        align-items: center;
+        display: flex;
+        gap: var(--spacing-4);
+        height: 4rem;
+        justify-content: space-between;
+        position: relative;
+    }
+
+    &__logo {
+        color: var(--md-sys-color-on-surface);
+        display: flex;
+
+        svg {
+            height: 2rem;
+            width: auto;
+        }
+    }
+
+    @media print {
+        display: none;
+    }
+}

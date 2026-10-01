@@ -1,0 +1,65 @@
+@use 'brand' as *;
+@use '@behivetech/cms.base-styles/breakpoints.scss' as bp;
+
+.contact {
+    &__layout {
+        @include container;
+        display: grid;
+        gap: var(--spacing-10);
+        padding-bottom: var(--spacing-20);
+        padding-top: var(--spacing-16);
+
+        @include bp.lg {
+            align-items: start;
+            grid-template-columns: 3fr 2fr;
+            gap: var(--spacing-12);
+        }
+    }
+
+    &__heading {
+        @include type(title-large);
+        font-weight: var(--font-weight-medium);
+        margin-bottom: var(--spacing-4);
+    }
+
+    &__aside {
+        background: var(--md-sys-color-surface-container-low);
+        border-radius: var(--md-sys-shape-corner-large);
+        padding: var(--spacing-6);
+    }
+
+    &__methods {
+        @include type(body-large);
+        display: grid;
+        gap: var(--spacing-4);
+        list-style: none;
+        padding: 0;
+
+        li {
+            align-items: center;
+            display: flex;
+            gap: var(--spacing-3);
+        }
+
+        svg {
+            color: var(--md-sys-color-primary);
+            flex: none;
+        }
+
+        // The email control is a <button> until clicked; style both the same.
+        a,
+        button {
+            background: none;
+            border: 0;
+            color: var(--md-sys-color-primary);
+            cursor: pointer;
+            font: inherit;
+            padding: 0;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

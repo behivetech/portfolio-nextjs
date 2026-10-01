@@ -2,7 +2,6 @@ import React, { forwardRef } from 'react';
 import getClassName from '@tools/getClassName';
 import styles from './UserScore.module.scss';
 import Headline from '@core/Headline';
-import Button from '@core/Button';
 
 interface UserScoreProps {
     name: string;

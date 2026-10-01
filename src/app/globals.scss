@@ -1,0 +1,71 @@
+@use 'brand' as *;
+
+:root {
+    --md-sys-typescale-body-font: var(--font-inter), system-ui, -apple-system, sans-serif;
+    --md-sys-typescale-heading-font: var(--font-inter), system-ui, -apple-system, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+}
+
+body {
+    background: var(--md-sys-color-background);
+    color: var(--md-sys-color-on-background);
+    font-family: var(--font-body);
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul {
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: var(--md-sys-color-on-surface);
+    font-family: var(--font-heading);
+}
+
+a {
+    color: var(--md-sys-color-primary);
+}
+
+::selection {
+    background: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+}
+
+.skip-link {
+    background: var(--md-sys-color-primary);
+    border-radius: var(--md-sys-shape-corner-full);
+    color: var(--md-sys-color-on-primary);
+    left: 1rem;
+    padding: var(--spacing-2) var(--spacing-4);
+    position: absolute;
+    top: -3rem;
+    z-index: 100;
+
+    &:focus {
+        top: 1rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+@media print {
+    @page {
+        margin: 0.5in;
+    }
+}

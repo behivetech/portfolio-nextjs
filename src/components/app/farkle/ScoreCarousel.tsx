@@ -19,7 +19,7 @@ interface ScoreMetric {
 export const ScoreCarousel: React.FC<ScoreCarouselProps> = ({
     className
 }) => {
-    const { targetScore, currentUserScore, userScores, currentUserIndex } = useFarkle();
+    const { targetScore, currentUserScore, userScores } = useFarkle();
     const allUserScores = userScores;
     const [currentMetricIndex, setCurrentMetricIndex] = useState(0);
     const [previousIndex, setPreviousIndex] = useState<number | null>(null);

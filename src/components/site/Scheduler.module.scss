@@ -1,0 +1,91 @@
+@use 'brand' as *;
+@use '@behivetech/cms.base-styles/breakpoints.scss' as bp;
+
+.scheduler {
+    display: grid;
+    gap: var(--spacing-4);
+
+    &--placeholder {
+        align-items: center;
+        background: var(--md-sys-color-surface-container-low);
+        border: 1px dashed var(--md-sys-color-outline);
+        border-radius: var(--md-sys-shape-corner-large);
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-2);
+        padding: var(--spacing-12) var(--spacing-6);
+        text-align: center;
+    }
+
+    &__icon {
+        color: var(--md-sys-color-primary);
+        margin-bottom: var(--spacing-2);
+    }
+
+    &__title {
+        @include type(title-large);
+        color: var(--md-sys-color-on-surface);
+    }
+
+    &__body {
+        @include type(body-medium);
+        color: var(--md-sys-color-on-surface-variant);
+        max-width: 28rem;
+    }
+
+    // M3 segmented-button style picker, stacked on phones
+    &__tabs {
+        display: grid;
+        gap: var(--spacing-2);
+
+        @include bp.sm {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include bp.lg {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    &__tab {
+        @include state-layer;
+        background: var(--md-sys-color-surface-container-low);
+        border: 1px solid var(--md-sys-color-outline-variant);
+        border-radius: var(--md-sys-shape-corner-medium);
+        color: var(--md-sys-color-on-surface-variant);
+        cursor: pointer;
+        display: grid;
+        font: inherit;
+        gap: var(--spacing-1);
+        padding: var(--spacing-3) var(--spacing-4);
+        text-align: left;
+        transition: background var(--md-sys-motion-duration-short-2) var(--md-sys-motion-easing-standard);
+
+        &[aria-selected='true'] {
+            background: var(--md-sys-color-secondary-container);
+            border-color: transparent;
+            color: var(--md-sys-color-on-secondary-container);
+        }
+    }
+
+    &__tab-label {
+        @include type(title-small);
+        color: var(--md-sys-color-on-surface);
+    }
+
+    &__tab[aria-selected='true'] &__tab-label {
+        color: inherit;
+    }
+
+    &__tab-description {
+        @include type(body-small);
+    }
+
+    &__panel {
+        background: var(--md-sys-color-surface-container-low);
+        border-radius: var(--md-sys-shape-corner-large);
+        // No overflow/fixed height on the wrapper: the iframe is sized to
+        // Calendly's reported content height so the page scrolls, not the embed.
+        min-height: 720px;
+    }
+}

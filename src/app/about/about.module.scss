@@ -1,0 +1,96 @@
+@use 'brand' as *;
+@use 'sections' as *;
+@use '@behivetech/cms.base-styles/breakpoints.scss' as bp;
+
+.about {
+    & &__social {
+        display: flex;
+        gap: var(--spacing-4);
+        margin-top: var(--spacing-2);
+
+        a {
+            @include type(label-large);
+            align-items: center;
+            color: var(--md-sys-color-primary);
+            display: inline-flex;
+            gap: var(--spacing-2);
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    & &__layout {
+        display: grid;
+        gap: var(--spacing-8);
+
+        @include bp.lg {
+            align-items: start;
+            grid-template-columns: 3fr 2fr;
+            gap: var(--spacing-12);
+        }
+    }
+
+    & &__prose {
+        @include prose;
+
+        a {
+            text-decoration: none;
+        }
+    }
+
+    & &__photo {
+        align-items: center;
+        aspect-ratio: 4 / 5;
+        background: var(--md-sys-color-surface-container);
+        border: 1px dashed var(--md-sys-color-outline);
+        border-radius: var(--md-sys-shape-corner-extra-large);
+        color: var(--md-sys-color-on-surface-variant);
+        display: flex;
+        justify-content: center;
+        max-width: 22rem;
+    }
+
+    & &__stats {
+        display: grid;
+        gap: var(--spacing-4);
+
+        @include bp.md {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    & &__stat {
+        @include stat-card;
+    }
+
+    & &__chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-2);
+        list-style: none;
+        padding: 0;
+    }
+
+    & &__chips &__chip {
+        @include chip;
+        background: transparent;
+    }
+
+    & &__experience-label {
+        @include eyebrow;
+        margin: var(--spacing-10) 0 var(--spacing-3);
+    }
+
+    & &__experience {
+        @include type(title-medium);
+        color: var(--md-sys-color-on-surface-variant);
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-2) var(--spacing-8);
+        list-style: none;
+        padding: 0;
+    }
+}

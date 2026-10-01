@@ -1,0 +1,68 @@
+@use 'brand' as *;
+@use 'sections' as *;
+@use '@behivetech/cms.base-styles/breakpoints.scss' as bp;
+
+.home {
+    min-height: auto;
+
+    & &__prose {
+        @include prose;
+    }
+
+    & &__section-lead {
+        @include type(body-large);
+        color: var(--md-sys-color-on-surface-variant);
+        margin: calc(-1 * var(--spacing-6)) 0 var(--spacing-8);
+        max-width: 44rem;
+    }
+
+    & &__grid {
+        @include card-grid;
+    }
+
+    & &__card {
+        @include filled-card;
+    }
+
+    & &__card-link {
+        @include type(label-large);
+        align-items: center;
+        color: var(--md-sys-color-primary);
+        display: inline-flex;
+        gap: var(--spacing-1);
+        margin-top: var(--spacing-4);
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    & &__stats {
+        display: grid;
+        gap: var(--spacing-4);
+
+        @include bp.md {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    & &__stat {
+        @include stat-card;
+    }
+
+    & &__experience-label {
+        @include eyebrow;
+        margin: var(--spacing-10) 0 var(--spacing-3);
+    }
+
+    & &__experience {
+        @include type(title-medium);
+        color: var(--md-sys-color-on-surface-variant);
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-2) var(--spacing-8);
+        list-style: none;
+        padding: 0;
+    }
+}

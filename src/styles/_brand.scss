@@ -1,0 +1,56 @@
+// Site-level helpers on top of @behivetech/cms.base-styles (Material Design 3
+// tokens). Always reach for an M3 role/typescale token before a literal.
+$content-width: 75rem;
+
+@mixin container {
+    margin: 0 auto;
+    max-width: $content-width;
+    padding: 0 var(--spacing-6);
+    width: 100%;
+}
+
+// M3 type scale roles, e.g. @include type(headline-large)
+@mixin type($role) {
+    font-family: var(--md-sys-typescale-#{$role}-font);
+    font-size: var(--md-sys-typescale-#{$role}-size);
+    font-weight: var(--md-sys-typescale-#{$role}-weight);
+    letter-spacing: var(--md-sys-typescale-#{$role}-tracking);
+    line-height: var(--md-sys-typescale-#{$role}-line-height);
+}
+
+@mixin eyebrow {
+    @include type(label-large);
+    color: var(--md-sys-color-primary);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+// M3 state layer: a currentColor overlay at the hover/focus/pressed opacities.
+@mixin state-layer {
+    isolation: isolate;
+    position: relative;
+
+    &::after {
+        background: currentColor;
+        border-radius: inherit;
+        content: '';
+        inset: 0;
+        opacity: 0;
+        pointer-events: none;
+        position: absolute;
+        transition: opacity var(--md-sys-motion-duration-short-2) var(--md-sys-motion-easing-standard);
+        z-index: -1;
+    }
+
+    &:hover::after {
+        opacity: var(--md-sys-state-hover-opacity);
+    }
+
+    &:focus-visible::after {
+        opacity: var(--md-sys-state-focus-opacity);
+    }
+
+    &:active::after {
+        opacity: var(--md-sys-state-pressed-opacity);
+    }
+}

@@ -1,0 +1,94 @@
+@use 'brand' as *;
+@use '@behivetech/cms.base-styles/breakpoints.scss' as bp;
+
+.site-footer {
+    @include type(body-medium);
+    background: var(--md-sys-color-surface-container-lowest);
+    border-top: 1px solid var(--md-sys-color-outline-variant);
+    color: var(--md-sys-color-on-surface-variant);
+    padding: var(--spacing-12) 0 var(--spacing-8);
+
+    &__inner {
+        @include container;
+        display: grid;
+        gap: var(--spacing-8);
+
+        @include bp.md {
+            grid-template-columns: 1fr auto auto;
+        }
+    }
+
+    &__brand {
+        display: grid;
+        gap: var(--spacing-1);
+        max-width: 24rem;
+    }
+
+    &__logo {
+        color: var(--md-sys-color-on-surface);
+        margin-bottom: var(--spacing-2);
+    }
+
+    &__nav {
+        display: grid;
+        gap: var(--spacing-2);
+
+        a {
+            color: var(--md-sys-color-on-surface-variant);
+            text-decoration: none;
+
+            &:hover {
+                color: var(--md-sys-color-primary);
+            }
+        }
+    }
+
+    &__links {
+        align-items: flex-start;
+        display: flex;
+        gap: var(--spacing-1);
+
+        // The email control is a <button> until clicked; style both the same.
+        a,
+        button {
+            @include state-layer;
+            align-items: center;
+            background: none;
+            border: 0;
+            border-radius: var(--md-sys-shape-corner-full);
+            color: var(--md-sys-color-on-surface-variant);
+            cursor: pointer;
+            display: inline-flex;
+            font: inherit;
+            justify-content: center;
+            min-height: 2.5rem;
+            min-width: 2.5rem;
+            padding: 0;
+            text-decoration: none;
+
+            &:hover {
+                color: var(--md-sys-color-on-surface);
+            }
+        }
+    }
+
+    &__legal {
+        @include container;
+        @include type(body-small);
+        border-top: 1px solid var(--md-sys-color-outline-variant);
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-4);
+        justify-content: space-between;
+        margin-top: var(--spacing-8);
+        padding-top: var(--spacing-6);
+    }
+
+    &__farkle {
+        color: var(--md-sys-color-on-surface-variant);
+    }
+
+    @media print {
+        display: none;
+    }
+}

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import getClassName from '@tools/getClassName';
 import BackspaceIcon from '@mui/icons-material/BackspaceSharp';
 import SaveIcon from '@mui/icons-material/SaveSharp';
@@ -88,7 +88,7 @@ export const Keyboard: React.FC<KeyboardProps> = ({
                 defaultValue={0}
                 aria-readonly
                 inputRef={inputRef}
-                inputProps={{ readOnly: true }}
+                slotProps={{ htmlInput: { readOnly: true } }}
             />
             <div className={getChildClass('buttons')}>
                 {[...Array(10)].map((_, i) => {
