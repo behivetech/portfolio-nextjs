@@ -29,7 +29,7 @@ export default function HomePage() {
                 size="large"
                 eyebrow={site.company}
                 headline={site.tagline}
-                subtext="Expert frontend architecture, full-stack delivery in TypeScript and Node.js, and AI-assisted development workflows with human review built in. Principal-level architecture and delivery on a fixed scope, without a permanent hire."
+                subtext="Expert frontend architecture, full-stack delivery in TypeScript and Node.js, and AI-assisted development workflows with human review built in. Modernizing how your team builds is the focus; the features, integrations, and new builds you need along the way are part of the work."
                 ctas={[
                     { label: site.cta.primary, href: '/contact', variant: 'primary' },
                     { label: site.cta.secondary, href: '/services', variant: 'secondary' },
