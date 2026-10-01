@@ -28,7 +28,7 @@ export default function HomePage() {
                 size="large"
                 eyebrow={site.company}
                 headline={site.tagline}
-                subtext="Modular, scalable frontend architecture plus AI-assisted development workflows with human review built in. Senior hands on a fixed scope, without a permanent hire."
+                subtext="Expert frontend architecture, full-stack delivery in TypeScript and Node.js, and AI-assisted development workflows with human review built in. Senior hands on a fixed scope, without a permanent hire."
                 ctas={[
                     { label: site.cta.primary, href: '/contact', variant: 'primary' },
                     { label: site.cta.secondary, href: '/services', variant: 'secondary' },

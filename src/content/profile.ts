@@ -73,7 +73,7 @@ export const profile = {
         },
         {
             group: 'Frontend',
-            items: ['React', 'Next.js (App & Pages Router)', 'Server & client components', 'TypeScript', 'JavaScript', 'Electron', 'HTML', 'CSS/Sass', 'React Query', 'i18n (react-intl, Lingui)', 'Highcharts', 'Accessibility', 'Performance optimization'],
+            items: ['React', 'Next.js (App & Pages Router)', 'Server & client components', 'React Native', 'TypeScript', 'JavaScript', 'Electron', 'HTML', 'CSS/Sass', 'React Query', 'i18n (react-intl, Lingui)', 'Highcharts', 'Accessibility', 'Performance optimization'],
         },
         {
             group: 'Backend & data',

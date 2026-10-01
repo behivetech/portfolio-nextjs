@@ -37,7 +37,10 @@ export const metadata: Metadata = {
     publisher: site.company,
     keywords: [
         site.company,
-        'Frontend architecture consulting',
+        'Full-stack architecture consulting',
+        'Node.js consultant',
+        'Postgres',
+        'Prisma',
         'AI-native engineering',
         'Agentic development workflow',
         'Claude Code',

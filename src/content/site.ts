@@ -21,9 +21,9 @@ export type Service = {
 export const site = {
     company: 'BEhive Tech LLC',
     shortName: 'BEhive Tech',
-    tagline: 'Frontend architecture and AI-native engineering for teams that want to ship faster.',
+    tagline: 'Full-stack architecture and AI-native engineering for teams that want to ship faster.',
     description:
-        'BEhive Tech LLC is the consulting practice of Bruce Ultra, a software architect and principal engineer in the Denver metro area. Frontend architecture, design systems, and AI-assisted development workflows with human review built in.',
+        'BEhive Tech LLC is the consulting practice of Bruce Ultra, a software architect and principal engineer in the Denver metro area. Expert frontend architecture, full-stack delivery in TypeScript and Node.js, design systems, and AI-assisted development workflows with human review built in.',
     locality: 'Denver',
     region: 'CO',
 
@@ -49,8 +49,8 @@ export const site = {
     valueProp: {
         heading: 'I help teams modernize how they build.',
         body: [
-            'That means two things. First, a modular, scalable frontend architecture: independently deployable modules on shared foundations, so people can work in parallel without stepping on each other. Second, an AI-assisted development workflow with human review built in, so the speed you gain does not come back later as bugs.',
-            'I have done this work as a principal engineer and architect inside companies for 25+ years. Through BEhive Tech I do it for teams that need senior hands without a permanent hire.',
+            'That means two things. First, a modular, scalable architecture across the whole stack: independently deployable modules on shared foundations, with typed contracts between the UI and the Node.js services behind it, so people can work in parallel without stepping on each other. Second, an AI-assisted development workflow with human review built in, so the speed you gain does not come back later as bugs.',
+            'I have done this work as a principal engineer and architect inside companies for 25+ years. The frontend is my deepest expertise: React, design systems, and the architecture that keeps large UIs maintainable. The Node.js side of the stack is right behind it, so I can own a feature from the database to the pixel. Through BEhive Tech I do it for teams that need senior hands without a permanent hire.',
         ],
     },
 
@@ -73,12 +73,12 @@ export const site = {
         {
             slug: 'architecture-audit',
             icon: 'account-tree',
-            name: 'Frontend Architecture Audit',
-            summary: 'A structured review of your codebase and a modernization roadmap you can act on.',
+            name: 'Architecture Audit',
+            summary: 'A structured review of your codebase, UI through API and data layer, with a roadmap you can act on.',
             description:
-                'A structured review of an existing codebase, delivered as a roadmap you can act on. I look at how the code is organized, typed, tested, and shipped, then tell you what to change, in what order, and why. Where micro frontends, atomic design systems, packaging, or a better data layer would pay off, I say so; where they would not, I say that too.',
+                'A structured review of an existing codebase, delivered as a roadmap you can act on. I look at how the code is organized, typed, tested, and shipped, from the React components down to the Node.js services, API contracts, and data model, then tell you what to change, in what order, and why. Where micro frontends, atomic design systems, packaging, or a better data layer would pay off, I say so; where they would not, I say that too.',
             deliverables: [
-                'Written assessment covering architecture, typing, data layers, testing, and CI/CD',
+                'Written assessment covering frontend architecture, API design, data model, typing, testing, and CI/CD',
                 'Prioritized roadmap with effort and risk for each step',
                 'Recommendations on micro frontends, design systems, packaging, and data layers',
                 'Readout session with your engineering leads',
@@ -88,14 +88,30 @@ export const site = {
             slug: 'modernization-build',
             icon: 'code',
             name: 'Modernization & Build',
-            summary: 'Hands-on React, Next.js, and TypeScript implementation inside your team.',
+            summary: 'Hands-on React, Next.js, Node.js, and TypeScript implementation inside your team.',
             description:
-                'Hands-on implementation in React, Next.js, and TypeScript. I work inside your process, ship production code in reviewable pull requests, and leave behind patterns your engineers can keep extending after I am gone.',
+                'Hands-on implementation across the stack: React and Next.js on the front, React Native when a mobile app shares the React codebase, and Node.js services, REST APIs, Postgres, and Prisma behind it, all in TypeScript. I work inside your process, ship production code in reviewable pull requests, and leave behind patterns your engineers can keep extending after I am gone.',
             deliverables: [
                 'Production features or migrations delivered in reviewable pull requests',
                 'Legacy-to-modern migrations that keep the old system running until the new one is ready',
+                'API and data-layer work alongside the UI: Node.js services, REST endpoints, Prisma and Postgres models',
                 'Typed contracts, composable data layers, and tests as part of the work',
                 'Documentation and a handoff your team can build on',
+            ],
+        },
+        {
+            slug: 'node-backends',
+            icon: 'dns',
+            name: 'Node.js Backends & APIs',
+            summary: 'REST APIs, real-time messaging, and multi-tenant data models in TypeScript on Node.js.',
+            description:
+                'Backend services in TypeScript on Node.js, for teams that want one language and one set of patterns across the stack. REST APIs with typed contracts the frontend can rely on, real-time messaging over WebSockets, Postgres data models with Prisma, and multi-tenant authentication with organization-level access control and SSO.',
+            deliverables: [
+                'Node.js services with typed REST contracts shared with the frontend',
+                'WebSocket and real-time messaging with reconnection handling',
+                'Postgres schema design and a Prisma data layer with migrations',
+                'Multi-tenant authentication, organization-level access control, and SSO',
+                'CI/CD and environment configuration for Vercel or your own platform',
             ],
         },
         {
@@ -134,7 +150,7 @@ export const site = {
         {
             icon: 'view-module' as MaterialIconName,
             title: 'Composable architecture',
-            body: 'I build systems as independently deployable modules on shared foundations: micro frontends, packaged components, and monorepos with Turborepo or bit.dev. New products launch as modules, not new codebases. Teams ship in parallel, and a change in a shared component lands everywhere at once.',
+            body: 'I build systems as independently deployable modules on shared foundations: micro frontends, packaged components, Node.js services behind typed API contracts, and monorepos with Turborepo or bit.dev. New products launch as modules, not new codebases. Teams ship in parallel, and a change in a shared component lands everywhere at once.',
         },
         {
             icon: 'reviews' as MaterialIconName,
@@ -157,7 +173,7 @@ export const site = {
 
     about: {
         bio: [
-            `I'm Bruce Ultra, a software architect and principal engineer in the Denver metro area. I've spent ${profile.years} years building for the web, most of it in React and TypeScript, on teams ranging from startups to large enterprises.`,
+            `I'm Bruce Ultra, a software architect and principal engineer in the Denver metro area. I've spent ${profile.years} years building for the web, on teams ranging from startups to large enterprises. The frontend is where I go deepest: React, Next.js, design systems, and the architecture that keeps large UIs maintainable. I work the rest of the stack in TypeScript too, with Node.js, Postgres, and Prisma behind the UI.`,
             'BEhive Tech LLC is how I take on consulting work: architecture, AI-native engineering workflows, design systems, and hands-on builds. I have also delivered modular SaaS applications and mapping experiences used at live events as independent work.',
         ],
         proofPoints: [

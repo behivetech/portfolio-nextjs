@@ -14,7 +14,7 @@ import styles from './services.module.scss';
 export const metadata: Metadata = {
     title: 'Services',
     description:
-        'Fixed-scope consulting from BEhive Tech: AI-native workflow setup, frontend architecture audits, modernization and build, design systems, and Electron desktop apps.',
+        'Fixed-scope consulting from BEhive Tech: AI-native workflow setup, architecture audits, modernization and build, Node.js backends and APIs, design systems, and Electron desktop apps.',
     alternates: { canonical: '/services' },
     openGraph: { url: '/services', title: 'Services | BEhive Tech' },
 };
