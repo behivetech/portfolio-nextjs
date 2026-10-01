@@ -52,6 +52,7 @@ export const metadata: Metadata = {
         'Next.js consultant',
         'TypeScript',
         'Electron',
+        'React Native',
         'Software architect',
         'Principal engineer',
         'Denver',

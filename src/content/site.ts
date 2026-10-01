@@ -91,7 +91,7 @@ export const site = {
             name: 'Modernization & Build',
             summary: 'Hands-on React, Next.js, Node.js, and TypeScript implementation inside your team.',
             description:
-                'Hands-on implementation across the stack: React and Next.js on the front, React Native when a mobile app shares the React codebase, and Node.js services, REST APIs, and the database behind it, all in TypeScript. I work inside your process, ship production code in reviewable pull requests, and leave behind patterns your engineers can keep extending after I am gone. It does not have to be a whole system: I also take on a scoped piece of a larger project, a feature, a module, an integration, and deliver it to the same standard.',
+                'Hands-on implementation across the stack: React and Next.js on the front, Node.js services, REST APIs, and the database behind it, all in TypeScript. I work inside your process, ship production code in reviewable pull requests, and leave behind patterns your engineers can keep extending after I am gone. It does not have to be a whole system: I also take on a scoped piece of a larger project, a feature, a module, an integration, and deliver it to the same standard.',
             deliverables: [
                 'Production features or migrations delivered in reviewable pull requests',
                 'Scoped pieces of a larger project: a feature, a module, or an integration your team hands off',
@@ -131,16 +131,17 @@ export const site = {
             ],
         },
         {
-            slug: 'desktop-apps',
-            icon: 'desktop-windows',
-            name: 'Desktop Apps',
-            summary: 'Cross-platform Electron apps with real-time messaging and signed release pipelines.',
+            slug: 'desktop-mobile-apps',
+            icon: 'devices',
+            name: 'Desktop & Mobile Apps',
+            summary: 'Electron desktop apps and React Native mobile apps, built alongside your web app.',
             description:
-                'Cross-platform Electron applications with real-time messaging and a release pipeline that ships signed, certified builds for Windows and macOS. Built on a shared React codebase so the desktop app and the web app stay in step.',
+                'Your product, extended to the desktop and to phones. Electron desktop applications run your React code as-is, with real-time messaging, system-tray presence, and a release pipeline that ships signed, certified builds for Windows and macOS. React Native mobile apps share what can be shared with the web app, business logic, state, API clients, and types, while the UI stays native to the platform.',
             deliverables: [
                 'Electron application architecture on a shared React codebase',
+                'React Native mobile app sharing business logic, state, API clients, and types with your web app',
                 'Real-time messaging over WebSockets with reconnection and offline handling',
-                'System tray, native notifications, and auto-update',
+                'System tray, native notifications, and auto-update on desktop',
                 'Signed installers and a CI/CD pipeline for Windows and macOS releases',
             ],
         },
