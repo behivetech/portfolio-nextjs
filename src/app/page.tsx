@@ -44,6 +44,9 @@ export default function HomePage() {
             </Section>
 
             <Section id="services" eyebrow="Services" title="Fixed-scope engagements, principal-level work">
+                <p className={getChildClass('section-lead')}>
+                    Modernization is the center of gravity. Around it: scoped pieces of larger projects, new builds on a solid foundation, and the workflows that keep teams fast.
+                </p>
                 <div className={getChildClass('grid')}>
                     {site.services.map(({ slug, icon, name, summary }) => (
                         <Card

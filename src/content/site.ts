@@ -51,6 +51,7 @@ export const site = {
         body: [
             'That means two things. First, a modular, scalable architecture across the whole stack: independently deployable modules on shared foundations, with typed contracts between the UI and the Node.js services behind it, so people can work in parallel without stepping on each other. Second, an AI-assisted development workflow with human review built in, so the speed you gain does not come back later as bugs.',
             'I have done this work as a principal engineer and architect inside companies for 25+ years. The frontend is my deepest expertise: React, design systems, and the architecture that keeps large UIs maintainable. The Node.js side of the stack is right behind it, so I can own a feature from the database to the pixel. Through BEhive Tech I do it for teams that need a principal engineer or architect without making a permanent hire.',
+            'Modernization is the core of what I do, but not every engagement is a rebuild. Teams also hand me one piece of a larger project: a feature that has been waiting, a module that needs an owner, an integration, a component library, a desktop client. Same standards, smaller scope.',
         ],
     },
 
@@ -90,9 +91,10 @@ export const site = {
             name: 'Modernization & Build',
             summary: 'Hands-on React, Next.js, Node.js, and TypeScript implementation inside your team.',
             description:
-                'Hands-on implementation across the stack: React and Next.js on the front, React Native when a mobile app shares the React codebase, and Node.js services, REST APIs, and the database behind it, all in TypeScript. I work inside your process, ship production code in reviewable pull requests, and leave behind patterns your engineers can keep extending after I am gone.',
+                'Hands-on implementation across the stack: React and Next.js on the front, React Native when a mobile app shares the React codebase, and Node.js services, REST APIs, and the database behind it, all in TypeScript. I work inside your process, ship production code in reviewable pull requests, and leave behind patterns your engineers can keep extending after I am gone. It does not have to be a whole system: I also take on a scoped piece of a larger project, a feature, a module, an integration, and deliver it to the same standard.',
             deliverables: [
                 'Production features or migrations delivered in reviewable pull requests',
+                'Scoped pieces of a larger project: a feature, a module, or an integration your team hands off',
                 'Legacy-to-modern migrations that keep the old system running until the new one is ready',
                 'API and data-layer work alongside the UI: Node.js services, REST endpoints, and data models in whatever database you run',
                 'Typed contracts, composable data layers, and tests as part of the work',

@@ -9,6 +9,13 @@
         @include prose;
     }
 
+    & &__section-lead {
+        @include type(body-large);
+        color: var(--md-sys-color-on-surface-variant);
+        margin: calc(-1 * var(--spacing-6)) 0 var(--spacing-8);
+        max-width: 44rem;
+    }
+
     & &__grid {
         @include card-grid;
     }

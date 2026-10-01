@@ -30,7 +30,7 @@ export default function ServicesPage() {
             <PageHero
                 eyebrow="Services"
                 headline="Fixed-scope engagements with clear deliverables."
-                subtext="Each engagement starts with a short call and a written proposal, so you know what you are getting and when. Pricing depends on scope; ask and I will give you a straight answer."
+                subtext="Whether it is a full modernization or one piece of a larger project, each engagement starts with a short call and a written proposal, so you know what you are getting and when. Pricing depends on scope; ask and I will give you a straight answer."
             />
 
             <div className={getChildClass('list')}>
