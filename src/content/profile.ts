@@ -22,15 +22,16 @@ export const profile = {
         linkedin: 'https://www.linkedin.com/in/bruce-ultra',
         github: 'https://github.com/behivetech',
     },
+    years: '25+',
     openTo: 'Open to principal, staff & architect roles',
     heroStatement:
         'I design composable platforms and AI-native engineering workflows that let teams ship in parallel, faster, without regressions.',
     summary:
-        'Software architect and principal engineer with 20+ years designing modular, scalable platforms, from high-traffic consumer sites (southwest.com, 12M+ daily page views) to healthcare systems serving 500+ hospitals and emergency-notification platforms sending billions of alerts a year. Architects composable systems (micro frontends, atomic design systems, independently deployable packages) that let teams ship in parallel without regressions. Pioneers AI-native engineering: agentic, human-in-the-loop pipelines that take work from GitHub issue to reviewed pull request, cross-model AI code review, and cost-aware model orchestration.',
+        'Principal software engineer and architect with 25+ years designing and delivering scalable, user-focused applications, from high-traffic consumer sites (southwest.com, 12M+ daily page views) to healthcare systems serving 500+ hospitals and emergency-notification platforms sending billions of alerts a year. Front-end specialist with deep expertise in React, Next.js, TypeScript, and micro frontends, combined with full-stack range and architectural leadership: Turborepo monorepos, atomic design systems, and independently deployable packages that let teams ship in parallel without regressions. Pioneers AI-native engineering: agentic, human-in-the-loop pipelines that take work from GitHub issue to reviewed pull request, cross-model AI code review, and cost-aware model orchestration.',
     seeking:
-        'Seeking a principal, staff, or architect role with technical leadership scope: setting direction, growing engineers, and moving workflows, standards, and codebases to the current state of the art.',
+        'Seeking to drive technical vision and innovation as a principal engineer, staff engineer, or software architect: setting direction, mentoring teams, and modernizing legacy systems, workflows, and codebases.',
     stats: [
-        { value: '20+', label: 'years building for the web' },
+        { value: '25+', label: 'years building for the web' },
         { value: '12M+', label: 'daily page views at southwest.com' },
         { value: '500+', label: 'hospitals on a platform whose frontend I led' },
         { value: 'Billions', label: 'of life-safety alerts a year on platforms I build for' },
@@ -50,7 +51,7 @@ export const profile = {
         },
         {
             title: 'Composable, modular architecture',
-            body: 'Designs micro-frontend and packaged-component architectures in Turborepo and bit.dev monorepos, where each product ships as an independently versioned, deployable module on shared foundations, so new products launch as modules, not new codebases.',
+            body: 'Designs micro-frontend and packaged-component architectures in Turborepo and bit.dev monorepos, with pnpm workspaces and Changesets versioning, where each product ships as an independently versioned, deployable module on shared foundations, so new products launch as modules, not new codebases.',
         },
         {
             title: 'Atomic design systems',
@@ -64,7 +65,7 @@ export const profile = {
     skills: [
         {
             group: 'Architecture & system design',
-            items: ['Micro frontends', 'Atomic design', 'Design systems', 'Modular monorepos (Turborepo, bit.dev)', 'Multi-tenant SaaS', 'API design', 'Scalability', 'Legacy modernization'],
+            items: ['Micro frontends', 'Turborepo monorepos', 'bit.dev', 'pnpm workspaces & Changesets', 'Atomic design', 'Design systems', 'Multi-tenant SaaS', 'API design', 'Scalability', 'Legacy modernization'],
         },
         {
             group: 'AI development tools & workflows',
@@ -98,7 +99,7 @@ export const profile = {
                 'Architected enterprise React web applications for critical-event notification and geofenced alert targeting on a platform that sends billions of alerts a year for thousands of organizations, where reliability is a life-safety requirement.',
                 'Built a cross-platform Electron desktop alerting client for Crisis24 and CodeRED customers: a background system-tray app that receives alerts in real time over WebSockets, surfaces them as foreground notifications, and captures recipient responses, all driven by settings managed on the web platform and local config files.',
                 "Built most of the desktop client's CI/CD pipeline and installer packaging, shipping signed, platform-certified releases for Windows and macOS in partnership with DevOps.",
-                'Defined component design and application architecture standards across frontend teams, and mentored engineers through the OnSolve-to-Crisis24 acquisition and integration.',
+                'Served as shared tech lead, defining component design and application architecture standards across frontend teams, and mentored engineers through the OnSolve-to-Crisis24 acquisition and integration.',
             ],
         },
         {
@@ -109,11 +110,12 @@ export const profile = {
             highlights: [
                 'Designed and delivered multi-tenant SaaS applications end to end, from data modeling and organization-level access control through production launch.',
                 'Built a Next.js App Router inventory management application for a small-business client: a multi-tenant Prisma and Postgres data model for organizations, roles, and inventory across store locations, Auth.js (NextAuth) sign-in with GitHub, Google, and Auth0, and middleware-protected routes.',
-                'Rebuilt behivetech.com on Next.js 16, moving it from the Pages Router to the App Router with static generation, the Metadata API, generated Open Graph images, and JSON-LD structured data, on a private, versioned component library published to GitHub Packages.',
+                'Built a shared component library as a Turborepo monorepo of atomic-design React packages, versioned with Changesets and published to a private registry so each app pulls in only the packages it needs.',
+                'Rebuilt behivetech.com on Next.js 16 and that component library, moving it from the Pages Router to the App Router with static generation, the Metadata API, generated Open Graph images, and JSON-LD structured data.',
                 'Architected modular, micro-frontend-based applications in which independently deployable modules share common foundations and component libraries.',
                 'Built interactive mapping and location-based experiences used in live, real-world settings.',
-                'Prototyped a custom Shopify app in React with inventory barcode and labeling features.',
-                'Delivered architecture and frontend consulting for Outside Magazine and Hotel Engine, and mentored developers through Codementor.',
+                'Prototyped a custom Shopify app in React with inventory barcode and labeling features for a family gem and mineral business.',
+                'Delivered architecture, consulting, and development for clients on 1099 and W-2 contracts, including Outside Magazine and Hotel Engine, focused on user experience and integration with existing APIs, and mentored developers through Codementor.',
             ],
         },
         {
@@ -153,7 +155,8 @@ export const profile = {
             start: 'Dec 2014',
             end: 'Jun 2016',
             highlights: [
-                'Engineered features for southwest.com at 12M+ daily page views and 2.2M+ unique visitors, and optimized frontend performance for sustained high traffic during a migration to a Java-based API architecture.',
+                'Helped build the React-based southwest.com, serving 12M+ daily page views and 2.2M+ unique visitors.',
+                'Worked on the lead team that built the core shared components and the Flight Status experience, then focused primarily on the Booking flow.',
             ],
         },
         {

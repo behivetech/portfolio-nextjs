@@ -18,7 +18,7 @@ import './globals.scss';
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 
 const title = `${profile.name} | ${profile.title}`;
-const description = `${profile.title} with 20+ years designing modular, scalable platforms: micro frontends, design systems, and AI-native engineering workflows with Claude Code and agentic pipelines. ${profile.location}.`;
+const description = `${profile.title} with ${profile.years} years designing modular, scalable platforms: micro frontends, design systems, and AI-native engineering workflows with Claude Code and agentic pipelines. ${profile.location}.`;
 
 export const metadata: Metadata = {
     metadataBase: new URL(profile.siteUrl),

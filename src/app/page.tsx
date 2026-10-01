@@ -71,7 +71,7 @@ export default function HomePage() {
                 </div>
             </Section>
 
-            <Section id="experience" eyebrow="Experience" title="20+ years shipping for the web">
+            <Section id="experience" eyebrow="Experience" title={`${profile.years} years shipping for the web`}>
                 <Timeline items={profile.experience} />
                 <p className={getChildClass('earlier')}>
                     <strong>Earlier career:</strong> {profile.earlierCareer}
