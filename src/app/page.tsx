@@ -74,7 +74,6 @@ export default function HomePage() {
                         <li key={company}>{company}</li>
                     ))}
                 </ul>
-                {/* TODO(bruce): testimonials render here once site.testimonials has approved entries. */}
             </Section>
 
             <CtaBand />

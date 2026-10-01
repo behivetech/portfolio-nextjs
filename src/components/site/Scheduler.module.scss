@@ -84,8 +84,8 @@
     &__panel {
         background: var(--md-sys-color-surface-container-low);
         border-radius: var(--md-sys-shape-corner-large);
-        // No overflow/fixed height on the wrapper: Calendly's iframe scrolls
-        // badly inside clipped containers on iOS.
+        // No overflow/fixed height on the wrapper: the iframe is sized to
+        // Calendly's reported content height so the page scrolls, not the embed.
         min-height: 720px;
     }
 }

@@ -178,7 +178,4 @@ export const site = {
     experienceAt: (profile.experience as readonly Experience[])
         .filter(({ company }) => company !== 'BEhive Tech LLC')
         .map(({ company, formerly }) => (formerly ? `${company} (formerly ${formerly})` : company)),
-
-    // TODO(bruce): testimonials and case studies go here once approved.
-    testimonials: [] as readonly { quote: string; name: string; role: string }[],
 } as const;

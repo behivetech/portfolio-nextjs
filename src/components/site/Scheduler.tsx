@@ -24,6 +24,9 @@ const COLORS = {
     light: { backgroundColor: 'ffffff', textColor: '1b1b1b', primaryColor: '64558f' },
 } as const;
 
+// Starting iframe height until Calendly reports its real content height.
+const DEFAULT_HEIGHT = 720;
+
 /**
  * Embedded Calendly scheduler with a picker for the event types configured in
  * src/content/site.ts. Shows a placeholder when no events are configured.
@@ -33,6 +36,7 @@ export default function Scheduler() {
     // Widened from the tuple type so an empty list is a legal state.
     const events: readonly { slug: string; label: string; description: string }[] = site.calendly.events;
     const [selected, setSelected] = useState(0);
+    const [height, setHeight] = useState(DEFAULT_HEIGHT);
     const theme = useTheme();
     const tabsId = useId();
     const [rootClassName, getChildClass] = getClassName({
@@ -43,7 +47,18 @@ export default function Scheduler() {
 
     useCalendlyEventListener({
         onEventScheduled: () => track('booking', { event: events[selected]?.slug ?? 'unknown' }),
+        // Size the iframe to Calendly's content so the page scrolls, not the embed.
+        onPageHeightResize: (e) => {
+            const next = parseInt(e.data.payload.height, 10);
+            if (Number.isFinite(next) && next > 0) setHeight(next);
+        },
     });
+
+    // Fresh widget on event/theme change: drop the stale height until it reports again.
+    const selectEvent = (index: number) => {
+        setSelected(index);
+        setHeight(DEFAULT_HEIGHT);
+    };
 
     if (events.length === 0) {
         return (
@@ -74,10 +89,10 @@ export default function Scheduler() {
                             aria-controls={`${tabsId}-panel`}
                             tabIndex={active ? 0 : -1}
                             className={getChildClass('tab')}
-                            onClick={() => setSelected(index)}
+                            onClick={() => selectEvent(index)}
                             onKeyDown={(e) => {
-                                if (e.key === 'ArrowRight') setSelected((index + 1) % events.length);
-                                if (e.key === 'ArrowLeft') setSelected((index - 1 + events.length) % events.length);
+                                if (e.key === 'ArrowRight') selectEvent((index + 1) % events.length);
+                                if (e.key === 'ArrowLeft') selectEvent((index - 1 + events.length) % events.length);
                             }}
                         >
                             <span className={getChildClass('tab-label')}>{label}</span>
@@ -97,7 +112,7 @@ export default function Scheduler() {
                         key={`${event.slug}-${theme}`}
                         url={`${baseUrl}/${event.slug}`}
                         iframeTitle={`Schedule a ${event.label.toLowerCase()} with Bruce Ultra`}
-                        styles={{ height: '720px', minWidth: '320px' }}
+                        styles={{ height: `${height}px`, minWidth: '320px' }}
                         pageSettings={{ hideLandingPageDetails: true, ...COLORS[theme] }}
                         utm={{ utmSource: 'behivetech.com', utmMedium: 'website', utmCampaign: 'contact' }}
                     />
