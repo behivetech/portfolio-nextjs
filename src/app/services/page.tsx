@@ -34,18 +34,17 @@ export default function ServicesPage() {
             />
 
             <div className={getChildClass('list')}>
-                {site.services.map(({ slug, icon, name, description, deliverables }, index) => (
+                {site.services.map(({ slug, icon, name, description, deliverables }) => (
                     <section key={slug} id={slug} aria-labelledby={`${slug}-title`} className={getChildClass('service')}>
                         <div className={getChildClass('service-intro')}>
                             <div className={getChildClass('service-head')}>
                                 <span className={getChildClass('icon')}>
                                     <MaterialIcon name={icon} size={28} />
                                 </span>
-                                <p className={getChildClass('index')}>{String(index + 1).padStart(2, '0')}</p>
+                                <h2 id={`${slug}-title`} className={getChildClass('service-title')}>
+                                    {name}
+                                </h2>
                             </div>
-                            <h2 id={`${slug}-title`} className={getChildClass('service-title')}>
-                                {name}
-                            </h2>
                             <p className={getChildClass('service-body')}>{description}</p>
                             <div className={getChildClass('service-actions')}>
                                 <Button asChild>

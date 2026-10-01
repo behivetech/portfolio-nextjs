@@ -35,13 +35,13 @@ export default function ApproachPage() {
                 <ol className={getChildClass('principles')}>
                     {site.approach.map(({ icon, title, body }) => (
                         <li key={title} className={getChildClass('principle')}>
-                            <span className={getChildClass('icon')}>
-                                <MaterialIcon name={icon} size={28} />
-                            </span>
-                            <div>
+                            <div className={getChildClass('principle-head')}>
+                                <span className={getChildClass('icon')}>
+                                    <MaterialIcon name={icon} size={28} />
+                                </span>
                                 <h3 className={getChildClass('principle-title')}>{title}</h3>
-                                <p className={getChildClass('principle-body')}>{body}</p>
                             </div>
+                            <p className={getChildClass('principle-body')}>{body}</p>
                         </li>
                     ))}
                 </ol>
