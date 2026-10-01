@@ -51,7 +51,7 @@ export const profile = {
         },
         {
             title: 'Composable, modular architecture',
-            body: 'Designs micro-frontend and packaged-component architectures in Turborepo and bit.dev monorepos, with pnpm workspaces and Changesets versioning, where each product ships as an independently versioned, deployable module on shared foundations, so new products launch as modules, not new codebases.',
+            body: 'Designs micro-frontend and packaged-component architectures in Turborepo monorepos, with pnpm workspaces, Changesets versioning, and a component registry where every component is its own published package, where each product ships as an independently versioned, deployable module on shared foundations, so new products launch as modules, not new codebases.',
         },
         {
             title: 'Atomic design systems',
@@ -65,7 +65,7 @@ export const profile = {
     skills: [
         {
             group: 'Architecture & system design',
-            items: ['Micro frontends', 'Turborepo monorepos', 'bit.dev', 'pnpm workspaces & Changesets', 'Atomic design', 'Design systems', 'Multi-tenant SaaS', 'API design', 'Scalability', 'Legacy modernization'],
+            items: ['Micro frontends', 'Turborepo monorepos', 'Component registries', 'pnpm workspaces & Changesets', 'Atomic design', 'Design systems', 'Multi-tenant SaaS', 'API design', 'Scalability', 'Legacy modernization'],
         },
         {
             group: 'AI development tools & workflows',

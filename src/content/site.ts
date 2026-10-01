@@ -150,7 +150,7 @@ export const site = {
         {
             icon: 'view-module' as MaterialIconName,
             title: 'Composable architecture',
-            body: 'I build systems as independently deployable modules on shared foundations: micro frontends, packaged components, Node.js services behind typed API contracts, and monorepos with Turborepo or bit.dev. New products launch as modules, not new codebases. Teams ship in parallel, and a change in a shared component lands everywhere at once.',
+            body: 'I build systems as independently deployable modules on shared foundations: micro frontends, packaged components, Node.js services behind typed API contracts, and Turborepo monorepos where every component is its own versioned package in a registry. New products launch as modules, not new codebases. Teams ship in parallel, and a change in a shared component lands everywhere at once.',
         },
         {
             icon: 'reviews' as MaterialIconName,
