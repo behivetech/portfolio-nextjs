@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Badge } from '@behivetech/atoms.badge';
 import { Button } from '@behivetech/atoms.button';
@@ -56,9 +57,14 @@ export default function AboutPage() {
                             </Button>
                         </p>
                     </div>
-                    {/* TODO(bruce): headshot goes here. Drop an image in public/images and swap this placeholder. */}
-                    <div className={getChildClass('photo')} aria-hidden="true">
-                        <span>Photo</span>
+                    <div className={getChildClass('photo')}>
+                        <Image
+                            src="/images/bruce-ultra.jpg"
+                            alt={`${profile.name}, smiling, in a blue shirt against a teal wall`}
+                            width={1200}
+                            height={1500}
+                            sizes="(min-width: 1024px) 22rem, 100vw"
+                        />
                     </div>
                 </div>
             </Section>

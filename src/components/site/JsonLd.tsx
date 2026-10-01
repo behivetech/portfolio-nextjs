@@ -43,6 +43,7 @@ export default function JsonLd() {
                 name: profile.name,
                 jobTitle: profile.title,
                 url: `${profile.siteUrl}/about`,
+                image: `${profile.siteUrl}/images/bruce-ultra.jpg`,
                 worksFor: { '@id': orgId },
                 address: {
                     '@type': 'PostalAddress',
