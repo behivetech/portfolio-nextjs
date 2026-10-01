@@ -11,6 +11,7 @@ import MaterialIcon from '@/components/site/MaterialIcon';
 import JsonLd from '@/components/site/JsonLd';
 import PageHero from '@/components/site/PageHero';
 import Section from '@/components/site/Section';
+import TermsStrip from '@/components/site/TermsStrip';
 
 import styles from './page.module.scss';
 
@@ -78,6 +79,8 @@ export default function HomePage() {
                     ))}
                 </ul>
             </Section>
+
+            <TermsStrip />
 
             <CtaBand />
         </Page>
