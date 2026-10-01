@@ -1,37 +1,59 @@
 import { profile } from '@/content/profile';
+import { site } from '@/content/site';
 
-/** Person + WebSite structured data so Google can build a knowledge panel and rich results. */
+/**
+ * ProfessionalService + founder Person + WebSite structured data so Google can
+ * show the business and the person behind it.
+ */
 export default function JsonLd() {
+    const personId = `${profile.siteUrl}/#person`;
+    const orgId = `${profile.siteUrl}/#organization`;
+
     const data = {
         '@context': 'https://schema.org',
         '@graph': [
             {
-                '@type': 'Person',
-                '@id': `${profile.siteUrl}/#person`,
-                name: profile.name,
-                jobTitle: profile.title,
-                description: profile.summary,
+                '@type': 'ProfessionalService',
+                '@id': orgId,
+                name: site.company,
+                alternateName: site.shortName,
+                description: site.description,
                 url: profile.siteUrl,
+                logo: `${profile.siteUrl}/images/behivetech-logo.svg`,
                 image: `${profile.siteUrl}/opengraph-image`,
+                founder: { '@id': personId },
+                areaServed: 'US',
                 address: {
                     '@type': 'PostalAddress',
-                    addressLocality: 'Denver',
-                    addressRegion: 'CO',
+                    addressLocality: site.locality,
+                    addressRegion: site.region,
                     addressCountry: 'US',
                 },
                 sameAs: [profile.links.linkedin, profile.links.github],
-                worksFor: {
-                    '@type': 'Organization',
-                    name: 'BEhive Tech LLC',
-                    url: profile.siteUrl,
+                knowsAbout: site.services.map(({ name }) => name),
+                makesOffer: site.services.map(({ name, summary, slug }) => ({
+                    '@type': 'Offer',
+                    url: `${profile.siteUrl}/services#${slug}`,
+                    itemOffered: { '@type': 'Service', name, description: summary },
+                })),
+            },
+            {
+                '@type': 'Person',
+                '@id': personId,
+                name: profile.name,
+                jobTitle: profile.title,
+                url: `${profile.siteUrl}/about`,
+                worksFor: { '@id': orgId },
+                address: {
+                    '@type': 'PostalAddress',
+                    addressLocality: site.locality,
+                    addressRegion: site.region,
+                    addressCountry: 'US',
                 },
+                sameAs: [profile.links.linkedin, profile.links.github],
                 alumniOf: profile.education.map(({ school }) => ({
                     '@type': 'CollegeOrUniversity',
                     name: school,
-                })),
-                hasCredential: profile.certifications.map((name) => ({
-                    '@type': 'EducationalOccupationalCredential',
-                    name,
                 })),
                 knowsAbout: profile.skills.flatMap(({ items }) => items),
             },
@@ -39,8 +61,8 @@ export default function JsonLd() {
                 '@type': 'WebSite',
                 '@id': `${profile.siteUrl}/#website`,
                 url: profile.siteUrl,
-                name: 'BEhive Tech',
-                publisher: { '@id': `${profile.siteUrl}/#person` },
+                name: site.shortName,
+                publisher: { '@id': orgId },
             },
         ],
     };
@@ -48,7 +70,7 @@ export default function JsonLd() {
     return (
         <script
             type="application/ld+json"
-            // JSON.stringify output is safe here: all values are static strings from profile.ts
+            // JSON.stringify output is safe here: all values are static strings from the content files
             dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, '\\u003c') }}
         />
     );

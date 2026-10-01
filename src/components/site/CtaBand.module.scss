@@ -1,0 +1,44 @@
+@use 'brand' as *;
+@use '@behivetech/cms.base-styles/breakpoints.scss' as bp;
+
+.cta-band {
+    padding: var(--spacing-16) 0;
+
+    @include bp.md {
+        padding: var(--spacing-20) 0;
+    }
+
+    &__inner {
+        @include container;
+    }
+
+    &__heading {
+        @include type(headline-medium);
+        font-weight: var(--font-weight-medium);
+        letter-spacing: -0.01em;
+        max-width: 40rem;
+
+        @include bp.md {
+            @include type(headline-large);
+            font-weight: var(--font-weight-medium);
+            letter-spacing: -0.015em;
+        }
+    }
+
+    &__body {
+        @include type(body-large);
+        color: var(--md-sys-color-on-surface-variant);
+        margin: var(--spacing-4) 0 var(--spacing-8);
+        max-width: 40rem;
+    }
+
+    &__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-3);
+
+        a {
+            text-decoration: none;
+        }
+    }
+}

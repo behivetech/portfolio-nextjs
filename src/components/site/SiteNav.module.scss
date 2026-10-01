@@ -1,0 +1,82 @@
+@use 'brand' as *;
+@use '@behivetech/cms.base-styles/breakpoints.scss' as bp;
+
+.site-nav {
+    align-items: center;
+    display: flex;
+    gap: var(--spacing-2);
+    margin-left: auto;
+
+    &__panel {
+        // Phone: a full-width panel under the app bar, shown when open.
+        background: var(--md-sys-color-surface-container);
+        border-bottom: 1px solid var(--md-sys-color-outline-variant);
+        display: none;
+        flex-direction: column;
+        left: 0;
+        padding: var(--spacing-2) var(--spacing-4) var(--spacing-4);
+        position: absolute;
+        right: 0;
+        top: 100%;
+
+        @include bp.md {
+            background: none;
+            border: 0;
+            display: flex;
+            flex-direction: row;
+            gap: var(--spacing-1);
+            padding: 0;
+            position: static;
+        }
+    }
+
+    &--open &__panel {
+        display: flex;
+    }
+
+    &__link {
+        @include type(label-large);
+        @include state-layer;
+        border-radius: var(--md-sys-shape-corner-full);
+        color: var(--md-sys-color-on-surface-variant);
+        padding: var(--spacing-3) var(--spacing-3);
+        text-decoration: none;
+
+        @include bp.md {
+            padding: var(--spacing-2) var(--spacing-3);
+        }
+
+        &:hover {
+            color: var(--md-sys-color-on-surface);
+        }
+
+        &[aria-current='page'] {
+            color: var(--md-sys-color-primary);
+        }
+    }
+
+    &__cta {
+        a {
+            text-decoration: none;
+        }
+    }
+
+    &__menu-button {
+        @include state-layer;
+        align-items: center;
+        background: none;
+        border: 0;
+        border-radius: var(--md-sys-shape-corner-full);
+        color: var(--md-sys-color-on-surface);
+        cursor: pointer;
+        display: inline-flex;
+        height: 2.5rem;
+        justify-content: center;
+        padding: 0;
+        width: 2.5rem;
+
+        @include bp.md {
+            display: none;
+        }
+    }
+}

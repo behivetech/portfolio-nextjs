@@ -1,0 +1,142 @@
+// Shared section patterns for the marketing pages. Each page module pulls
+// these in with `@use 'sections' as *;`.
+@use 'brand' as *;
+@use '@behivetech/cms.base-styles/breakpoints.scss' as bp;
+
+// M3 tonal container holding a single icon
+@mixin icon-tile($size: 3rem) {
+    align-items: center;
+    background: var(--md-sys-color-primary-container);
+    border-radius: var(--md-sys-shape-corner-medium);
+    color: var(--md-sys-color-on-primary-container);
+    display: inline-flex;
+    flex: none;
+    height: $size;
+    justify-content: center;
+    width: $size;
+}
+
+@mixin prose {
+    @include type(body-large);
+    color: var(--md-sys-color-on-surface-variant);
+    display: grid;
+    gap: var(--spacing-5);
+    max-width: 48rem;
+
+    strong {
+        color: var(--md-sys-color-on-surface);
+    }
+}
+
+@mixin card-grid($columns: 3) {
+    display: grid;
+    gap: var(--spacing-4);
+
+    @include bp.md {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include bp.lg {
+        grid-template-columns: repeat($columns, 1fr);
+    }
+}
+
+// M3 filled card on top of the galaxy Card atom
+@mixin filled-card {
+    --card-background: var(--md-sys-color-surface-container-low);
+    --card-border: 0;
+    --card-radius: var(--md-sys-shape-corner-large);
+    @include type(body-medium);
+    color: var(--md-sys-color-on-surface-variant);
+    height: 100%;
+
+    :global(.BHT__Card__header) {
+        border: 0;
+        padding: var(--spacing-6) var(--spacing-6) 0;
+    }
+
+    :global(.BHT__Card__heading) {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: var(--spacing-4);
+    }
+
+    :global(.BHT__Card__icon) {
+        @include icon-tile;
+    }
+
+    :global(.BHT__Card__title) {
+        @include type(title-large);
+        color: var(--md-sys-color-on-surface);
+        overflow: visible;
+        text-overflow: clip;
+        white-space: normal;
+    }
+
+    :global(.BHT__Card__body-padding) {
+        padding: var(--spacing-3) var(--spacing-6) var(--spacing-6);
+    }
+}
+
+@mixin stat-card {
+    background: var(--md-sys-color-surface-container-high);
+    border-radius: var(--md-sys-shape-corner-large);
+    display: flex;
+    flex-direction: column-reverse;
+    gap: var(--spacing-1);
+    justify-content: flex-end;
+    padding: var(--spacing-5);
+
+    @include bp.md {
+        padding: var(--spacing-6);
+    }
+
+    :global(.BHT__Stat__label) {
+        @include type(body-medium);
+        color: var(--md-sys-color-on-surface-variant);
+        text-transform: none;
+    }
+
+    :global(.BHT__Stat__value) {
+        @include type(headline-large);
+        color: var(--md-sys-color-primary);
+        font-weight: var(--font-weight-semibold);
+
+        @include bp.md {
+            @include type(display-small);
+            font-weight: var(--font-weight-semibold);
+        }
+    }
+}
+
+// Checklist with a primary-colored check icon before each item
+@mixin check-list {
+    display: grid;
+    gap: var(--spacing-3);
+    list-style: none;
+    padding: 0;
+
+    li {
+        align-items: flex-start;
+        display: flex;
+        gap: var(--spacing-3);
+    }
+
+    svg {
+        color: var(--md-sys-color-primary);
+        flex: none;
+        margin-top: 0.2em;
+    }
+}
+
+// M3 assist chip
+@mixin chip {
+    @include type(label-large);
+    align-items: center;
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: var(--md-sys-shape-corner-small);
+    color: var(--md-sys-color-on-surface-variant);
+    display: inline-flex;
+    height: 2rem;
+    padding: 0 var(--spacing-4);
+}

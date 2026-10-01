@@ -1,7 +1,11 @@
+import MaterialIcon from './MaterialIcon';
+
 type IconProps = {
     className?: string;
     size?: number;
 };
+
+// Brand marks (not in Material), drawn by hand.
 
 export function LinkedInIcon({ className, size = 20 }: IconProps) {
     return (
@@ -19,20 +23,14 @@ export function GithubIcon({ className, size = 20 }: IconProps) {
     );
 }
 
-export function MailIcon({ className, size = 20 }: IconProps) {
-    return (
-        <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <rect x="2" y="4" width="20" height="16" rx="2" />
-            <path d="m22 7-10 6L2 7" />
-        </svg>
-    );
-}
+// Material icons, kept under their old names so call sites did not change.
 
-export function MapPinIcon({ className, size = 20 }: IconProps) {
-    return (
-        <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" />
-            <circle cx="12" cy="10" r="3" />
-        </svg>
-    );
-}
+export const MailIcon = (props: IconProps) => <MaterialIcon name="email" size={20} {...props} />;
+export const MapPinIcon = (props: IconProps) => <MaterialIcon name="place" size={20} {...props} />;
+export const SunIcon = (props: IconProps) => <MaterialIcon name="light-mode" size={20} {...props} />;
+export const MoonIcon = (props: IconProps) => <MaterialIcon name="dark-mode" size={20} {...props} />;
+export const MenuIcon = (props: IconProps) => <MaterialIcon name="menu" size={20} {...props} />;
+export const CloseIcon = (props: IconProps) => <MaterialIcon name="close" size={20} {...props} />;
+export const CheckIcon = (props: IconProps) => <MaterialIcon name="check" size={20} {...props} />;
+export const ArrowRightIcon = (props: IconProps) => <MaterialIcon name="arrow-forward" size={20} {...props} />;
+export const CalendarIcon = (props: IconProps) => <MaterialIcon name="description" size={20} {...props} />;
