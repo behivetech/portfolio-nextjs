@@ -37,13 +37,11 @@ npm run lint && npm run typecheck
 ```
 
 `@behivetech/*` packages come from GitHub Packages (`.npmrc`). Locally your
-`~/.npmrc` needs `//npm.pkg.github.com/:_authToken=<token>`. On Vercel, add an
-`NPM_RC` environment variable containing both lines:
-
-```
-@behivetech:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken=<token with read:packages>
-```
+`~/.npmrc` needs `//npm.pkg.github.com/:_authToken=<token>`. On Vercel, add a
+`GH_PACKAGES_TOKEN` environment variable (all environments) whose value is just a
+GitHub personal access token (classic) with the `read:packages` scope. The
+`installCommand` in `vercel.json` appends the auth line to `.npmrc` before
+`npm install` runs, so no multi-line variable is needed.
 
 Analytics: `@vercel/analytics` and `@vercel/speed-insights` are wired in the
 root layout and only report when deployed on Vercel. Calendly bookings are
