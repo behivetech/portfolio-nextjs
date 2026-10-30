@@ -20,6 +20,10 @@
         @include card-grid;
     }
 
+    & &__work-grid {
+        @include card-grid(2);
+    }
+
     & &__card {
         @include filled-card;
     }

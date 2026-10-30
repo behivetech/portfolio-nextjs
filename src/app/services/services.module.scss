@@ -63,6 +63,20 @@
         }
     }
 
+    &__service-link {
+        @include type(label-large);
+        align-items: center;
+        color: var(--md-sys-color-primary);
+        display: inline-flex;
+        gap: var(--spacing-1);
+        margin-top: var(--spacing-5);
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
     &__pricing {
         @include type(label-large);
         color: var(--md-sys-color-on-surface-variant);

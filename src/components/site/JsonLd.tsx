@@ -1,5 +1,6 @@
 import { profile } from '@/content/profile';
 import { site } from '@/content/site';
+import { registry } from '@/content/work';
 
 /**
  * ProfessionalService + founder Person + WebSite structured data so Google can
@@ -57,6 +58,18 @@ export default function JsonLd() {
                     name: school,
                 })),
                 knowsAbout: profile.skills.flatMap(({ items }) => items),
+            },
+            {
+                '@type': 'SoftwareSourceCode',
+                '@id': `${profile.siteUrl}${registry.href}#code`,
+                name: 'bht-component-registry',
+                description: registry.summary,
+                url: `${profile.siteUrl}${registry.href}`,
+                codeRepository: registry.links.repo,
+                programmingLanguage: 'TypeScript',
+                runtimePlatform: 'Node.js',
+                license: 'https://opensource.org/licenses/MIT',
+                author: { '@id': orgId },
             },
             {
                 '@type': 'WebSite',

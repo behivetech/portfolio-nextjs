@@ -14,8 +14,13 @@ import '@behivetech/cms.base-styles/tokens.scss';
 import '@behivetech/atoms.badge/styles.css';
 import '@behivetech/atoms.button/styles.css';
 import '@behivetech/atoms.card/styles.css';
+import '@behivetech/atoms.drawer/styles.css';
+import '@behivetech/atoms.icon/styles.css';
+import '@behivetech/atoms.nav-item/styles.css';
 import '@behivetech/atoms.stat/styles.css';
 import '@behivetech/organisms.hero-banner/styles.css';
+import '@behivetech/organisms.site-footer/styles.css';
+import '@behivetech/organisms.site-header/styles.css';
 import '@behivetech/templates.page/styles.css';
 
 import './globals.scss';
@@ -48,6 +53,8 @@ export const metadata: Metadata = {
         'GitHub Copilot',
         'Micro frontends',
         'Design systems',
+        'Component registry',
+        'Claude Code agents',
         'React consultant',
         'Next.js consultant',
         'TypeScript',

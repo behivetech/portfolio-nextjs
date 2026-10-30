@@ -1,0 +1,133 @@
+@use 'brand' as *;
+@use 'sections' as *;
+@use '@behivetech/cms.base-styles/breakpoints.scss' as bp;
+
+.agent-team {
+    & &__prose {
+        @include prose;
+    }
+
+    & &__grid {
+        @include card-grid;
+    }
+
+    & &__card {
+        @include filled-card;
+    }
+
+    & &__model {
+        @include chip;
+        background: transparent;
+        height: 1.75rem;
+    }
+
+    & &__flow {
+        counter-reset: step;
+        display: grid;
+        gap: var(--spacing-3);
+        list-style: none;
+        padding: 0;
+
+        @include bp.md {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include bp.lg {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    & &__flow-step {
+        background: var(--md-sys-color-secondary-container);
+        border-radius: var(--md-sys-shape-corner-medium);
+        color: var(--md-sys-color-on-secondary-container);
+        counter-increment: step;
+        padding: var(--spacing-5);
+
+        &::before {
+            @include type(label-medium);
+            content: counter(step);
+            display: block;
+            margin-bottom: var(--spacing-2);
+            opacity: 0.7;
+        }
+    }
+
+    & &__flow-step--human {
+        background: var(--md-sys-color-primary);
+        color: var(--md-sys-color-on-primary);
+    }
+
+    & &__flow-step--human &__flow-title,
+    & &__flow-step--human &__flow-body {
+        color: inherit;
+    }
+
+    & &__flow-title {
+        @include type(title-medium);
+        color: inherit;
+        margin-bottom: var(--spacing-1);
+    }
+
+    & &__flow-body {
+        @include type(body-medium);
+        color: inherit;
+        opacity: 0.9;
+    }
+
+    & &__legend {
+        @include type(body-medium);
+        align-items: center;
+        color: var(--md-sys-color-on-surface-variant);
+        display: flex;
+        gap: var(--spacing-2);
+        margin-top: var(--spacing-6);
+
+        svg {
+            color: var(--md-sys-color-primary);
+            flex: none;
+        }
+    }
+
+    & &__commands {
+        display: grid;
+        gap: var(--spacing-4);
+        margin: 0;
+
+        @include bp.md {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    & &__command {
+        border-top: 2px solid var(--md-sys-color-primary);
+        padding-top: var(--spacing-4);
+    }
+
+    & &__command-name {
+        @include type(title-medium);
+        margin-bottom: var(--spacing-2);
+
+        code {
+            font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+            font-size: 0.95em;
+        }
+    }
+
+    & &__command-body {
+        @include type(body-medium);
+        color: var(--md-sys-color-on-surface-variant);
+        margin: 0;
+    }
+
+    & &__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-3);
+        margin-top: var(--spacing-8);
+
+        a {
+            text-decoration: none;
+        }
+    }
+}

@@ -1,15 +1,33 @@
 import Link from 'next/link';
 import { getClassName } from '@behivetech/get-class-name';
+import { SiteFooter as BhtSiteFooter } from '@behivetech/organisms.site-footer';
 
+import { NAV_LINKS } from '@/content/nav';
 import { profile } from '@/content/profile';
 import { site } from '@/content/site';
-import { GithubIcon, LinkedInIcon, MailIcon } from './Icons';
+import { registry } from '@/content/work';
+import { MailIcon } from './Icons';
 import Logo from './Logo';
 import ProtectedEmail from './ProtectedEmail';
-import { NAV_LINKS } from '@/content/nav';
 
 import styles from './SiteFooter.module.scss';
 
+const GROUPS = [
+    {
+        title: 'Site',
+        links: [...NAV_LINKS, { href: '/resume', label: 'Resume' }],
+    },
+    {
+        title: 'Elsewhere',
+        links: [
+            { href: registry.links.site, label: 'Component registry' },
+            { href: profile.links.github, label: 'GitHub' },
+            { href: profile.links.linkedin, label: 'LinkedIn' },
+        ],
+    },
+];
+
+/** The shared site footer from the registry, fed this site's links and brand. */
 export default function SiteFooter() {
     const [rootClassName, getChildClass] = getClassName({
         rootClass: 'site-footer',
@@ -17,8 +35,11 @@ export default function SiteFooter() {
     });
 
     return (
-        <footer className={rootClassName}>
-            <div className={getChildClass('inner')}>
+        <BhtSiteFooter
+            className={rootClassName}
+            linkComponent={Link}
+            groups={GROUPS}
+            brand={
                 <div className={getChildClass('brand')}>
                     <Logo height={28} className={getChildClass('logo')} />
                     <p>{site.tagline}</p>
@@ -26,32 +47,19 @@ export default function SiteFooter() {
                         {site.locality}, {site.region}
                     </p>
                 </div>
-                <nav aria-label="Footer" className={getChildClass('nav')}>
-                    {NAV_LINKS.map(({ href, label }) => (
-                        <Link key={href} href={href}>
-                            {label}
-                        </Link>
-                    ))}
-                    <Link href="/resume">Resume</Link>
-                </nav>
-                <div className={getChildClass('links')}>
-                    <ProtectedEmail aria-label="Email" icon={<MailIcon />} label="" />
-                    <a href={profile.links.linkedin} aria-label="LinkedIn" rel="me noopener" target="_blank">
-                        <LinkedInIcon />
-                    </a>
-                    <a href={profile.links.github} aria-label="GitHub" rel="me noopener" target="_blank">
-                        <GithubIcon />
-                    </a>
+            }
+            legal={
+                <div className={getChildClass('legal')}>
+                    <span>
+                        © {new Date().getFullYear()} {site.company}
+                    </span>
+                    <Link href="/farkle" className={getChildClass('farkle')}>
+                        Farkle scorer
+                    </Link>
                 </div>
-            </div>
-            <div className={getChildClass('legal')}>
-                <p>
-                    © {new Date().getFullYear()} {site.company}
-                </p>
-                <Link href="/farkle" className={getChildClass('farkle')}>
-                    Farkle scorer
-                </Link>
-            </div>
-        </footer>
+            }
+        >
+            <ProtectedEmail className={getChildClass('email')} icon={<MailIcon size={18} />} label="Email me" />
+        </BhtSiteFooter>
     );
 }
