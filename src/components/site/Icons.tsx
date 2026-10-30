@@ -34,3 +34,4 @@ export const CloseIcon = (props: IconProps) => <MaterialIcon name="close" size={
 export const CheckIcon = (props: IconProps) => <MaterialIcon name="check" size={20} {...props} />;
 export const ArrowRightIcon = (props: IconProps) => <MaterialIcon name="arrow-forward" size={20} {...props} />;
 export const CalendarIcon = (props: IconProps) => <MaterialIcon name="description" size={20} {...props} />;
+export const ExternalLinkIcon = (props: IconProps) => <MaterialIcon name="open-in-new" size={20} {...props} />;

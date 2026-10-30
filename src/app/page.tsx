@@ -5,6 +5,7 @@ import { getClassName } from '@behivetech/get-class-name';
 import { Page } from '@behivetech/templates.page';
 
 import { site } from '@/content/site';
+import { projects } from '@/content/work';
 import CtaBand from '@/components/site/CtaBand';
 import { ArrowRightIcon } from '@/components/site/Icons';
 import MaterialIcon from '@/components/site/MaterialIcon';
@@ -60,6 +61,28 @@ export default function HomePage() {
                             <p>{summary}</p>
                             <Link href={`/services#${slug}`} className={getChildClass('card-link')}>
                                 Details <ArrowRightIcon size={16} />
+                            </Link>
+                        </Card>
+                    ))}
+                </div>
+            </Section>
+
+            <Section id="work" eyebrow="Work" title="Two things I built that you can look at">
+                <p className={getChildClass('section-lead')}>
+                    Both came out of my own products, and both are what I install for clients.
+                </p>
+                <div className={getChildClass('work-grid')}>
+                    {projects.map(({ slug, href, icon, name, summary }) => (
+                        <Card
+                            key={slug}
+                            icon={<MaterialIcon name={icon} />}
+                            title={name}
+                            padding="lg"
+                            className={getChildClass('card')}
+                        >
+                            <p>{summary}</p>
+                            <Link href={href} className={getChildClass('card-link')}>
+                                How it works <ArrowRightIcon size={16} />
                             </Link>
                         </Card>
                     ))}

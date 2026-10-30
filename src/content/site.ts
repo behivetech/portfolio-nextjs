@@ -16,6 +16,8 @@ export type Service = {
     summary: string;
     description: string;
     deliverables: readonly string[];
+    /** Optional pointer to a /work page that shows this service in practice */
+    link?: { href: string; label: string };
 };
 
 export const site = {
@@ -70,6 +72,7 @@ export const site = {
                 'Model routing and cost reporting so AI spend stays proportional to value',
                 'Team training sessions and a written playbook',
             ],
+            link: { href: '/work/agent-team', label: 'See the agent team I run' },
         },
         {
             slug: 'architecture-audit',
@@ -126,9 +129,10 @@ export const site = {
             deliverables: [
                 'Component library with design tokens, theming, and light and dark support',
                 'WCAG AA accessibility and i18n built into every component',
-                'Packaging and versioning so each app pulls in only what it needs',
-                'Living documentation and contribution guidelines',
+                'A component registry in git: one versioned package per component, published to npm, so each app pulls in only what it needs',
+                'Living documentation generated from the source: live examples, a props table, and a changelog per component',
             ],
+            link: { href: '/work/component-registry', label: 'See the component registry' },
         },
         {
             slug: 'desktop-mobile-apps',

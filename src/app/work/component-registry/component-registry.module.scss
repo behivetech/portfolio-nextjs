@@ -1,0 +1,176 @@
+@use 'brand' as *;
+@use 'sections' as *;
+@use '@behivetech/cms.base-styles/breakpoints.scss' as bp;
+
+.registry {
+    & &__badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-2);
+        list-style: none;
+        margin-top: var(--spacing-6);
+        padding: 0;
+    }
+
+    & &__badges &__badge {
+        @include chip;
+        background: transparent;
+    }
+
+    & &__prose {
+        @include prose;
+    }
+
+    & &__grid {
+        @include card-grid;
+    }
+
+    & &__card {
+        @include filled-card;
+    }
+
+    & &__steps {
+        counter-reset: step;
+        display: grid;
+        gap: var(--spacing-4);
+        list-style: none;
+        padding: 0;
+
+        @include bp.md {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    & &__step {
+        background: var(--md-sys-color-surface-container-low);
+        border-radius: var(--md-sys-shape-corner-large);
+        counter-increment: step;
+        padding: var(--spacing-6);
+
+        &::before {
+            @include type(label-large);
+            color: var(--md-sys-color-primary);
+            content: '0' counter(step);
+            display: block;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--spacing-3);
+        }
+    }
+
+    & &__step-title {
+        @include type(title-large);
+        font-weight: var(--font-weight-medium);
+        margin-bottom: var(--spacing-2);
+    }
+
+    & &__step-body {
+        @include type(body-medium);
+        color: var(--md-sys-color-on-surface-variant);
+    }
+
+    & &__start {
+        display: grid;
+        gap: var(--spacing-8);
+
+        @include bp.lg {
+            align-items: start;
+            gap: var(--spacing-12);
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    & &__code {
+        background: var(--md-sys-color-inverse-surface);
+        border-radius: var(--md-sys-shape-corner-large);
+        color: var(--md-sys-color-inverse-on-surface);
+        font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 0.9rem;
+        line-height: 1.8;
+        margin: 0;
+        overflow-x: auto;
+        padding: var(--spacing-5) var(--spacing-6);
+
+        code {
+            font: inherit;
+        }
+    }
+
+    & &__start-text {
+        @include prose;
+    }
+
+    & &__resources {
+        display: grid;
+        gap: var(--spacing-3);
+        list-style: none;
+        padding: 0;
+
+        a {
+            @include type(label-large);
+            align-items: center;
+            color: var(--md-sys-color-primary);
+            display: inline-flex;
+            gap: var(--spacing-2);
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    & &__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-3);
+        margin-top: var(--spacing-8);
+
+        a {
+            text-decoration: none;
+        }
+
+        svg {
+            margin-left: var(--spacing-1);
+        }
+    }
+
+    & &__lead {
+        @include type(body-large);
+        color: var(--md-sys-color-on-surface-variant);
+        margin: calc(-1 * var(--spacing-6)) 0 var(--spacing-8);
+        max-width: 44rem;
+    }
+
+    & &__expanded {
+        display: grid;
+        gap: var(--spacing-4);
+
+        @include bp.md {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    & &__panel {
+        background: var(--md-sys-color-surface-container-low);
+        border-radius: var(--md-sys-shape-corner-large);
+        padding: var(--spacing-6);
+    }
+
+    & &__panel-title {
+        @include type(title-medium);
+        margin-bottom: var(--spacing-4);
+    }
+
+    & &__check-list {
+        @include check-list;
+        @include type(body-medium);
+        color: var(--md-sys-color-on-surface);
+    }
+
+    & &__note {
+        @include type(body-medium);
+        color: var(--md-sys-color-on-surface-variant);
+        margin-top: var(--spacing-6);
+        max-width: 48rem;
+    }
+}

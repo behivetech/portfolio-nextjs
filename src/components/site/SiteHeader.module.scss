@@ -1,22 +1,16 @@
 @use 'brand' as *;
 
-// M3 small top app bar
+// The registry's SiteHeader draws the bar; this keeps it pinned to the top.
 .site-header {
-    backdrop-filter: saturate(160%) blur(12px);
-    background: color-mix(in srgb, var(--md-sys-color-surface-container) 85%, transparent);
-    border-bottom: 1px solid var(--md-sys-color-outline-variant);
     position: sticky;
     top: 0;
     z-index: 50;
 
-    &__inner {
+    // The bar spans the page like the rest of the chrome, but its content
+    // lines up with the site's centered column. A width prop on the package
+    // would be the cleaner home for this.
+    & :global(.BHT__SiteHeader__bar) {
         @include container;
-        align-items: center;
-        display: flex;
-        gap: var(--spacing-4);
-        height: 4rem;
-        justify-content: space-between;
-        position: relative;
     }
 
     &__logo {
@@ -26,6 +20,14 @@
         svg {
             height: 2rem;
             width: auto;
+        }
+    }
+
+    &__cta {
+        margin-left: var(--spacing-2);
+
+        a {
+            text-decoration: none;
         }
     }
 

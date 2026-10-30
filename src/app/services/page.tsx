@@ -5,7 +5,7 @@ import { getClassName } from '@behivetech/get-class-name';
 
 import { site } from '@/content/site';
 import CtaBand from '@/components/site/CtaBand';
-import { CheckIcon } from '@/components/site/Icons';
+import { ArrowRightIcon, CheckIcon } from '@/components/site/Icons';
 import MaterialIcon from '@/components/site/MaterialIcon';
 import PageHero from '@/components/site/PageHero';
 import TermsStrip from '@/components/site/TermsStrip';
@@ -35,7 +35,7 @@ export default function ServicesPage() {
             />
 
             <div className={getChildClass('list')}>
-                {site.services.map(({ slug, icon, name, description, deliverables }) => (
+                {site.services.map(({ slug, icon, name, description, deliverables, link }) => (
                     <section key={slug} id={slug} aria-labelledby={`${slug}-title`} className={getChildClass('service')}>
                         <div className={getChildClass('service-intro')}>
                             <div className={getChildClass('service-head')}>
@@ -53,6 +53,11 @@ export default function ServicesPage() {
                                 </Button>
                                 <span className={getChildClass('pricing')}>{site.pricingNote}</span>
                             </div>
+                            {link && (
+                                <Link href={link.href} className={getChildClass('service-link')}>
+                                    {link.label} <ArrowRightIcon size={16} />
+                                </Link>
+                            )}
                         </div>
                         <div className={getChildClass('deliverables')}>
                             <h3 className={getChildClass('deliverables-title')}>What you get</h3>

@@ -27,7 +27,7 @@
 
     // The eyebrow is passed as a child, so it renders after the CTAs; flex
     // order moves it to the top.
-    & :global(.BHT__hero-banner__content) {
+    & :global(.BHT__HeroBanner__content) {
         @include container;
         display: flex;
         flex-direction: column;
@@ -39,7 +39,7 @@
         order: -1;
     }
 
-    & :global(.BHT__hero-banner__headline) {
+    & :global(.BHT__HeroBanner__headline) {
         @include type(display-small);
         color: var(--md-sys-color-on-surface);
         font-weight: var(--font-weight-semibold);
@@ -54,14 +54,14 @@
         }
     }
 
-    & :global(.BHT__hero-banner__subtext) {
+    & :global(.BHT__HeroBanner__subtext) {
         @include type(title-large);
         color: var(--md-sys-color-on-surface-variant);
         margin-bottom: var(--spacing-8);
         max-width: 42rem;
     }
 
-    & :global(.BHT__hero-banner__ctas) {
+    & :global(.BHT__HeroBanner__ctas) {
         justify-content: flex-start;
     }
 
@@ -74,7 +74,7 @@
             }
         }
 
-        & :global(.BHT__hero-banner__headline) {
+        & :global(.BHT__HeroBanner__headline) {
             @include bp.md {
                 @include type(display-large);
                 font-weight: var(--font-weight-semibold);
@@ -83,7 +83,7 @@
             }
         }
 
-        & :global(.BHT__hero-banner__subtext) {
+        & :global(.BHT__HeroBanner__subtext) {
             @include type(headline-small);
             color: var(--md-sys-color-on-surface-variant);
         }
