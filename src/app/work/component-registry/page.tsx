@@ -8,7 +8,7 @@ import { getClassName } from '@behivetech/get-class-name';
 import { site } from '@/content/site';
 import { registry } from '@/content/work';
 import CtaBand from '@/components/site/CtaBand';
-import { CheckIcon, ExternalLinkIcon, GithubIcon } from '@/components/site/Icons';
+import { CheckIcon, ExternalLinkIcon } from '@/components/site/Icons';
 import MaterialIcon from '@/components/site/MaterialIcon';
 import PageHero from '@/components/site/PageHero';
 import Section from '@/components/site/Section';
@@ -37,7 +37,7 @@ export default function ComponentRegistryPage() {
                 subtext={registry.summary}
                 ctas={[
                     { label: 'Open the registry', href: registry.links.site, variant: 'primary' },
-                    { label: 'View on GitHub', href: registry.links.repo, variant: 'secondary' },
+                    { label: 'Read the guide', href: registry.links.docs, variant: 'secondary' },
                 ]}
             >
                 <ul className={getChildClass('badges')} aria-label="At a glance">
@@ -94,11 +94,6 @@ export default function ComponentRegistryPage() {
                             <li>
                                 <a href={registry.links.npm}>
                                     <MaterialIcon name="terminal" size={18} /> create-bht-component-registry on npm
-                                </a>
-                            </li>
-                            <li>
-                                <a href={registry.links.repo}>
-                                    <GithubIcon size={18} /> Source on GitHub
                                 </a>
                             </li>
                         </ul>

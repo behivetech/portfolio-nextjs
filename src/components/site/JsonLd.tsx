@@ -65,7 +65,6 @@ export default function JsonLd() {
                 name: 'bht-component-registry',
                 description: registry.summary,
                 url: `${profile.siteUrl}${registry.href}`,
-                codeRepository: registry.links.repo,
                 programmingLanguage: 'TypeScript',
                 runtimePlatform: 'Node.js',
                 license: 'https://opensource.org/licenses/MIT',

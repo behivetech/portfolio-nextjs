@@ -35,7 +35,6 @@ export const registry = {
         site: 'https://platform.behivetech.com',
         docs: 'https://platform.behivetech.com/docs',
         tokens: 'https://platform.behivetech.com/tokens',
-        repo: 'https://github.com/behivetech/bht-component-registry',
         npm: 'https://www.npmjs.com/package/create-bht-component-registry',
     },
     badges: ['Open source, MIT', 'Next.js static export', 'No database', 'No required env vars'],
